@@ -46,13 +46,13 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.Button,
     paddingVertical: hp(1.7),
     paddingHorizontal: wp(4),
-    marginHorizontal: wp(1),
+    marginHorizontal: wp(4),
     marginVertical: hp(1),
-    borderRadius: wp(3),
+    borderRadius: 100,
   },
   buttonText: {
-    fontFamily: FontFamily.Medium,
-    color: Colors.White,
+    fontFamily: FontFamily.Bold,
+    color: Colors.Black,
   },
   icon: {
     ...RNStyles.icon,

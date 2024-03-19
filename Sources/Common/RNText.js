@@ -22,7 +22,7 @@ const RNText = ({
   ...restProps
 }) => {
   const TextStyles = {
-    color: color ?? Colors.Black,
+    color: color ?? Colors.White,
     fontSize: size ?? FontSize.font16,
     fontFamily: family ?? FontFamily.Regular,
     textAlign: align ?? 'left',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { wp } from '../Theme';
+import { Colors, wp } from '../Theme';
 import RNStyles from './RNStyles';
 import RNImage from './RNImage';
 
@@ -21,9 +21,10 @@ const styles = StyleSheet.create({
     ...RNStyles.center,
     width: size,
     height: size,
+    backgroundColor: Colors.Button,
   },
   icon: {
-    ...RNStyles.image80,
+    ...RNStyles.image60,
   },
 });
 

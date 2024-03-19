@@ -3,9 +3,9 @@ import SplashScreen from 'react-native-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavConfigs, NavRoutes } from './index';
-import { Login, Onboarding } from '../Screens';
+import { LanguageSelection, Onboarding, TermsAndCondition } from '../Screens';
 
-const { Navigator, Screen } = createStackNavigator();
+const Stack = createStackNavigator();
 
 const Routes = () => {
   useEffect(() => {
@@ -16,9 +16,17 @@ const Routes = () => {
 
   return (
     <NavigationContainer>
-      <Navigator screenOptions={NavConfigs.screenOptions}>
-        <Screen name={NavRoutes.Onboarding} component={Onboarding} />
-      </Navigator>
+      <Stack.Navigator screenOptions={NavConfigs.screenOptions}>
+        <Stack.Screen name={NavRoutes.Onboarding} component={Onboarding} />
+        <Stack.Screen
+          name={NavRoutes.TermsAndCondition}
+          component={TermsAndCondition}
+        />
+        <Stack.Screen
+          name={NavRoutes.LanguageSelection}
+          component={LanguageSelection}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };

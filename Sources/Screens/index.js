@@ -1,1 +1,1 @@
-export { Onboarding } from './Auth';
+export { Onboarding, TermsAndCondition, LanguageSelection } from './Auth';
