@@ -7,7 +7,7 @@ const RNImageLoader = ({ visible, containerStyle, size, color }) => {
     <View style={[RNStyles.imageLoading, containerStyle]}>
       <ActivityIndicator
         size={size ?? 'large'}
-        color={color ?? Colors.Loader}
+        color={color ?? Colors.Button}
       />
     </View>
   ) : null;

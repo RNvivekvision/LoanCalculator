@@ -7,7 +7,7 @@ const RNLoader = ({ visible, style, color, size }) => {
     <View style={[styles.Container, style]}>
       <ActivityIndicator
         size={size ?? 'large'}
-        color={color || Colors.Loader}
+        color={color || Colors.Button}
       />
     </View>
   ) : null;

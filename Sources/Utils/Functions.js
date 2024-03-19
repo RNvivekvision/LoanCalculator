@@ -1,4 +1,3 @@
-import moment from 'moment';
 import { Alert, Linking } from 'react-native';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -36,13 +35,11 @@ const spliteArray = arr => {
 };
 
 const formatDate = ({ date, format }) => {
-  // const d = new Date(date);
-  // const month = `${d.getMonth() + 1}`.padStart(2, '0');
-  // const day = `${d.getDate()}`.padStart(2, '0');
-  // const year = d.getFullYear();
-  // return `${year}-${month}-${day}`;
-  const d = moment(date).format(format ?? 'DD-MMM-YYYY');
-  return d;
+  const d = new Date(date);
+  const month = `${d.getMonth() + 1}`.padStart(2, '0');
+  const day = `${d.getDate()}`.padStart(2, '0');
+  const year = d.getFullYear();
+  return `${year}-${month}-${day}`;
 };
 
 const Functions = {

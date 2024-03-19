@@ -37,13 +37,12 @@ const FontSize = {
   font40: normalize(40),
 };
 const FontFamily = {
-  Black: 'Poppins-Black',
-  Bold: 'Poppins-Bold',
-  Italic: 'Poppins-Italic',
-  Light: 'Poppins-Light',
-  Medium: 'Poppins-Medium',
-  Regular: 'Poppins-Regular',
-  SemiBold: 'Poppins-SemiBold',
-  Thin: 'Poppins-Thin',
+  Black: 'Roboto-Black',
+  Bold: 'Roboto-Bold',
+  Italic: 'Roboto-Italic',
+  Light: 'Roboto-Light',
+  Medium: 'Roboto-Medium',
+  Regular: 'Roboto-Regular',
+  Thin: 'Roboto-Thin',
 };
 export { FontSize, FontFamily };

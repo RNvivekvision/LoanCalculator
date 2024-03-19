@@ -6,7 +6,7 @@ const RNPagginationLoader = ({ size, color, style }) => {
     <View style={[style]}>
       <ActivityIndicator
         size={size || 'large'}
-        color={color || Colors.Loader}
+        color={color || Colors.Button}
       />
     </View>
   );
