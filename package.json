@@ -3,15 +3,23 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "refresh": "yarn install && yarn run podInstall && yarn run openXcode && yarn run androidClean",
+    "android": "npx react-native run-android",
+    "androidClean": "cd android && ./gradlew clean && cd ..",
+    "androidUpdate": "npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && rm -rf ./android/app/src/main/res/drawable-* && rm -rf ./android/app/src/main/res/raw",
+    "androidBuild": "cd android && ./gradlew assembleRelease && cd ..",
+    "ios": "npx react-native run-ios",
+    "podInstall": "cd ios && pod install && cd ..",
+    "openXcode": "xed -b ios",
+    "linkingFonts": "npx react-native-asset",
     "lint": "eslint .",
-    "start": "react-native start",
+    "start": "npx react-native start --reset-cache",
     "test": "jest"
   },
   "dependencies": {
     "react": "18.2.0",
-    "react-native": "0.73.6"
+    "react-native": "0.73.6",
+    "react-native-splash-screen": "^3.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
