@@ -33,6 +33,7 @@ const LanguageSelection = () => {
 
           {DummyData.LanguageSelection.map((v, i) => (
             <RenderLanguages
+              key={i}
               item={v}
               selected={State.selectedLanguage.title === v.title}
               onPress={v => setState(p => ({ ...p, selectedLanguage: v }))}
@@ -56,7 +57,6 @@ const styles = StyleSheet.create({
     width: wp(15),
     borderRadius: 100,
     zIndex: 1,
-    marginHorizontal: wp(4),
   },
   title: {
     fontSize: FontSize.font18,

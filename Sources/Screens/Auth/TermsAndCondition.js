@@ -21,6 +21,7 @@ const TermsAndCondition = ({ navigation }) => {
         <LOTerms title={Strings.PleaseCheckFor} />
         <RNButton
           title={Strings.Announcing}
+          style={{ marginVertical: hp(3) }}
           onPress={() => navigation.navigate(NavRoutes.LanguageSelection)}
         />
       </>
@@ -33,11 +34,10 @@ const TermsAndCondition = ({ navigation }) => {
         data={DummyData.termsAndCondition}
         keyExtractor={(v, i) => String(i)}
         contentContainerStyle={styles.contentContainerStyle}
-        ListHeaderComponent={Header}
-        ListFooterComponent={Footer}
+        ListHeaderComponent={<Header />}
+        ListFooterComponent={<Footer />}
         renderItem={({ item }) => <RenderTerms item={item} />}
       />
-
       <View style={styles.banner}>
         <RNText>{'For Banner'}</RNText>
       </View>
@@ -49,7 +49,6 @@ const useStyles = () => {
   const inset = useInset();
   return StyleSheet.create({
     contentContainerStyle: {
-      ...RNStyles.container,
       paddingHorizontal: wp(4),
       paddingTop: inset.top,
     },
