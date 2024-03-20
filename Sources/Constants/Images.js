@@ -51,6 +51,7 @@ const Images = {
   SIP: require(ImagePath + 'SIP' + png),
   SWP: require(ImagePath + 'SWP' + png),
   TaxCalculation: require(ImagePath + 'TaxCalculation' + png),
+  Calendar: require(ImagePath + 'Calendar' + png),
 };
 
 export default Images;

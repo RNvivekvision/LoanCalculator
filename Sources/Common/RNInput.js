@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: wp(3),
     paddingVertical: hp(1),
     marginVertical: hp(1),
-    fontSize: FontSize.font14,
+    fontSize: FontSize.font12,
     fontFamily: FontFamily.Regular,
     color: Colors.Black,
   },

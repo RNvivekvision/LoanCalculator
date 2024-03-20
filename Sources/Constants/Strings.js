@@ -78,6 +78,9 @@ const Strings = {
   Lumpsum: 'Lumpsum',
   Theory: 'Theory',
   ApplyLoan: 'Apply Loan',
+  Year: 'Year',
+  Month: 'Month',
+  FirstEMI: 'First EMI:- ',
 };
 
 export default Strings;

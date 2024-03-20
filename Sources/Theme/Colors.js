@@ -3,7 +3,7 @@ const Colors = {
   Black: '#00142F',
   White: '#ffffff',
   Button: '#FFB905',
-  Placeholder: '#9A9A9A',
+  Placeholder: '#ffffff40',
 };
 
 export default Colors;

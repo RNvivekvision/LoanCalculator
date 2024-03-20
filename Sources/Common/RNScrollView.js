@@ -40,11 +40,11 @@ const useStyles = () => {
   return StyleSheet.create({
     bottom: {
       paddingBottom: inset.bottom + hp(2),
-      paddingVertical: hp(2),
+      paddingVertical: hp(1),
     },
     top: {
       paddingTop: inset.top + hp(2),
-      paddingVertical: hp(2),
+      paddingVertical: hp(1),
     },
     both: {
       paddingTop: inset.top + hp(2),
