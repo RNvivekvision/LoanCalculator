@@ -27,6 +27,7 @@ const Images = {
   Drawer: require(ImagePath + 'Drawer' + png),
   Home: require(ImagePath + 'Home' + png),
   AboutUs: require(ImagePath + 'AboutUs' + png),
+  EmiCalculator: require(ImagePath + 'EmiCalculator' + png),
 };
 
 export default Images;
