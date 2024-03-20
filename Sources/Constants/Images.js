@@ -19,6 +19,10 @@ const Images = {
   Dutch: require(ImagePath + 'Dutch' + png),
   Filipino: require(ImagePath + 'Filipino' + png),
   US: require(ImagePath + 'US' + png),
+  Logo: require(ImagePath + 'Logo' + png),
+  PrivacyPolicy: require(ImagePath + 'PrivacyPolicy' + png),
+  InviteFriends: require(ImagePath + 'InviteFriends' + png),
+  RateUs: require(ImagePath + 'RateUs' + png),
 };
 
 export default Images;

@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import { RNKeyboardAvoid, RNStyles } from './index';
 import { useInset } from '../Hooks';
 import { hp } from '../Theme';
 
-const RNScrollView = ({ style, top, children, scrollProps }) => {
+const RNScrollView = ({
+  style,
+  safeArea = 'bottom',
+  children,
+  scrollProps,
+}) => {
   const styles = useStyles();
+  const scrollStyles = {
+    both: styles.both,
+    top: styles.top,
+    bottom: styles.bottom,
+  };
+  const contentContainerStyle = useMemo(
+    () => scrollStyles[safeArea],
+    [safeArea],
+  );
+
   return (
     <RNKeyboardAvoid>
       <ScrollView
-        contentContainerStyle={top ? styles.top : styles.bottom}
+        contentContainerStyle={contentContainerStyle}
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
         keyboardShouldPersistTaps={'handled'}
@@ -30,6 +45,10 @@ const useStyles = () => {
     top: {
       paddingTop: inset.top + hp(2),
       paddingVertical: hp(2),
+    },
+    both: {
+      paddingTop: inset.top + hp(2),
+      paddingBottom: inset.bottom + hp(2),
     },
   });
 };

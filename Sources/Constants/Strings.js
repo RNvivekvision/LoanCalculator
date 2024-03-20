@@ -27,6 +27,16 @@ const Strings = {
   Accept: 'Accept',
   SelectYourLanguage: 'Select Your Language',
   SelectYourLanguageDesc: 'You can change the language in app setting',
+  WelcomeToThe: 'Welcome To The',
+  LoanGolLoanEMICalculator: 'LoanGol - Loan EMI Calculator',
+  LoanGolLoanEMICalculatorDesc1:
+    'Calculate equated monthly instalments (EMI) for any kind of loan including home loans, car/auto loans, personal loans etc.',
+  LoanGolLoanEMICalculatorDesc2:
+    'The loan EMI calculator is a simple and easy-to-use financial calculator that can help you calculate your monthly instalments for car loans, and other types of loans.',
+  StartApp: 'Start App',
+  InviteFriends: 'Invite Friends',
+  PrivacyPolicy: 'Privacy Policy',
+  RateUs: 'Rate Us',
 };
 
 export default Strings;

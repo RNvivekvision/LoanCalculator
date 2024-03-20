@@ -3,7 +3,12 @@ import SplashScreen from 'react-native-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavConfigs, NavRoutes } from './index';
-import { LanguageSelection, Onboarding, TermsAndCondition } from '../Screens';
+import {
+  LanguageSelection,
+  Onboarding,
+  TermsAndCondition,
+  Welcome,
+} from '../Screens';
 
 const Stack = createStackNavigator();
 
@@ -26,6 +31,8 @@ const Routes = () => {
           name={NavRoutes.LanguageSelection}
           component={LanguageSelection}
         />
+
+        <Stack.Screen name={NavRoutes.Welcome} component={Welcome} />
       </Stack.Navigator>
     </NavigationContainer>
   );

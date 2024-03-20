@@ -12,8 +12,9 @@ import { NativeAd, RenderLanguages } from '../../Components';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import { DummyData } from '../../Utils';
 import { useInset } from '../../Hooks';
+import { NavRoutes } from '../../Navigation';
 
-const LanguageSelection = () => {
+const LanguageSelection = ({ navigation }) => {
   const styles = useStyles();
   const [State, setState] = useState({
     selectedLanguage: DummyData.LanguageSelection[0],
@@ -21,7 +22,7 @@ const LanguageSelection = () => {
 
   return (
     <RNContainer>
-      <RNScrollView top={true}>
+      <RNScrollView safeArea={'top'}>
         <View style={styles.content}>
           <View style={RNStyles.flexRow}>
             <View style={{ flex: 1 }}>
@@ -30,7 +31,16 @@ const LanguageSelection = () => {
                 {Strings.SelectYourLanguageDesc}
               </RNText>
             </View>
-            <RNIcon icon={Images.True} containerStyle={styles.trueButton} />
+            <RNIcon
+              icon={Images.True}
+              containerStyle={styles.trueButton}
+              onPress={() =>
+                navigation.reset({
+                  index: 0,
+                  routes: [{ name: NavRoutes.Welcome }],
+                })
+              }
+            />
           </View>
 
           {DummyData.LanguageSelection.map((v, i) => (
