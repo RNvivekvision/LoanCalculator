@@ -10,7 +10,7 @@ import {
 import { Images, Strings } from '../../Constants';
 import { NativeAd, RenderLanguages } from '../../Components';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
-import { DummyData } from '../../Utils';
+import { DummyData, Functions } from '../../Utils';
 import { useInset } from '../../Hooks';
 import { NavRoutes } from '../../Navigation';
 
@@ -19,6 +19,18 @@ const LanguageSelection = ({ navigation }) => {
   const [State, setState] = useState({
     selectedLanguage: DummyData.LanguageSelection[0],
   });
+
+  const onLanguageSelectPress = async () => {
+    try {
+      await Functions.setAppData({ hasUser: true });
+      navigation.reset({
+        index: 0,
+        routes: [{ name: NavRoutes.Welcome }],
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <RNContainer>
@@ -34,12 +46,7 @@ const LanguageSelection = ({ navigation }) => {
             <RNIcon
               icon={Images.True}
               containerStyle={styles.trueButton}
-              onPress={() =>
-                navigation.reset({
-                  index: 0,
-                  routes: [{ name: NavRoutes.Welcome }],
-                })
-              }
+              onPress={onLanguageSelectPress}
             />
           </View>
 

@@ -37,6 +37,10 @@ const Strings = {
   InviteFriends: 'Invite Friends',
   PrivacyPolicy: 'Privacy Policy',
   RateUs: 'Rate Us',
+  LoanEMICalculator: 'Loan EMI Calculator',
+  Home: 'Home',
+  AboutUs: 'About Us',
+  ShareThisApp: 'Share This App',
 };
 
 export default Strings;

@@ -11,6 +11,7 @@ import {
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import { Images, Strings } from '../../Constants';
 import { NativeAd } from '../../Components';
+import { NavRoutes } from '../../Navigation';
 
 const Welcome = ({ navigation }) => {
   return (
@@ -27,7 +28,11 @@ const Welcome = ({ navigation }) => {
         <RNText style={styles.text}>
           {Strings.LoanGolLoanEMICalculatorDesc2}
         </RNText>
-        <RNButton title={Strings.StartApp} style={{ marginVertical: hp(2) }} />
+        <RNButton
+          title={Strings.StartApp}
+          style={{ marginVertical: hp(2) }}
+          onPress={() => navigation.replace(NavRoutes.Home)}
+        />
         <View style={RNStyles.flexRow}>
           <TouchableOpacity
             activeOpacity={0.6}

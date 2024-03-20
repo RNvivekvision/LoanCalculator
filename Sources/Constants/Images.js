@@ -23,6 +23,10 @@ const Images = {
   PrivacyPolicy: require(ImagePath + 'PrivacyPolicy' + png),
   InviteFriends: require(ImagePath + 'InviteFriends' + png),
   RateUs: require(ImagePath + 'RateUs' + png),
+  Back: require(ImagePath + 'Back' + png),
+  Drawer: require(ImagePath + 'Drawer' + png),
+  Home: require(ImagePath + 'Home' + png),
+  AboutUs: require(ImagePath + 'AboutUs' + png),
 };
 
 export default Images;

@@ -1,2 +1,3 @@
 import useInset from './useInset';
-export { useInset };
+import useLocalStorage from './useLocalStorage';
+export { useInset, useLocalStorage };

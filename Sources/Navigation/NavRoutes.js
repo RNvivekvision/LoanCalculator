@@ -4,6 +4,8 @@ const NavRoutes = {
   LanguageSelection: 'Language Selection',
 
   Welcome: 'Welcome',
+  Drawer: 'Drawer',
+  Home: 'Home',
 };
 
 export default NavRoutes;

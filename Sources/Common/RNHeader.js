@@ -14,6 +14,7 @@ const RNHeader = ({
   children,
   style,
   footer,
+  drawer,
 }) => {
   const navigation = useNavigation();
   const styles = useStyles();
@@ -22,9 +23,11 @@ const RNHeader = ({
     <View style={RNStyles.container}>
       <View style={[styles.Container, containerStyle]}>
         <RNIcon
-          icon={Images.Back}
-          iconStyle={RNStyles.image90}
-          onPress={() => navigation.goBack()}
+          icon={drawer ? Images.Drawer : Images.Back}
+          iconStyle={RNStyles.image70}
+          onPress={() =>
+            drawer ? navigation.openDrawer() : navigation.goBack()
+          }
           containerStyle={styles.icon}
         />
         <RNText style={[styles.title, titleStyle]}>{title}</RNText>
@@ -39,7 +42,7 @@ const RNHeader = ({
   );
 };
 
-const iconSize = wp(7);
+const iconSize = wp(10);
 const useStyles = () => {
   const inset = useInset();
 
@@ -49,7 +52,7 @@ const useStyles = () => {
     },
     Container: {
       ...RNStyles.flexRow,
-      backgroundColor: Colors.White,
+      backgroundColor: Colors.Black,
       paddingHorizontal: wp(4),
       paddingTop: inset.top + hp(2),
       paddingVertical: hp(2),
@@ -58,13 +61,16 @@ const useStyles = () => {
       ...RNStyles.center,
       width: iconSize,
       height: iconSize,
+      borderRadius: 100,
     },
     title: {
-      flex: 1,
       paddingHorizontal: hp(1),
       marginHorizontal: hp(1),
       fontSize: FontSize.font18,
       fontFamily: FontFamily.Medium,
+      color: Colors.White,
+      width: '75%',
+      textAlign: 'center',
     },
   });
 };

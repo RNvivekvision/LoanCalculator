@@ -1,4 +1,5 @@
 import { Images, Strings } from '../Constants';
+import { NavRoutes } from '../Navigation';
 
 const DummyData = {
   onboarding: [
@@ -77,6 +78,29 @@ const DummyData = {
     {
       image: Images.Filipino,
       title: 'Filipino',
+    },
+  ],
+  Drawer: [
+    {
+      image: Images.Home,
+      title: Strings.Home,
+      Navigate: NavRoutes.Home,
+    },
+    {
+      image: Images.InviteFriends,
+      title: Strings.ShareThisApp,
+    },
+    {
+      image: Images.RateUs,
+      title: Strings.RateUs,
+    },
+    {
+      image: Images.PrivacyPolicy,
+      title: Strings.PrivacyPolicy,
+    },
+    {
+      image: Images.AboutUs,
+      title: Strings.AboutUs,
     },
   ],
 };
