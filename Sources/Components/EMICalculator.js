@@ -2,9 +2,12 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RNButton, RNImage, RNStyles, RNText } from '../Common';
 import { Colors, FontFamily, FontSize, hp, wp } from '../Theme';
-import { Images } from '../Constants';
+import { Images, Strings } from '../Constants';
+import { useNavigation } from '@react-navigation/native';
+import { NavRoutes } from '../Navigation';
 
 const EMICalculator = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -12,21 +15,21 @@ const EMICalculator = () => {
           size={FontSize.font18}
           color={Colors.Black}
           family={FontFamily.Bold}>
-          {'EMI Calculator'}
+          {Strings.EMICalculator}
         </RNText>
         <RNText
           size={FontSize.font14}
           family={FontFamily.Light}
           color={Colors.Black}>
-          {'Easy and fast way to calculator your loan EMI'}
+          {Strings.Easyandfastway}
         </RNText>
         <RNButton
-          title={'Calculate Now'}
+          title={Strings.CalculateNow}
           style={styles.button}
           textStyle={styles.buttonText}
+          onPress={() => navigation.navigate(NavRoutes.EMI)}
         />
       </View>
-
       <RNImage source={Images.EmiCalculator} style={styles.EmiCalculator} />
     </View>
   );

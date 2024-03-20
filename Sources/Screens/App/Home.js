@@ -1,23 +1,41 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { RNContainer, RNHeader, RNText } from '../../Common';
+import { EMICalculator, LOScreens, NativeAd } from '../../Components';
+import { RNContainer, RNHeader } from '../../Common';
 import { Strings } from '../../Constants';
-import { EMICalculator, LOScreens } from '../../Components';
+import { DummyData } from '../../Utils';
 
 const Home = () => {
   return (
     <RNContainer>
       <RNHeader drawer={true} title={Strings.LoanEMICalculator}>
         <EMICalculator />
-
-        <LOScreens />
+        <LOScreens title={Strings.EMICalculator} data={DummyData.Home.emi} />
+        <LOScreens
+          title={Strings.InvestmentCalculator}
+          horizontal={true}
+          data={DummyData.Home.investment}
+        />
+        <NativeAd />
+        <LOScreens
+          title={Strings.FinanceCalculator}
+          data={DummyData.Home.finance}
+        />
+        <LOScreens
+          title={Strings.BusinessCalculator}
+          data={DummyData.Home.business}
+        />
+        <LOScreens
+          title={Strings.BankAndATMFinder}
+          data={DummyData.Home.bankFinder}
+        />
+        <LOScreens
+          title={Strings.MoreOptions}
+          horizontal={true}
+          data={DummyData.Home.moreOptions}
+        />
       </RNHeader>
     </RNContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-});
 
 export default Home;

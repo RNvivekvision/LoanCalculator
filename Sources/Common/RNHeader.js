@@ -24,7 +24,7 @@ const RNHeader = ({
       <View style={[styles.Container, containerStyle]}>
         <RNIcon
           icon={drawer ? Images.Drawer : Images.Back}
-          iconStyle={RNStyles.image70}
+          iconStyle={RNStyles.image60}
           onPress={() =>
             drawer ? navigation.openDrawer() : navigation.goBack()
           }
@@ -42,7 +42,7 @@ const RNHeader = ({
   );
 };
 
-const iconSize = wp(10);
+const iconSize = wp(8);
 const useStyles = () => {
   const inset = useInset();
 
@@ -69,7 +69,7 @@ const useStyles = () => {
       fontSize: FontSize.font18,
       fontFamily: FontFamily.Medium,
       color: Colors.White,
-      width: '75%',
+      width: '80%',
       textAlign: 'center',
     },
   });

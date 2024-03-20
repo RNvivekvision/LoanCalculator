@@ -103,6 +103,115 @@ const DummyData = {
       title: Strings.AboutUs,
     },
   ],
+  Home: {
+    emi: [
+      {
+        image: Images.LoanEligibility,
+        title: Strings.LoanEligibility,
+        navigate: NavRoutes.LoanEligibility,
+      },
+      {
+        image: Images.CompareLoans,
+        title: Strings.CompareLoans,
+        navigate: NavRoutes.CompareLoans,
+      },
+      {
+        image: Images.TaxCalculation,
+        title: Strings.TaxCalculation,
+        navigate: NavRoutes.TaxCalculation,
+      },
+    ],
+    investment: [
+      {
+        image: Images.SWP,
+        title: Strings.SystematicWithdrawalPlan,
+        navigate: NavRoutes.SWP,
+      },
+      {
+        image: Images.SIP,
+        title: Strings.SystematicInvestmentPlan,
+        navigate: NavRoutes.SIP,
+      },
+      {
+        image: Images.ELS,
+        title: Strings.EquityLinkedSavingScheme,
+        navigate: NavRoutes.EquityLinkedScheme,
+      },
+      {
+        image: Images.LumpsumCalculator,
+        title: Strings.LumpsumCalculator,
+        navigate: NavRoutes.Lumpsum,
+      },
+    ],
+    finance: [
+      {
+        image: Images.FixedDeposit,
+        title: Strings.FixedDeposit,
+      },
+      {
+        image: Images.RecurringDeposit,
+        title: Strings.RecurringDeposit,
+      },
+      {
+        image: Images.PublicProvidentFund,
+        title: Strings.PublicProvidentFund,
+      },
+      {
+        image: Images.SimpleCompound,
+        title: Strings.SimpleAndCompound,
+      },
+      {
+        image: Images.CurrencyConversion,
+        title: Strings.CurrencyConversion,
+      },
+    ],
+    business: [
+      {
+        image: Images.Discount,
+        title: Strings.DiscountCalculator,
+      },
+      {
+        image: Images.Price,
+        title: Strings.PriceCalculator,
+      },
+      {
+        image: Images.Margin,
+        title: Strings.MarginCalculator,
+      },
+      {
+        image: Images.Markup,
+        title: Strings.MarkupCalculator,
+      },
+      {
+        image: Images.OperatingMargin,
+        title: Strings.OperatingMargin,
+      },
+      {
+        image: Images.MarginWithSales,
+        title: Strings.MarginWithSales,
+      },
+    ],
+    bankFinder: [
+      {
+        image: Images.BankFinder,
+        title: Strings.BankFinder,
+      },
+      {
+        image: Images.ATMFinder,
+        title: Strings.ATMFinder,
+      },
+    ],
+    moreOptions: [
+      {
+        image: Images.AllCalculatorTheory,
+        title: Strings.AllCalculatorTheory,
+      },
+      {
+        image: Images.FAQ,
+        title: Strings.FAQ,
+      },
+    ],
+  },
 };
 
 export default DummyData;
