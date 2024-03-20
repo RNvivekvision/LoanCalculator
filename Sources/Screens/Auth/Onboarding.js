@@ -1,16 +1,20 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RNStyles, RNIcon, RNText, RNContainer } from '../../Common';
-import { RenderOnboarding, LOPagginationDots } from '../../Components';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import { Images } from '../../Constants';
 import { DummyData } from '../../Utils';
+import { NavRoutes } from '../../Navigation';
+import { useInset } from '../../Hooks';
+import {
+  RenderOnboarding,
+  LOPagginationDots,
+  NativeAd,
+} from '../../Components';
 import Reanimated, {
   useAnimatedScrollHandler,
   useSharedValue,
 } from 'react-native-reanimated';
-import { NavRoutes } from '../../Navigation';
-import { useInset } from '../../Hooks';
 
 const Onboarding = ({ navigation }) => {
   const scroll = useSharedValue(0);
@@ -44,13 +48,11 @@ const Onboarding = ({ navigation }) => {
         />
       </View>
 
-      <View style={{ flex: 1 }}>
+      <View style={styles.adsContainer}>
         <View style={styles.fixedAds}>
           <RNText style={styles.ads}>{'Fix Ads'}</RNText>
         </View>
-        <View style={styles.nativeAds}>
-          <RNText style={styles.ads}>{'For Native 1'}</RNText>
-        </View>
+        <NativeAd />
       </View>
     </RNContainer>
   );
@@ -77,15 +79,9 @@ const useStyles = () => {
       backgroundColor: Colors.White + '10',
       paddingVertical: hp(3),
     },
-    nativeAds: {
-      ...RNStyles.center,
+    adsContainer: {
       flex: 1,
-      borderWidth: 1,
-      borderColor: Colors.White + '50',
-      borderStyle: 'dashed',
-      borderRadius: wp(3),
-      marginHorizontal: wp(2),
-      marginVertical: hp(1),
+      paddingBottom: inset.bottom,
     },
     ads: {
       fontSize: FontSize.font18,

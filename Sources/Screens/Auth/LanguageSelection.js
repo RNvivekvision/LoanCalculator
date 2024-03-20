@@ -8,11 +8,13 @@ import {
   RNText,
 } from '../../Common';
 import { Images, Strings } from '../../Constants';
-import { RenderLanguages } from '../../Components';
+import { NativeAd, RenderLanguages } from '../../Components';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import { DummyData } from '../../Utils';
+import { useInset } from '../../Hooks';
 
 const LanguageSelection = () => {
+  const styles = useStyles();
   const [State, setState] = useState({
     selectedLanguage: DummyData.LanguageSelection[0],
   });
@@ -42,39 +44,32 @@ const LanguageSelection = () => {
         </View>
       </RNScrollView>
 
-      <View style={styles.ads}>
-        <RNText family={FontFamily.Medium}>{'For Native 1'}</RNText>
-      </View>
+      <NativeAd />
     </RNContainer>
   );
 };
 
-const styles = StyleSheet.create({
-  content: {
-    paddingHorizontal: wp(5),
-  },
-  trueButton: {
-    width: wp(15),
-    borderRadius: 100,
-    zIndex: 1,
-  },
-  title: {
-    fontSize: FontSize.font18,
-    fontFamily: FontFamily.Medium,
-    paddingBottom: hp(1),
-  },
-  titleDesc: {
-    fontSize: FontSize.font14,
-    color: Colors.White + '50',
-  },
-  ads: {
-    ...RNStyles.center,
-    paddingVertical: hp(6),
-    borderWidth: 1,
-    borderColor: Colors.White + '50',
-    borderStyle: 'dashed',
-    borderRadius: wp(4),
-  },
-});
+const useStyles = () => {
+  const inset = useInset();
+  return StyleSheet.create({
+    content: {
+      paddingHorizontal: wp(5),
+    },
+    trueButton: {
+      width: wp(15),
+      borderRadius: 100,
+      zIndex: 1,
+    },
+    title: {
+      fontSize: FontSize.font18,
+      fontFamily: FontFamily.Medium,
+      paddingBottom: hp(1),
+    },
+    titleDesc: {
+      fontSize: FontSize.font14,
+      color: Colors.White + '50',
+    },
+  });
+};
 
 export default LanguageSelection;

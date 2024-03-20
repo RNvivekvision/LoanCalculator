@@ -65,6 +65,7 @@ const useStyles = () => {
       borderColor: Colors.White + '60',
       borderStyle: 'dashed',
       marginBottom: inset.bottom,
+      marginHorizontal: wp(2),
       borderRadius: wp(4),
     },
   });
