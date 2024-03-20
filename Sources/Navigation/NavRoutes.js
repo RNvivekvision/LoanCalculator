@@ -14,6 +14,21 @@ const NavRoutes = {
   SIP: 'SIP',
   EquityLinkedScheme: 'Equity Linked Scheme',
   Lumpsum: 'Lumpsum',
+  FixedDeposit: 'Fixed Deposit',
+  RecurringDeposit: 'Recurring Deposit',
+  PublicProvidentFund: 'Public Provident Fund',
+  SimpleAndCompound: 'Simple & Compound',
+  CurrencyConversion: 'Currency Conversion',
+  DiscountCalculator: 'Discount Calculator',
+  PriceCalculator: 'Price Calculator',
+  MarginCalculator: 'Margin Calculator',
+  MarkupCalculator: 'Markup Calculator',
+  OperatingMargin: 'Operating Margin',
+  MarginWithSales: 'Margin With Sales',
+  BankFinder: 'Bank Finder',
+  ATMFinder: 'ATM Finder',
+  AllCalculatorTheory: 'All Calculator Theory',
+  FAQ: 'FAQ',
 };
 
 export default NavRoutes;

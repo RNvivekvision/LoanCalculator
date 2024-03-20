@@ -3,20 +3,35 @@ import SplashScreen from 'react-native-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavConfigs, NavRoutes } from './index';
-import Drawer from './Drawer';
 import { useLocalStorage } from '../Hooks';
+import Drawer from './Drawer';
 import {
+  ATMFinder,
+  BankFinder,
   CompareLoans,
+  CurrencyConversion,
+  DiscountCalculator,
   EMI,
   EquityLinkedScheme,
+  FAQ,
+  FixedDeposit,
   LanguageSelection,
   LoanEligibility,
   Lumpsum,
+  MarginCalculator,
+  MarginWithSales,
+  MarkupCalculator,
   Onboarding,
+  OperatingMargin,
+  PriceCalculator,
+  PublicProvidentFund,
+  RecurringDeposit,
   SIP,
   SWP,
+  SimpleAndCompound,
   TaxCalculation,
   TermsAndCondition,
+  Theory,
   Welcome,
 } from '../Screens';
 
@@ -67,6 +82,51 @@ const Routes = () => {
           component={EquityLinkedScheme}
         />
         <Stack.Screen name={NavRoutes.Lumpsum} component={Lumpsum} />
+        <Stack.Screen name={NavRoutes.FixedDeposit} component={FixedDeposit} />
+        <Stack.Screen
+          name={NavRoutes.RecurringDeposit}
+          component={RecurringDeposit}
+        />
+        <Stack.Screen
+          name={NavRoutes.PublicProvidentFund}
+          component={PublicProvidentFund}
+        />
+        <Stack.Screen
+          name={NavRoutes.SimpleAndCompound}
+          component={SimpleAndCompound}
+        />
+        <Stack.Screen
+          name={NavRoutes.CurrencyConversion}
+          component={CurrencyConversion}
+        />
+        <Stack.Screen
+          name={NavRoutes.DiscountCalculator}
+          component={DiscountCalculator}
+        />
+        <Stack.Screen
+          name={NavRoutes.PriceCalculator}
+          component={PriceCalculator}
+        />
+        <Stack.Screen
+          name={NavRoutes.MarginCalculator}
+          component={MarginCalculator}
+        />
+        <Stack.Screen
+          name={NavRoutes.MarkupCalculator}
+          component={MarkupCalculator}
+        />
+        <Stack.Screen
+          name={NavRoutes.OperatingMargin}
+          component={OperatingMargin}
+        />
+        <Stack.Screen
+          name={NavRoutes.MarginWithSales}
+          component={MarginWithSales}
+        />
+        <Stack.Screen name={NavRoutes.BankFinder} component={BankFinder} />
+        <Stack.Screen name={NavRoutes.ATMFinder} component={ATMFinder} />
+        <Stack.Screen name={NavRoutes.AllCalculatorTheory} component={Theory} />
+        <Stack.Screen name={NavRoutes.FAQ} component={FAQ} />
       </Stack.Navigator>
     );
   }, [localdata?.hasUser]);

@@ -1,5 +1,4 @@
 import { TransitionPresets } from '@react-navigation/stack';
-import { Colors } from '../Theme';
 const screenOptions = {
   headerShown: false,
   ...TransitionPresets.SlideFromRightIOS,

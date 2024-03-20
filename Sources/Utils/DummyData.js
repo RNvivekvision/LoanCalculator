@@ -147,68 +147,83 @@ const DummyData = {
       {
         image: Images.FixedDeposit,
         title: Strings.FixedDeposit,
+        navigate: NavRoutes.FixedDeposit,
       },
       {
         image: Images.RecurringDeposit,
         title: Strings.RecurringDeposit,
+        navigate: NavRoutes.RecurringDeposit,
       },
       {
         image: Images.PublicProvidentFund,
         title: Strings.PublicProvidentFund,
+        navigate: NavRoutes.PublicProvidentFund,
       },
       {
         image: Images.SimpleCompound,
         title: Strings.SimpleAndCompound,
+        navigate: NavRoutes.SimpleAndCompound,
       },
       {
         image: Images.CurrencyConversion,
         title: Strings.CurrencyConversion,
+        navigate: NavRoutes.CurrencyConversion,
       },
     ],
     business: [
       {
         image: Images.Discount,
         title: Strings.DiscountCalculator,
+        navigate: NavRoutes.DiscountCalculator,
       },
       {
         image: Images.Price,
         title: Strings.PriceCalculator,
+        navigate: NavRoutes.PriceCalculator,
       },
       {
         image: Images.Margin,
         title: Strings.MarginCalculator,
+        navigate: NavRoutes.MarginCalculator,
       },
       {
         image: Images.Markup,
         title: Strings.MarkupCalculator,
+        navigate: NavRoutes.MarkupCalculator,
       },
       {
         image: Images.OperatingMargin,
         title: Strings.OperatingMargin,
+        navigate: NavRoutes.OperatingMargin,
       },
       {
         image: Images.MarginWithSales,
         title: Strings.MarginWithSales,
+        navigate: NavRoutes.MarginWithSales,
       },
     ],
     bankFinder: [
       {
         image: Images.BankFinder,
         title: Strings.BankFinder,
+        navigate: NavRoutes.BankFinder,
       },
       {
         image: Images.ATMFinder,
         title: Strings.ATMFinder,
+        navigate: NavRoutes.ATMFinder,
       },
     ],
     moreOptions: [
       {
         image: Images.AllCalculatorTheory,
         title: Strings.AllCalculatorTheory,
+        navigate: NavRoutes.AllCalculatorTheory,
       },
       {
         image: Images.FAQ,
         title: Strings.FAQ,
+        navigate: NavRoutes.FAQ,
       },
     ],
   },

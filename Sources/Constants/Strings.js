@@ -76,6 +76,8 @@ const Strings = {
   SIP: 'SIP',
   EquityLinkedScheme: 'Equity Linked Scheme',
   Lumpsum: 'Lumpsum',
+  Theory: 'Theory',
+  ApplyLoan: 'Apply Loan',
 };
 
 export default Strings;
