@@ -6,6 +6,8 @@ import LOContainer from './LOContainer';
 import LOInput from './LOInput';
 import LOYearMonth from './LOYearMonth';
 import LODatePicker from './LODatePicker';
+import LOResult from './LOResult';
+import LOButtons from './LOButtons';
 
 export {
   LOInput,
@@ -16,6 +18,8 @@ export {
   LOContainer,
   LOYearMonth,
   LODatePicker,
+  LOResult,
+  LOButtons,
 };
 export { NativeAd } from './Ads';
 export {

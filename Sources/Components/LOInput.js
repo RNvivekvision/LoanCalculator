@@ -57,7 +57,7 @@ const useStyles = ({ error }) => {
     inputContainer: {
       ...RNStyles.flexRow,
       backgroundColor: Colors.PlaceholderBackground,
-      backgroundColor: Colors.White + '20',
+      backgroundColor: Colors.White + '10',
       paddingHorizontal: wp(4),
       paddingVertical: hp(0.5),
       borderRadius: wp(3),

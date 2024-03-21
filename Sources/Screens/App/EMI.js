@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { RNButton, RNContainer, RNHeader } from '../../Common';
 import {
   LOContainer,
@@ -7,8 +7,10 @@ import {
   LOInput,
   LOYearMonth,
   NativeAd,
+  LOResult,
+  LOButtons,
 } from '../../Components';
-import { Strings } from '../../Constants';
+import { Images, Strings } from '../../Constants';
 import { hp } from '../../Theme';
 
 const EMI = () => {
@@ -17,48 +19,50 @@ const EMI = () => {
       <RNHeader title={Strings.EMI}>
         <LOContainer>
           <LOInput
-            title={'Principal Amount'}
-            placeholder={'Principal Amount'}
+            title={Strings.PrincipalAmount}
+            placeholder={Strings.PrincipalAmount}
           />
           <LOInput
-            title={'Interest'}
-            titlePlaceholder={'(max 50% per annum)'}
+            title={Strings.Interest}
+            titlePlaceholder={Strings.max50perannum}
             percent={true}
-            placeholder={'Interest'}
+            placeholder={Strings.Interest}
           />
           <LOInput
-            title={'Loan Tenure'}
-            titlePlaceholder={'(max 30yr)'}
-            placeholder={'Loan Tenure'}>
+            title={Strings.LoanTenure}
+            titlePlaceholder={Strings.max30yr}
+            placeholder={Strings.LoanTenure}>
             <LOYearMonth onChange={isYear => console.log({ isYear })} />
           </LOInput>
           <LODatePicker onDateChange={date => console.log({ date })} />
-          <RNButton title={'Calculate'} style={{ marginTop: hp(2) }} />
-          <RNButton title={'Statistic'} style={{ marginVertical: 0 }} />
+          <RNButton title={Strings.Calculate} style={{ marginTop: hp(2) }} />
+          <RNButton title={Strings.Statistic} style={{ marginVertical: 0 }} />
         </LOContainer>
 
         <NativeAd />
 
         <LOContainer>
-          <LOInput
-            title={'Principal Amount'}
-            placeholder={'Principal Amount'}
+          <LOResult
+            columns={[
+              { title: Strings.TotalInterest, value: 0 },
+              { title: Strings.TotalPrinciple, value: 0 },
+            ]}
           />
-          <LOInput
-            title={'Interest'}
-            titlePlaceholder={'(max 50% per annum)'}
-            percent={true}
-            placeholder={'Interest'}
+          <LOResult
+            title={Strings.TotalPaymentPrincipleInterest}
+            value={0}
+            needBGColor={true}
           />
-          <LOInput
-            title={'Loan Tenure'}
-            titlePlaceholder={'(max 30yr)'}
-            placeholder={'Loan Tenure'}>
-            <LOYearMonth onChange={isYear => console.log({ isYear })} />
-          </LOInput>
-          <LODatePicker onDateChange={date => console.log({ date })} />
-          <RNButton title={'Calculate'} style={{ marginTop: hp(2) }} />
-          <RNButton title={'Statistic'} style={{ marginVertical: 0 }} />
+          <LOResult title={Strings.LoanLastDate} icon={Images.Calendar} />
+          <LOResult
+            title={Strings.EMIMonthlyPayment}
+            value={0}
+            needBGColor={true}
+          />
+          <LOButtons
+            button1={Strings.ShareResult}
+            button2={Strings.ConvertPDF}
+          />
         </LOContainer>
       </RNHeader>
     </RNContainer>
