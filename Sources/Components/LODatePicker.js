@@ -47,7 +47,7 @@ const LODatePicker = ({ onDateChange }) => {
 const styles = StyleSheet.create({
   container: {
     ...RNStyles.flexRowBetween,
-    backgroundColor: Colors.White + '20',
+    backgroundColor: Colors.White + '10',
     paddingHorizontal: wp(4),
     paddingVertical: hp(1.5),
     borderRadius: wp(3),

@@ -114,6 +114,13 @@ const Strings = {
   NetAmount: 'Net Amount',
   GSTAmount: 'GST Amount',
   TotalAmount: 'Total Amount',
+  InvestmentAmount: 'Investment Amount',
+  ExpectedRateOfInterest: 'Expected Rate Of Interest',
+  MonthlyWithdrawalAmount: 'Monthly Withdrawal Amount',
+  TotalInvestmentAmount: 'Total Investment Amount',
+  TotalInterestValue: 'Total Interest Value',
+  MaturityDate: 'Maturity Date',
+  MaturityValue: 'Maturity Value',
 };
 
 export default Strings;

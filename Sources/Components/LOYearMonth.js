@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     ...RNStyles.flexRow,
     borderRadius: wp(2),
     backgroundColor: Colors.White + '20',
+    marginRight: -wp(3),
   },
   button: {
     ...RNStyles.center,

@@ -53,6 +53,8 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: FontFamily.Medium,
     paddingBottom: hp(1),
+    textAlign: 'center',
+    width: '80%',
   },
   value: {
     fontFamily: FontFamily.Medium,
