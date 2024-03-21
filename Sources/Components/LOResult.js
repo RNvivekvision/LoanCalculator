@@ -48,9 +48,10 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.White + '10',
     paddingVertical: hp(2),
     borderRadius: wp(3),
-    marginBottom: hp(1),
+    marginBottom: hp(2),
   },
   title: {
+    fontFamily: FontFamily.Medium,
     paddingBottom: hp(1),
   },
   value: {

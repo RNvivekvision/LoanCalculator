@@ -86,6 +86,7 @@ const Strings = {
   max50perannum: '(max 50% per annum)',
   LoanTenure: 'Loan Tenure',
   max30yr: '(max 30yr)',
+  max50yr: '(max 50%)',
   Calculate: 'Calculate',
   Statistic: 'Statistic',
   TotalInterest: 'Total Interest',
@@ -107,6 +108,12 @@ const Strings = {
   Loan2: 'Loan 2',
   Difference: 'Difference : ',
   TotalPaymentAmount: 'Total Payment Amount',
+  Amount: 'Amount',
+  RateOfTax: 'Rate Of Tax',
+  GSTisAdded: 'GST is Added',
+  NetAmount: 'Net Amount',
+  GSTAmount: 'GST Amount',
+  TotalAmount: 'Total Amount',
 };
 
 export default Strings;
