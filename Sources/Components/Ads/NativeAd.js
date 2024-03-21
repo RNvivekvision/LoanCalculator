@@ -2,12 +2,13 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RNText, RNStyles } from '../../Common';
 import { Colors, FontFamily, hp, wp } from '../../Theme';
+import Reanimated, { ZoomIn } from 'react-native-reanimated';
 
 const NativeAd = () => {
   return (
-    <View style={styles.container}>
+    <Reanimated.View entering={ZoomIn.delay(200)} style={styles.container}>
       <RNText family={FontFamily.Medium}>{'For Native 1'}</RNText>
-    </View>
+    </Reanimated.View>
   );
 };
 

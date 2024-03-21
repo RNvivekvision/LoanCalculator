@@ -5,11 +5,12 @@ import { Colors, FontFamily, FontSize, hp, wp } from '../Theme';
 import { Images, Strings } from '../Constants';
 import { useNavigation } from '@react-navigation/native';
 import { NavRoutes } from '../Navigation';
+import Reanimated, { ZoomIn } from 'react-native-reanimated';
 
 const EMICalculator = () => {
   const navigation = useNavigation();
   return (
-    <View style={styles.container}>
+    <Reanimated.View entering={ZoomIn.delay(200)} style={styles.container}>
       <View style={styles.content}>
         <RNText
           size={FontSize.font18}
@@ -31,7 +32,7 @@ const EMICalculator = () => {
         />
       </View>
       <RNImage source={Images.EmiCalculator} style={styles.EmiCalculator} />
-    </View>
+    </Reanimated.View>
   );
 };
 

@@ -17,9 +17,10 @@ const LOTopTabs = ({ tabs, onTabChange }) => {
         horizontal={true}
         contentContainerStyle={{ paddingHorizontal: 12, paddingVertical: 10 }}
         showsHorizontalScrollIndicator={false}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <RenderTopTabs
             item={item}
+            index={index}
             selectedTab={State.selectedTab === item}
             onPress={v => setState(p => ({ ...p, selectedTab: v }))}
           />

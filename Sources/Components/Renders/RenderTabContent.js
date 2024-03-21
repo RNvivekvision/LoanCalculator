@@ -2,10 +2,13 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RNImage, RNStyles, RNText } from '../../Common';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
+import Reanimated, { FadeInDown } from 'react-native-reanimated';
 
-const RenderTabContent = ({ item }) => {
+const RenderTabContent = ({ item, index }) => {
   return (
-    <View style={styles.container}>
+    <Reanimated.View
+      entering={FadeInDown.delay(index * 100)}
+      style={styles.container}>
       <RNImage source={item.image} style={styles.image} />
       <View style={styles.content}>
         <RNText family={FontFamily.Medium}>{item.title}</RNText>
@@ -16,7 +19,7 @@ const RenderTabContent = ({ item }) => {
           {item.text}
         </RNText>
       </View>
-    </View>
+    </Reanimated.View>
   );
 };
 

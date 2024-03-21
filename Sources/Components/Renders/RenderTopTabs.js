@@ -2,28 +2,36 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { RNText, RNStyles } from '../../Common';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
+import Reanimated, { FadeInRight, SlideInRight } from 'react-native-reanimated';
 
-const RenderTopTabs = ({ item, selectedTab, onPress }) => {
+const RenderTopTabs = ({ item, selectedTab, index, onPress }) => {
   const styles = useStyles({ selectedTab });
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.6}
-      onPress={() => onPress?.(item)}
+    <Reanimated.View
+      entering={SlideInRight.delay(index * 100)}
       style={styles.container}>
-      <RNText style={styles.title}>{item}</RNText>
-    </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => onPress?.(item)}
+        style={styles.card}>
+        <RNText style={styles.title}>{item}</RNText>
+      </TouchableOpacity>
+    </Reanimated.View>
   );
 };
 
 const useStyles = ({ selectedTab }) => {
   return StyleSheet.create({
     container: {
-      ...RNStyles.center,
       backgroundColor: selectedTab ? Colors.Button : Colors.White + '10',
+      borderRadius: wp(3),
+      marginHorizontal: wp(2),
+    },
+    card: {
+      ...RNStyles.center,
       width: wp(25),
       height: hp(5),
-      marginHorizontal: wp(2),
       borderRadius: wp(3),
     },
     title: {

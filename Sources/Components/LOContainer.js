@@ -1,9 +1,14 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Colors, hp, wp } from '../Theme';
+import Reanimated, { FadeIn } from 'react-native-reanimated';
 
 const LOContainer = ({ children }) => {
-  return <View style={styles.container}>{children}</View>;
+  return (
+    <Reanimated.View entering={FadeIn.delay(200)} style={styles.container}>
+      {children}
+    </Reanimated.View>
+  );
 };
 
 const styles = StyleSheet.create({
