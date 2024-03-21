@@ -34,7 +34,7 @@ const Theory = () => {
           data={DummyData.Theory.TabContent[State.selectedTab]}
           keyExtractor={(v, i) => String(i)}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: inset.bottom }}
+          contentContainerStyle={{ paddingBottom: inset.bottom + 10 }}
           renderItem={({ item }) => <RenderTabContent item={item} />}
         />
       </RNHeader>
