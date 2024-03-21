@@ -121,6 +121,11 @@ const Strings = {
   TotalInterestValue: 'Total Interest Value',
   MaturityDate: 'Maturity Date',
   MaturityValue: 'Maturity Value',
+  RateOfInterest: 'Rate Of Interest',
+  TypeOfInterest: 'Type Of Interest',
+  MaturityAmount: 'Maturity Amount',
+  CurrencyOfTheAmount: 'Currency Of The Amount',
+  AmountInDifferentCurrency: 'Amount In Different Currency',
 };
 
 export default Strings;
