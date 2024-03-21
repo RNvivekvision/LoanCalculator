@@ -103,6 +103,10 @@ const Strings = {
   LoanAmountYouAreEligibleFor: 'Loan Amount You Are Eligible For',
   EMIYouAreEligibleFor: 'EMI You Are Eligible For',
   LoanEligibilityDesc: `Loan eligible is calculated using the FOIR system, thus can vary with different banks, it's the estimated calculation.`,
+  Loan1: 'Loan 1',
+  Loan2: 'Loan 2',
+  Difference: 'Difference : ',
+  TotalPaymentAmount: 'Total Payment Amount',
 };
 
 export default Strings;

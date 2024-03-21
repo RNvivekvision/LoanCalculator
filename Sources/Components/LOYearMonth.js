@@ -1,16 +1,23 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Colors, FontFamily, FontSize, hp, wp } from '../Theme';
 import { RNStyles, RNText } from '../Common';
 import { Strings } from '../Constants';
 
-const LOYearMonth = ({ onChange }) => {
+const LOYearMonth = ({ onChange, containerStyle, buttonStyles }) => {
   const [isYear, setisYear] = useState(true);
 
   const onButtonPress = bool => {
     setisYear(bool);
     onChange?.(bool);
   };
+
+  const buttonStyle = useMemo(() => {
+    return {
+      ...styles.button,
+      ...buttonStyles,
+    };
+  }, [buttonStyles]);
 
   const selectedStyle = useCallback(
     bool => ({
@@ -21,10 +28,10 @@ const LOYearMonth = ({ onChange }) => {
   );
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, containerStyle]}>
       <TouchableOpacity
         onPress={() => onButtonPress(true)}
-        style={[styles.button, selectedStyle(isYear)]}>
+        style={[buttonStyle, selectedStyle(isYear)]}>
         <RNText
           family={FontFamily.Medium}
           size={FontSize.font10}
@@ -34,7 +41,7 @@ const LOYearMonth = ({ onChange }) => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => onButtonPress(false)}
-        style={[styles.button, selectedStyle(!isYear)]}>
+        style={[buttonStyle, selectedStyle(!isYear)]}>
         <RNText
           family={FontFamily.Medium}
           size={FontSize.font10}
