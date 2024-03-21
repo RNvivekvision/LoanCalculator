@@ -1,9 +1,10 @@
 import React from 'react';
-import { Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Colors, FontFamily, hp, wp } from '../Theme';
 import RNPagginationLoader from './RNPagginationLoader';
 import RNStyles from './RNStyles';
 import RNText from './RNText';
+import RNImage from './RNImage';
 
 const RNButton = ({
   title,
@@ -25,13 +26,7 @@ const RNButton = ({
         <RNPagginationLoader size={'small'} color={Colors.White} />
       ) : (
         <>
-          {icon && (
-            <Image
-              source={icon}
-              resizeMode={'contain'}
-              style={[styles.icon, iconStyle]}
-            />
-          )}
+          {icon && <RNImage source={icon} style={[styles.icon, iconStyle]} />}
           <RNText style={[styles.buttonText, textStyle]}>{title}</RNText>
         </>
       )}
@@ -39,6 +34,7 @@ const RNButton = ({
   );
 };
 
+const iconSize = wp(6);
 const styles = StyleSheet.create({
   Container: {
     ...RNStyles.center,
@@ -55,7 +51,8 @@ const styles = StyleSheet.create({
     color: Colors.Black,
   },
   icon: {
-    ...RNStyles.icon,
+    width: iconSize,
+    height: iconSize,
     marginRight: wp(2),
   },
 });
