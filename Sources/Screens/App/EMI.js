@@ -11,7 +11,6 @@ import {
   LOButtons,
 } from '../../Components';
 import { Images, Strings } from '../../Constants';
-import { hp } from '../../Theme';
 
 const EMI = () => {
   return (
@@ -35,7 +34,7 @@ const EMI = () => {
             <LOYearMonth onChange={isYear => console.log({ isYear })} />
           </LOInput>
           <LODatePicker onDateChange={date => console.log({ date })} />
-          <RNButton title={Strings.Calculate} style={{ marginTop: hp(2) }} />
+          <RNButton title={Strings.Calculate} style={{ marginTop: 25 }} />
           <RNButton title={Strings.Statistic} style={{ marginVertical: 0 }} />
         </LOContainer>
 

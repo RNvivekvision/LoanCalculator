@@ -126,6 +126,19 @@ const Strings = {
   MaturityAmount: 'Maturity Amount',
   CurrencyOfTheAmount: 'Currency Of The Amount',
   AmountInDifferentCurrency: 'Amount In Different Currency',
+  Price: 'Price',
+  DiscountPercentage: 'Discount (%)',
+  MarkupPercentage: 'Markup (%)',
+  MarginPercentage: 'Margin (%)',
+  SalesTaxPercentage: 'Sales Tax (%)',
+  DiscountPrice: 'Discount Price',
+  SavedAmount: 'Saved Amount',
+  Cost: 'Cost',
+  GrossMargin: 'Gross Margin',
+  Revenue: 'Revenue',
+  Profit: 'Profit',
+  OperatingIncome: 'Operating Income',
+  NetPrice: 'Net Price',
 };
 
 export default Strings;
