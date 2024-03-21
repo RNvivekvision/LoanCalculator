@@ -15,6 +15,7 @@ const RNHeader = ({
   style,
   footer,
   drawer,
+  noScroll,
 }) => {
   const navigation = useNavigation();
   const styles = useStyles();
@@ -33,9 +34,13 @@ const RNHeader = ({
         <RNText style={[styles.title, titleStyle]}>{title}</RNText>
       </View>
 
-      <RNScrollView style={style} scrollProps={scrollProps}>
-        {children}
-      </RNScrollView>
+      {noScroll ? (
+        children
+      ) : (
+        <RNScrollView style={style} scrollProps={scrollProps}>
+          {children}
+        </RNScrollView>
+      )}
 
       {footer && <View style={styles.footer}>{footer}</View>}
     </View>

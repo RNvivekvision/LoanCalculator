@@ -1,14 +1,20 @@
+import VStack from './VStack';
+import HStack from './HStack';
 import RenderOnboarding from './RenderOnboarding';
 import RenderTerms from './RenderTerms';
 import RenderLanguages from './RenderLanguages';
 import RenderDrawer from './RenderDrawer';
-import VStack from './VStack';
-import HStack from './HStack';
+import RenderFAQ from './RenderFAQ';
+import RenderTopTabs from './RenderTopTabs';
+import RenderTabContent from './RenderTabContent';
 export {
+  VStack,
+  HStack,
   RenderOnboarding,
   RenderTerms,
   RenderLanguages,
   RenderDrawer,
-  VStack,
-  HStack,
+  RenderFAQ,
+  RenderTopTabs,
+  RenderTabContent,
 };

@@ -52,6 +52,55 @@ const Images = {
   SWP: require(ImagePath + 'SWP' + png),
   TaxCalculation: require(ImagePath + 'TaxCalculation' + png),
   Calendar: require(ImagePath + 'Calendar' + png),
+  ArrowRightShift: require(ImagePath + 'ArrowRightShift' + png),
+
+  Bank_Accounting: require(ImagePath + 'Bank_Accounting' + png),
+  Bank_Auditing: require(ImagePath + 'Bank_Auditing' + png),
+  Bank_CompareLoans: require(ImagePath + 'Bank_CompareLoans' + png),
+  Bank_CreditCardPayOff: require(ImagePath + 'Bank_CreditCardPayOff' + png),
+  Bank_FD: require(ImagePath + 'Bank_FD' + png),
+  Bank_RD: require(ImagePath + 'Bank_RD' + png),
+  Bank_LoanEligibility: require(ImagePath + 'Bank_LoanEligibility' + png),
+  Bank_Loans: require(ImagePath + 'Bank_Loans' + png),
+  Bank_LoanToDepositeRatio: require(ImagePath +
+    'Bank_LoanToDepositeRatio' +
+    png),
+  Bank_Saving: require(ImagePath + 'Bank_Saving' + png),
+  Bank_TypesOfBanks: require(ImagePath + 'Bank_TypesOfBanks' + png),
+
+  Finance_Bond: require(ImagePath + 'Finance_Bond' + png),
+  Finance_BondValueation: require(ImagePath + 'Finance_BondValueation' + png),
+  Finance_CapitalStructure: require(ImagePath +
+    'Finance_CapitalStructure' +
+    png),
+  Finance_CashFlow: require(ImagePath + 'Finance_CashFlow' + png),
+  Finance_EMI: require(ImagePath + 'Finance_EMI' + png),
+  Finance_IRR: require(ImagePath + 'Finance_IRR' + png),
+  Finance_Lumpsum: require(ImagePath + 'Finance_Lumpsum' + png),
+  Finance_Mortgage: require(ImagePath + 'Finance_Mortgage' + png),
+  Finance_PPF: require(ImagePath + 'Finance_PPF' + png),
+  Finance_SecurityMarket: require(ImagePath + 'Finance_SecurityMarket' + png),
+  Finance_SimpleCompoundInterest: require(ImagePath +
+    'Finance_SimpleCompoundInterest' +
+    png),
+  Finance_SIP: require(ImagePath + 'Finance_SIP' + png),
+  Finance_SWP: require(ImagePath + 'Finance_SWP' + png),
+  Finance_TVM: require(ImagePath + 'Finance_TVM' + png),
+
+  Business_BCG: require(ImagePath + 'Business_BCG' + png),
+  Business_Change: require(ImagePath + 'Business_Change' + png),
+  Business_CostOfGoods: require(ImagePath + 'Business_CostOfGoods' + png),
+  Business_GrossProfit: require(ImagePath + 'Business_GrossProfit' + png),
+  Business_Product: require(ImagePath + 'Business_Product' + png),
+  Business_Pyramid: require(ImagePath + 'Business_Pyramid' + png),
+  Business_SWOT: require(ImagePath + 'Business_SWOT' + png),
+
+  Stock_BullBear: require(ImagePath + 'Stock_BullBear' + png),
+  Stock_Fibonacci: require(ImagePath + 'Stock_Fibonacci' + png),
+  Stock_PE: require(ImagePath + 'Stock_PE' + png),
+  Stock_Share: require(ImagePath + 'Stock_Share' + png),
+  Stock_StockReturn: require(ImagePath + 'Stock_StockReturn' + png),
+  Stock_TopDown: require(ImagePath + 'Stock_TopDown' + png),
 };
 
 export default Images;

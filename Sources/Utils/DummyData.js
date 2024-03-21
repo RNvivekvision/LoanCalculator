@@ -49,35 +49,35 @@ const DummyData = {
   LanguageSelection: [
     {
       image: Images.US,
-      title: 'United States (US)',
+      title: Strings.US,
     },
     {
       image: Images.Afrikaans,
-      title: 'Afrikaans',
+      title: Strings.Afrikaans,
     },
     {
       image: Images.Arabic,
-      title: 'Arabic',
+      title: Strings.Arabic,
     },
     {
       image: Images.Bengali,
-      title: 'Bengali',
+      title: Strings.Bengali,
     },
     {
       image: Images.Chinese,
-      title: 'Chinese',
+      title: Strings.Chinese,
     },
     {
       image: Images.Danish,
-      title: 'Danish',
+      title: Strings.Danish,
     },
     {
       image: Images.Dutch,
-      title: 'Dutch',
+      title: Strings.Dutch,
     },
     {
       image: Images.Filipino,
-      title: 'Filipino',
+      title: Strings.Filipino,
     },
   ],
   Drawer: [
@@ -226,6 +226,232 @@ const DummyData = {
         navigate: NavRoutes.FAQ,
       },
     ],
+  },
+  FAQ: [
+    {
+      title: Strings.FAQ_Quesion_1,
+    },
+    {
+      title: Strings.FAQ_Quesion_2,
+    },
+    {
+      title: Strings.FAQ_Quesion_3,
+    },
+    {
+      title: Strings.FAQ_Quesion_4,
+    },
+    {
+      title: Strings.FAQ_Quesion_5,
+    },
+    {
+      title: Strings.FAQ_Quesion_6,
+    },
+    {
+      title: Strings.FAQ_Quesion_7,
+    },
+  ],
+  Theory: {
+    Tabs: [Strings.Bank, Strings.Finance, Strings.Business, Strings.Stock],
+    TabContent: {
+      Bank: [
+        {
+          image: Images.Bank_LoanEligibility,
+          title: Strings.LoanEligibility,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Bank_CompareLoans,
+          title: Strings.CompareLoan,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Bank_FD,
+          title: Strings.FD,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Bank_RD,
+          title: Strings.RD,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Bank_Saving,
+          title: Strings.Saving,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Bank_LoanToDepositeRatio,
+          title: Strings.LoanToDepositRatio,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Bank_CreditCardPayOff,
+          title: Strings.CreditCardPayoff,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Bank_Accounting,
+          title: Strings.Accounting,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Bank_TypesOfBanks,
+          title: Strings.TypesOfBanks,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Bank_Auditing,
+          title: Strings.Auditing,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Bank_Loans,
+          title: Strings.Loans,
+          text: Strings.Theory,
+        },
+      ],
+      Finance: [
+        {
+          image: Images.Finance_PPF,
+          title: Strings.PPF,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Finance_SimpleCompoundInterest,
+          title: Strings.SimpleandCompoundInterest,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Finance_SWP,
+          title: Strings.SWP,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Finance_SIP,
+          title: Strings.SIP,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Finance_Lumpsum,
+          title: Strings.Lumpsum,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Finance_EMI,
+          title: Strings.EMI,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Finance_Mortgage,
+          title: Strings.MortgageCalculator,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Finance_TVM,
+          title: Strings.TVMCalculator,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Finance_Bond,
+          title: Strings.BondCalculation,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Finance_IRR,
+          title: Strings.IRRCalculator,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Finance_CashFlow,
+          title: Strings.CashFlow,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Finance_BondValueation,
+          title: Strings.BondValuation,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Finance_SecurityMarket,
+          title: Strings.SecurityMarketEfficiency,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Finance_CapitalStructure,
+          title: Strings.CapitalStructure,
+          text: Strings.Theory,
+        },
+      ],
+      Business: [
+        {
+          image: Images.Business_GrossProfit,
+          title: Strings.GrossProfit,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Business_CostOfGoods,
+          title: Strings.CostOfGoodsSold,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Business_BCG,
+          title: Strings.BCGMatrix,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Business_SWOT,
+          title: Strings.SWOTAnalysis,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Business_Product,
+          title: Strings.ProductLifecycle,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Business_Change,
+          title: Strings.ChangeCurve,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Business_Pyramid,
+          title: Strings.PyramidOfResult,
+          text: Strings.Theory,
+        },
+      ],
+      Stock: [
+        {
+          image: Images.Stock_StockReturn,
+          title: Strings.StockReturnsandCapitalGain,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Stock_PE,
+          title: Strings.PERatio,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Stock_Fibonacci,
+          title: Strings.FibonacciLevel,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Stock_Share,
+          title: Strings.ShareMarket,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Stock_BullBear,
+          title: Strings.WhatIsBullandBearMarket,
+          text: Strings.Theory,
+        },
+        {
+          image: Images.Stock_TopDown,
+          title: Strings.TopDownBottomandMarket,
+          text: Strings.Theory,
+        },
+      ],
+    },
   },
 };
 

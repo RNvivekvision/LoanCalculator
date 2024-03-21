@@ -8,6 +8,7 @@ import LOYearMonth from './LOYearMonth';
 import LODatePicker from './LODatePicker';
 import LOResult from './LOResult';
 import LOButtons from './LOButtons';
+import LOTopTabs from './LOTopTabs';
 
 export {
   LOInput,
@@ -20,6 +21,7 @@ export {
   LODatePicker,
   LOResult,
   LOButtons,
+  LOTopTabs,
 };
 export { NativeAd } from './Ads';
 export {
@@ -27,4 +29,6 @@ export {
   RenderTerms,
   RenderLanguages,
   RenderDrawer,
+  RenderFAQ,
+  RenderTabContent,
 } from './Renders';
