@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RNButton, RNContainer, RNHeader, RNText } from '../../Common';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
@@ -12,15 +12,39 @@ import {
 } from '../../Components';
 
 const TaxCalculation = () => {
+  const [State, setState] = useState({
+    amount: '',
+    rateOfTax: '',
+    net: 0,
+    gst: 0,
+    total: 0,
+  });
+
+  const onCalculatePress = () => {
+    const amount = parseFloat(State.amount);
+    const interest = parseFloat(State.rateOfTax);
+    const tax = amount * (interest / 100);
+    const net = amount + tax;
+    const total = amount + tax;
+    setState(p => ({ ...p, net: net, gst: tax, total: total }));
+  };
+
   return (
     <RNContainer>
       <RNHeader title={Strings.TaxCalculation}>
         <LOContainer>
-          <LOInput title={Strings.Amount} />
+          <LOInput
+            title={Strings.Amount}
+            value={State.amount}
+            onChangeText={v => setState(p => ({ ...p, amount: v }))}
+          />
           <LOInput
             title={Strings.RateOfTax}
             titlePlaceholder={Strings.max50yr}
             percent={true}
+            maxLength={2}
+            value={State.rateOfTax}
+            onChangeText={v => setState(p => ({ ...p, rateOfTax: v }))}
           />
           <View style={styles.GST}>
             <RNText size={FontSize.font12} family={FontFamily.Medium}>
@@ -28,15 +52,27 @@ const TaxCalculation = () => {
             </RNText>
           </View>
 
-          <RNButton title={Strings.Calculate} />
+          <RNButton title={Strings.Calculate} onPress={onCalculatePress} />
         </LOContainer>
 
         <NativeAd />
 
         <LOContainer>
-          <LOResult title={Strings.NetAmount} value={0} needBGColor={true} />
-          <LOResult title={Strings.GSTAmount} value={0} needBGColor={true} />
-          <LOResult title={Strings.TotalAmount} value={0} needBGColor={true} />
+          <LOResult
+            title={Strings.NetAmount}
+            value={State.net}
+            needBGColor={true}
+          />
+          <LOResult
+            title={Strings.GSTAmount}
+            value={State.gst}
+            needBGColor={true}
+          />
+          <LOResult
+            title={Strings.TotalAmount}
+            value={State.amount}
+            needBGColor={true}
+          />
           <LOButtons
             button1={Strings.ShareResult}
             button2={Strings.ConvertPDF}
