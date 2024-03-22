@@ -61,6 +61,19 @@ const toFixed = (amount, digit = 2) => {
   return parseFloat(amount).toFixed(digit);
 };
 
+const tenure = (tenure, isYear) => (isYear ? tenure * 12 : tenure);
+
+const EMI = ({ principalAmount, interestRate, tenureMonths }) => {
+  const monthlyInterestRate = parseInt(interestRate) / 12 / 100;
+  const principalAmountNum = parseFloat(principalAmount);
+  return toFixed(
+    (principalAmountNum *
+      monthlyInterestRate *
+      Math.pow(1 + monthlyInterestRate, tenureMonths)) /
+      (Math.pow(1 + monthlyInterestRate, tenureMonths) - 1),
+  );
+};
+
 const loanTenure = (startDate, tenure) => {
   const newDate = new Date(startDate);
   newDate.setMonth(newDate.getMonth() + tenure);
@@ -76,6 +89,8 @@ const Functions = {
   spliteArray,
   formatDate,
   toFixed,
+  EMI,
+  tenure,
   loanTenure,
 };
 

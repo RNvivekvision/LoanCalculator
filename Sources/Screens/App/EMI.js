@@ -34,15 +34,13 @@ const EMI = () => {
 
   const onCalculatePress = () => {
     const { principalAmount, interest, loanTenure, isYear, date } = State;
-    const monthlyInterestRate = interest / 12 / 100;
     const tenureMonths = isYear ? 12 * loanTenure : loanTenure;
 
-    const emi = Functions.toFixed(
-      (principalAmount *
-        monthlyInterestRate *
-        Math.pow(1 + monthlyInterestRate, tenureMonths)) /
-        (Math.pow(1 + monthlyInterestRate, tenureMonths) - 1),
-    );
+    const emi = Functions.EMI({
+      principalAmount: principalAmount,
+      interestRate: interest,
+      tenureMonths: tenureMonths,
+    });
     const totalPayment = Functions.toFixed(emi * tenureMonths);
     const totalPrinciple =
       parseInt(principalAmount) > 0 ? parseInt(principalAmount) : 0;

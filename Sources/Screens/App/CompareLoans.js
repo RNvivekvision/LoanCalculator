@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { LOContainer, LOYearMonth, NativeAd } from '../../Components';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
@@ -11,8 +11,89 @@ import {
   RNStyles,
   RNText,
 } from '../../Common';
+import { Functions } from '../../Utils';
 
 const CompareLoans = () => {
+  const [State, setState] = useState({
+    loan1: {
+      principalAmount: '',
+      interest: '',
+      loanTenure: '',
+    },
+    loan2: {
+      principalAmount: '',
+      interest: '',
+      loanTenure: '',
+    },
+    isYear: true,
+    emi: {
+      first: 0,
+      second: 0,
+      difference: 0,
+    },
+    totalInterest: {
+      first: 0,
+      second: 0,
+      difference: 0,
+    },
+    totalPaymentAmount: {
+      first: 0,
+      second: 0,
+      difference: 0,
+    },
+  });
+
+  // console.log('State -> ', JSON.stringify(State, null, 2));
+
+  const onCalculatePress = () => {
+    const { tenure, EMI, toFixed } = Functions;
+    const tenure1 = tenure(State.loan1.loanTenure, State.isYear);
+    const tenure2 = tenure(State.loan2.loanTenure, State.isYear);
+
+    const emi1 = EMI({
+      principalAmount: State.loan1.principalAmount,
+      interestRate: State.loan1.interest,
+      tenureMonths: tenure1,
+    });
+    const emi2 = EMI({
+      principalAmount: State.loan2.principalAmount,
+      interestRate: State.loan2.interest,
+      tenureMonths: tenure2,
+    });
+    const emiDifference = Math.abs(toFixed(emi1 - emi2));
+
+    const totalPayment1 = toFixed(emi1 * tenure1);
+    const totalPayment2 = toFixed(emi2 * tenure2);
+    const totalPaymentDifference = Math.abs(
+      toFixed(totalPayment1 - totalPayment2),
+    );
+
+    const totalInterest1 = toFixed(totalPayment1 - State.loan1.principalAmount);
+    const totalInterest2 = toFixed(totalPayment2 - State.loan2.principalAmount);
+    const totalInterestDifference = Math.abs(
+      toFixed(totalInterest1 - totalInterest2),
+    );
+
+    setState(p => ({
+      ...p,
+      emi: {
+        first: emi1,
+        second: emi2,
+        difference: emiDifference,
+      },
+      totalInterest: {
+        first: totalInterest1,
+        second: totalInterest2,
+        difference: totalInterestDifference,
+      },
+      totalPaymentAmount: {
+        first: totalPayment1,
+        second: totalPayment2,
+        difference: totalPaymentDifference,
+      },
+    }));
+  };
+
   return (
     <RNContainer>
       <RNHeader title={Strings.CompareLoans}>
@@ -32,10 +113,30 @@ const CompareLoans = () => {
             </RNText>
             <View style={styles.inputMainContainer}>
               <View style={styles.inputContainer}>
-                <RNInput style={styles.input} keyboardType={'numeric'} />
+                <RNInput
+                  style={styles.input}
+                  keyboardType={'numeric'}
+                  value={State.loan1.principalAmount}
+                  onChangeText={v =>
+                    setState(p => ({
+                      ...p,
+                      loan1: { ...p.loan1, principalAmount: v },
+                    }))
+                  }
+                />
               </View>
               <View style={styles.inputContainer}>
-                <RNInput style={styles.input} keyboardType={'numeric'} />
+                <RNInput
+                  style={styles.input}
+                  keyboardType={'numeric'}
+                  value={State.loan2.principalAmount}
+                  onChangeText={v =>
+                    setState(p => ({
+                      ...p,
+                      loan2: { ...p.loan2, principalAmount: v },
+                    }))
+                  }
+                />
               </View>
             </View>
           </View>
@@ -49,11 +150,31 @@ const CompareLoans = () => {
             </View>
             <View style={styles.inputMainContainer}>
               <View style={styles.inputContainer}>
-                <RNInput style={styles.input} keyboardType={'numeric'} />
+                <RNInput
+                  style={styles.input}
+                  keyboardType={'numeric'}
+                  value={State.loan1.interest}
+                  onChangeText={v =>
+                    setState(p => ({
+                      ...p,
+                      loan1: { ...p.loan1, interest: v },
+                    }))
+                  }
+                />
                 <RNText style={styles.titlePlaceholder}>{'%'}</RNText>
               </View>
               <View style={styles.inputContainer}>
-                <RNInput style={styles.input} keyboardType={'numeric'} />
+                <RNInput
+                  style={styles.input}
+                  keyboardType={'numeric'}
+                  value={State.loan2.interest}
+                  onChangeText={v =>
+                    setState(p => ({
+                      ...p,
+                      loan2: { ...p.loan2, interest: v },
+                    }))
+                  }
+                />
                 <RNText style={styles.titlePlaceholder}>{'%'}</RNText>
               </View>
             </View>
@@ -66,10 +187,30 @@ const CompareLoans = () => {
             </View>
             <View style={styles.inputMainContainer}>
               <View style={styles.inputContainer}>
-                <RNInput style={styles.input} keyboardType={'numeric'} />
+                <RNInput
+                  style={styles.input}
+                  keyboardType={'numeric'}
+                  value={State.loan1.loanTenure}
+                  onChangeText={v =>
+                    setState(p => ({
+                      ...p,
+                      loan1: { ...p.loan1, loanTenure: v },
+                    }))
+                  }
+                />
               </View>
               <View style={styles.inputContainer}>
-                <RNInput style={styles.input} keyboardType={'numeric'} />
+                <RNInput
+                  style={styles.input}
+                  keyboardType={'numeric'}
+                  value={State.loan2.loanTenure}
+                  onChangeText={v =>
+                    setState(p => ({
+                      ...p,
+                      loan2: { ...p.loan2, loanTenure: v },
+                    }))
+                  }
+                />
               </View>
             </View>
           </View>
@@ -77,10 +218,10 @@ const CompareLoans = () => {
           <LOYearMonth
             containerStyle={styles.yearContainer}
             buttonStyles={styles.yearButtonStyles}
-            onChange={isYear => console.log({ isYear })}
+            onChange={v => setState(p => ({ ...p, isYear: v }))}
           />
 
-          <RNButton title={Strings.Calculate} />
+          <RNButton title={Strings.Calculate} onPress={onCalculatePress} />
         </LOContainer>
 
         <NativeAd />
@@ -91,11 +232,11 @@ const CompareLoans = () => {
               {Strings.EMI}
             </RNText>
             <View style={RNStyles.flexRow}>
-              <RNText style={styles.resultLeft}>{0}</RNText>
-              <RNText style={styles.resultRight}>{0}</RNText>
+              <RNText style={styles.resultLeft}>{State.emi.first}</RNText>
+              <RNText style={styles.resultRight}>{State.emi.second}</RNText>
             </View>
             <RNText style={styles.resultPlaceholder}>
-              {Strings.Difference + 0}
+              {Strings.Difference + State.emi.difference}
             </RNText>
           </View>
 
@@ -104,11 +245,15 @@ const CompareLoans = () => {
               {Strings.TotalInterest}
             </RNText>
             <View style={RNStyles.flexRow}>
-              <RNText style={styles.resultLeft}>{0}</RNText>
-              <RNText style={styles.resultRight}>{0}</RNText>
+              <RNText style={styles.resultLeft}>
+                {State.totalInterest.first}
+              </RNText>
+              <RNText style={styles.resultRight}>
+                {State.totalInterest.second}
+              </RNText>
             </View>
             <RNText style={styles.resultPlaceholder}>
-              {Strings.Difference + 0}
+              {Strings.Difference + State.totalInterest.difference}
             </RNText>
           </View>
 
@@ -117,11 +262,15 @@ const CompareLoans = () => {
               {Strings.TotalPaymentAmount}
             </RNText>
             <View style={RNStyles.flexRowBetween}>
-              <RNText style={styles.resultLeft}>{0}</RNText>
-              <RNText style={styles.resultRight}>{0}</RNText>
+              <RNText style={styles.resultLeft}>
+                {State.totalPaymentAmount.first}
+              </RNText>
+              <RNText style={styles.resultRight}>
+                {State.totalPaymentAmount.second}
+              </RNText>
             </View>
             <RNText style={styles.resultPlaceholder}>
-              {Strings.Difference + 0}
+              {Strings.Difference + State.totalPaymentAmount.difference}
             </RNText>
           </View>
 
