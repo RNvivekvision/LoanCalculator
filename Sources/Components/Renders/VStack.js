@@ -28,17 +28,17 @@ const iconSize = wp(12);
 const styles = StyleSheet.create({
   container: {
     width: wp(27),
-    height: hp(14),
-    marginBottom: hp(1.5),
-    marginHorizontal: wp(1.5),
+    height: wp(30),
+    marginBottom: hp(2),
+    marginHorizontal: wp(1.8),
     borderRadius: wp(3),
     backgroundColor: Colors.White + '15',
   },
   card: {
+    ...RNStyles.center,
     flex: 1,
     borderRadius: wp(3),
-    ...RNStyles.center,
-    paddingHorizontal: wp(4),
+    paddingHorizontal: wp(2),
   },
   image: {
     ...RNStyles.center,

@@ -31,7 +31,7 @@ const useStyles = ({ selectedTab }) => {
     card: {
       ...RNStyles.center,
       width: wp(25),
-      height: hp(5),
+      paddingVertical: hp(1.5),
       borderRadius: wp(3),
     },
     title: {

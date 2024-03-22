@@ -27,11 +27,11 @@ const HStack = ({ item, index, onPress }) => {
 const iconSize = wp(12);
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.White + '15',
     width: wp(42),
-    marginHorizontal: wp(1.5),
+    marginHorizontal: wp(1.9),
     borderRadius: wp(4),
-    marginBottom: hp(1.5),
+    marginBottom: hp(2),
+    backgroundColor: Colors.White + '15',
   },
   card: {
     ...RNStyles.flexRowCenter,
