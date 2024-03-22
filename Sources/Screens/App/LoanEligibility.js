@@ -10,7 +10,6 @@ import {
   LOYearMonth,
   NativeAd,
 } from '../../Components';
-import { Functions } from '../../Utils';
 
 const LoanEligibility = () => {
   const [State, setState] = useState({
@@ -25,42 +24,27 @@ const LoanEligibility = () => {
   });
 
   const onCalculatePress = () => {
-    const {
-      grossMonthlyIncome,
-      totalMonthlyEmi,
-      loanAmount,
-      interestRate,
-      tenure,
-      isYear,
-    } = State;
-    const grossMonthlyIncomeNum = parseFloat(grossMonthlyIncome);
-    const totalMonthlyEmiNum = parseFloat(totalMonthlyEmi);
-    const loanAmountNum = parseFloat(loanAmount);
-    const interestRateNum = parseFloat(interestRate);
-    const tenureNum = parseFloat(tenure);
-    const maxAllowedEMI = 0.6 * grossMonthlyIncomeNum;
-    if (totalMonthlyEmiNum <= maxAllowedEMI) {
-      const monthlyInterestRate = interestRateNum / 12 / 100;
-      const totalMonths = isYear ? tenureNum * 12 : tenureNum;
-      const loanEligibility = Math.floor(
-        (loanAmountNum * monthlyInterestRate) /
-          (1 - Math.pow(1 + monthlyInterestRate, -totalMonths)),
-      );
-      const emi = Math.floor(
-        loanEligibility / (isYear ? tenureNum * 12 : tenureNum),
-      );
-      setState(p => ({
-        ...p,
-        eligibleAmount: loanEligibility,
-        eligibleEmi: emi,
-      }));
-    } else {
-      setState(p => ({
-        ...p,
-        eligibleAmount: 0,
-        eligibleEmi: 0,
-      }));
-    }
+    const monthlyInterestRate = parseFloat(State.interestRate) / 100 / 12;
+    const totalMonths = State.isYear
+      ? parseInt(State.tenure) * 12
+      : parseInt(State.tenure);
+    const monthlyIncome = parseFloat(State.grossMonthlyIncome);
+    const monthlyEmi = parseFloat(State.totalMonthlyEmi);
+    const eligibleAmount =
+      ((monthlyIncome - monthlyEmi) *
+        (1 - Math.pow(1 + monthlyInterestRate, -totalMonths))) /
+      monthlyInterestRate;
+    const eligibleEmi =
+      (eligibleAmount *
+        monthlyInterestRate *
+        Math.pow(1 + monthlyInterestRate, totalMonths)) /
+      (Math.pow(1 + monthlyInterestRate, totalMonths) - 1);
+
+    setState(prevState => ({
+      ...prevState,
+      eligibleAmount: isNaN(eligibleAmount) ? 0 : Math.round(eligibleAmount),
+      eligibleEmi: isNaN(eligibleEmi) ? 0 : Math.round(eligibleEmi),
+    }));
   };
 
   return (

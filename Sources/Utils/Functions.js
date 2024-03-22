@@ -65,7 +65,7 @@ const tenure = (tenure, isYear) => (isYear ? tenure * 12 : tenure);
 
 const EMI = ({ principalAmount, interestRate, tenureMonths }) => {
   const monthlyInterestRate = parseInt(interestRate) / 12 / 100;
-  const principalAmountNum = parseFloat(principalAmount);
+  const principalAmountNum = parseInt(principalAmount);
   return toFixed(
     (principalAmountNum *
       monthlyInterestRate *
