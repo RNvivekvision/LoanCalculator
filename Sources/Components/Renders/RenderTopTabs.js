@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { RNText, RNStyles } from '../../Common';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
-import Reanimated, { FadeInRight, SlideInRight } from 'react-native-reanimated';
+import Reanimated, { SlideInRight } from 'react-native-reanimated';
 
 const RenderTopTabs = ({ item, selectedTab, index, onPress }) => {
   const styles = useStyles({ selectedTab });

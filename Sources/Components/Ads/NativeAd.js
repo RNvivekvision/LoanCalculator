@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { RNText, RNStyles } from '../../Common';
 import { Colors, FontFamily, hp, wp } from '../../Theme';
 import Reanimated, { ZoomIn } from 'react-native-reanimated';

@@ -1,5 +1,6 @@
 import React from 'react';
 import { RNButton, RNContainer, RNHeader, RNText } from '../../Common';
+import { FontFamily, FontSize, hp, wp } from '../../Theme';
 import { Strings } from '../../Constants';
 import {
   LOButtons,
@@ -9,7 +10,6 @@ import {
   LOYearMonth,
   NativeAd,
 } from '../../Components';
-import { FontFamily, FontSize, hp, wp } from '../../Theme';
 
 const LoanEligibility = () => {
   return (

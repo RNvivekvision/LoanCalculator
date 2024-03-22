@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RNButton, RNContainer, RNHeader, RNText } from '../../Common';
+import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import { Strings } from '../../Constants';
 import {
   LOButtons,
@@ -9,7 +10,6 @@ import {
   LOResult,
   NativeAd,
 } from '../../Components';
-import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 
 const TaxCalculation = () => {
   return (

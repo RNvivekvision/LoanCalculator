@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
+import Reanimated, { FadeInDown } from 'react-native-reanimated';
 import { RNContainer, RNText, RNStyles, RNButton } from '../../Common';
 import { LOTerms, RenderTerms } from '../../Components';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
@@ -7,7 +8,6 @@ import { Strings } from '../../Constants';
 import { DummyData } from '../../Utils';
 import { useInset } from '../../Hooks';
 import { NavRoutes } from '../../Navigation';
-import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 
 const TermsAndCondition = ({ navigation }) => {
   const styles = useStyles();

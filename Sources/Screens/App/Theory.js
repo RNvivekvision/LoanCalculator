@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { FlatList } from 'react-native';
 import { RNContainer, RNHeader } from '../../Common';
 import { Strings } from '../../Constants';

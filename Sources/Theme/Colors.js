@@ -3,6 +3,7 @@ const Colors = {
   Black: '#00142F',
   White: '#ffffff',
   Button: '#FFB905',
+  Loader: '#FFB905',
   Placeholder: '#ffffff40',
 };
 

@@ -5,7 +5,7 @@ import { RNImage, RNStyles, RNText } from '../../Common';
 import { useNavigation } from '@react-navigation/native';
 import Reanimated, { ZoomIn } from 'react-native-reanimated';
 
-const HStack = ({ item, index, onPress }) => {
+const HStack = ({ item, index }) => {
   const navigation = useNavigation();
   return (
     <Reanimated.View

@@ -1,7 +1,7 @@
 import React from 'react';
+import { LOContainer, LOInput, LOResult, NativeAd } from '../../Components';
 import { RNButton, RNContainer, RNHeader } from '../../Common';
 import { Strings } from '../../Constants';
-import { LOContainer, LOInput, LOResult, NativeAd } from '../../Components';
 
 const MarginWithSales = () => {
   return (

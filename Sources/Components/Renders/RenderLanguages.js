@@ -3,7 +3,7 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { RNImage, RNStyles, RNText } from '../../Common';
 import { wp, Colors, FontFamily, hp } from '../../Theme';
 import { Images } from '../../Constants';
-import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
+import Reanimated, { FadeInDown } from 'react-native-reanimated';
 
 const RenderLanguages = ({ item, index, selected, onPress }) => {
   const styles = useStyles({ selected });

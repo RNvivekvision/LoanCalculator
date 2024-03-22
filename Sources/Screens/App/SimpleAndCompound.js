@@ -1,10 +1,9 @@
 import React from 'react';
 import { RNButton, RNContainer, RNHeader } from '../../Common';
-import { Images, Strings } from '../../Constants';
+import { Strings } from '../../Constants';
 import {
   LOButtons,
   LOContainer,
-  LODatePicker,
   LOInput,
   LOResult,
   LOYearMonth,

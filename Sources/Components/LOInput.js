@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { RNInput, RNStyles, RNText, RNIcon } from '../Common';
+import { RNInput, RNStyles, RNText } from '../Common';
 import { Colors, FontSize, hp, wp } from '../Theme';
 
 const LOInput = forwardRef(

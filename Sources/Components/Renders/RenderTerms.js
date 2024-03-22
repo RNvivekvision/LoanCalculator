@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RNImage, RNStyles, RNText } from '../../Common';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
-import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
+import Reanimated, { FadeInDown } from 'react-native-reanimated';
 
 const RenderTerms = ({ item, index }) => {
   return (

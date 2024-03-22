@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { RNButton, RNContainer, RNHeader } from '../../Common';
+import { Images, Strings } from '../../Constants';
 import {
   LOContainer,
   LODatePicker,
@@ -10,7 +10,6 @@ import {
   LOResult,
   LOButtons,
 } from '../../Components';
-import { Images, Strings } from '../../Constants';
 
 const EMI = () => {
   return (
@@ -67,7 +66,5 @@ const EMI = () => {
     </RNContainer>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default EMI;
