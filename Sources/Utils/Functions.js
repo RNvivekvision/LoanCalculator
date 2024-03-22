@@ -34,7 +34,7 @@ const spliteArray = arr => {
   return [firstHalfData, secondHalfData];
 };
 
-const formatDate = ({ date, format }) => {
+const formatDate = ({ date }) => {
   const d = new Date(date);
   const months = [
     'Jan',
@@ -56,6 +56,17 @@ const formatDate = ({ date, format }) => {
   return `${day} ${month} ${year}`;
 };
 
+const toFixed = (amount, digit = 2) => {
+  if (!amount) return 0;
+  return parseFloat(amount).toFixed(digit);
+};
+
+const loanTenure = (startDate, tenure) => {
+  const newDate = new Date(startDate);
+  newDate.setMonth(newDate.getMonth() + tenure);
+  return formatDate({ date: newDate });
+};
+
 const Functions = {
   ALERT,
   OpenUrl,
@@ -64,6 +75,8 @@ const Functions = {
   ToPercentage,
   spliteArray,
   formatDate,
+  toFixed,
+  loanTenure,
 };
 
 export default Functions;
