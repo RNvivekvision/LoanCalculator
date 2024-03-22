@@ -3,22 +3,29 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { RNImage, RNStyles, RNText } from '../../Common';
 import { wp, Colors, FontFamily, hp } from '../../Theme';
 import { Images } from '../../Constants';
+import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 
-const RenderLanguages = ({ item, selected, onPress }) => {
+const RenderLanguages = ({ item, index, selected, onPress }) => {
   const styles = useStyles({ selected });
   return (
-    <TouchableOpacity
-      activeOpacity={0.6}
-      onPress={() => onPress?.(item)}
+    <Reanimated.View
+      entering={FadeInDown.delay(index * 100)}
       style={styles.container}>
-      <View style={RNStyles.flexRow}>
-        <RNImage source={item.image} style={styles.image} />
-        <RNText style={styles.title}>{item.title}</RNText>
-      </View>
-      <View style={styles.radio}>
-        {selected && <RNImage source={Images.True} style={RNStyles.image70} />}
-      </View>
-    </TouchableOpacity>
+      <TouchableOpacity
+        activeOpacity={0.6}
+        onPress={() => onPress?.(item)}
+        style={styles.card}>
+        <View style={RNStyles.flexRow}>
+          <RNImage source={item.image} style={styles.image} />
+          <RNText style={styles.title}>{item.title}</RNText>
+        </View>
+        <View style={styles.radio}>
+          {selected && (
+            <RNImage source={Images.True} style={RNStyles.image70} />
+          )}
+        </View>
+      </TouchableOpacity>
+    </Reanimated.View>
   );
 };
 
@@ -27,9 +34,11 @@ const radioSize = wp(6);
 const useStyles = ({ selected }) => {
   return StyleSheet.create({
     container: {
+      marginTop: hp(0.5),
+    },
+    card: {
       ...RNStyles.flexRowBetween,
       paddingVertical: hp(1),
-      marginTop: hp(0.5),
     },
     image: {
       width: imageSize,

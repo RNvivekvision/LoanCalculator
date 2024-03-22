@@ -40,7 +40,9 @@ const Onboarding = ({ navigation }) => {
           showsHorizontalScrollIndicator={false}
           scrollEventThrottle={0.16}
           onScroll={onScroll}
-          renderItem={({ item }) => <RenderOnboarding item={item} />}
+          renderItem={({ item, index }) => (
+            <RenderOnboarding item={item} index={index} scroll={scroll} />
+          )}
         />
         <LOPagginationDots
           scroll={scroll}

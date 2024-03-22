@@ -33,7 +33,6 @@ const RNHeader = ({
         />
         <RNText style={[styles.title, titleStyle]}>{title}</RNText>
       </View>
-
       {noScroll ? (
         children
       ) : (
@@ -41,7 +40,6 @@ const RNHeader = ({
           {children}
         </RNScrollView>
       )}
-
       {footer && <View style={styles.footer}>{footer}</View>}
     </View>
   );

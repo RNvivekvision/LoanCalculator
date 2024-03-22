@@ -21,18 +21,23 @@ const Welcome = ({ navigation }) => {
           {Strings.WelcomeToThe}
         </RNText>
         <RNText style={styles.text}>{Strings.LoanGolLoanEMICalculator}</RNText>
+
         <RNImage source={Images.Logo} style={styles.Logo} />
+
         <RNText style={styles.text}>
           {Strings.LoanGolLoanEMICalculatorDesc1}
         </RNText>
+
         <RNText style={styles.text}>
           {Strings.LoanGolLoanEMICalculatorDesc2}
         </RNText>
+
         <RNButton
           title={Strings.StartApp}
           style={{ marginVertical: hp(2) }}
           onPress={() => navigation.replace(NavRoutes.Home)}
         />
+
         <View style={RNStyles.flexRow}>
           <TouchableOpacity
             activeOpacity={0.6}
@@ -42,6 +47,7 @@ const Welcome = ({ navigation }) => {
               {Strings.InviteFriends}
             </RNText>
           </TouchableOpacity>
+
           <View style={{ flex: 1 }}>
             <TouchableOpacity
               activeOpacity={0.6}
@@ -49,6 +55,7 @@ const Welcome = ({ navigation }) => {
               <RNImage source={Images.PrivacyPolicy} style={styles.icon} />
               <RNText style={styles.buttonText}>{Strings.PrivacyPolicy}</RNText>
             </TouchableOpacity>
+
             <TouchableOpacity
               activeOpacity={0.6}
               style={styles.buttonContainer}>
@@ -58,6 +65,7 @@ const Welcome = ({ navigation }) => {
           </View>
         </View>
       </RNScrollView>
+
       <NativeAd />
     </RNContainer>
   );

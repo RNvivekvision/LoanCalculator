@@ -2,10 +2,11 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RNImage, RNStyles, RNText } from '../../Common';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
+import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 
-const RenderTerms = ({ item }) => {
+const RenderTerms = ({ item, index }) => {
   return (
-    <>
+    <Reanimated.View entering={FadeInDown.delay(index * 100)}>
       <View style={styles.titleContainer}>
         <View style={styles.image}>
           <RNImage source={item.image} style={RNStyles.image60} />
@@ -13,7 +14,7 @@ const RenderTerms = ({ item }) => {
         <RNText style={styles.title}>{item.title}</RNText>
       </View>
       <RNText style={styles.text}>{item.text}</RNText>
-    </>
+    </Reanimated.View>
   );
 };
 

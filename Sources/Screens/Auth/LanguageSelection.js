@@ -54,6 +54,7 @@ const LanguageSelection = ({ navigation }) => {
             <RenderLanguages
               key={i}
               item={v}
+              index={i}
               selected={State.selectedLanguage.title === v.title}
               onPress={v => setState(p => ({ ...p, selectedLanguage: v }))}
             />

@@ -7,6 +7,7 @@ import { Strings } from '../../Constants';
 import { DummyData } from '../../Utils';
 import { useInset } from '../../Hooks';
 import { NavRoutes } from '../../Navigation';
+import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 
 const TermsAndCondition = ({ navigation }) => {
   const styles = useStyles();
@@ -17,14 +18,14 @@ const TermsAndCondition = ({ navigation }) => {
 
   const Footer = () => {
     return (
-      <>
+      <Reanimated.View entering={FadeInDown.delay(600)}>
         <LOTerms title={Strings.PleaseCheckFor} />
         <RNButton
           title={Strings.Announcing}
-          style={{ marginVertical: hp(3) }}
+          style={{ marginVertical: hp(2) }}
           onPress={() => navigation.navigate(NavRoutes.LanguageSelection)}
         />
-      </>
+      </Reanimated.View>
     );
   };
 
@@ -36,7 +37,9 @@ const TermsAndCondition = ({ navigation }) => {
         contentContainerStyle={styles.contentContainerStyle}
         ListHeaderComponent={<Header />}
         ListFooterComponent={<Footer />}
-        renderItem={({ item }) => <RenderTerms item={item} />}
+        renderItem={({ item, index }) => (
+          <RenderTerms item={item} index={index} />
+        )}
       />
       <View style={styles.banner}>
         <RNText>{'For Banner'}</RNText>
