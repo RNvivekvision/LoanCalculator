@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { RNButton, RNContainer, RNHeader } from '../../Common';
 import { Strings } from '../../Constants';
+import { DummyData, Functions } from '../../Utils';
 import {
   LOButtons,
   LOContainer,
@@ -10,8 +11,6 @@ import {
   LOYearMonth,
   NativeAd,
 } from '../../Components';
-import { DummyData, Functions } from '../../Utils';
-import { Dropdown } from 'react-native-element-dropdown';
 
 const SimpleAndCompound = () => {
   const [State, setState] = useState({
@@ -34,7 +33,6 @@ const SimpleAndCompound = () => {
     if (typeOfInterest.value === 0) {
       const interest = principal * rate * time;
       const maturityAmount = principal + interest;
-
       setState(p => ({
         ...p,
         investmentAmount: Functions.toFixed(principal),
@@ -46,16 +44,12 @@ const SimpleAndCompound = () => {
       const compoundInterest =
         principal * Math.pow(1 + rate / n, n * time) - principal;
       const maturityAmount = principal + compoundInterest;
-
       setState(p => ({
         ...p,
         investmentAmount: Functions.toFixed(principal),
         totalInterestValue: Functions.toFixed(compoundInterest),
         maturityAmount: Functions.toFixed(maturityAmount),
       }));
-    } else {
-      // Handle invalid interest type
-      alert('Invalid type of interest. Please enter "simple" or "compound".');
     }
   };
 

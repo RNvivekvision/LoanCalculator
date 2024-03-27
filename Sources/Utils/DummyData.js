@@ -455,8 +455,8 @@ const DummyData = {
   },
   SimpleAndCompound: {
     dropdownData: [
-      { label: 'Simple', value: 0 },
-      { label: 'Compound', value: 1 },
+      { label: Strings.Simple, value: 0 },
+      { label: Strings.Compound, value: 1 },
     ],
   },
 };

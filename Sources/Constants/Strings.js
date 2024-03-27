@@ -192,6 +192,8 @@ const Strings = {
   Danish: 'Danish',
   Dutch: 'Dutch',
   Filipino: 'Filipino',
+  Simple: 'Simple',
+  Compound: 'Compound',
 };
 
 export default Strings;
