@@ -194,6 +194,12 @@ const Strings = {
   Filipino: 'Filipino',
   Simple: 'Simple',
   Compound: 'Compound',
+  INR: 'INR',
+  Dollar: 'Dollar',
+  Euro: 'Euro',
+  Dihram: 'Dihram',
+  Yen: 'Yen',
+  Pound: 'Pound',
 };
 
 export default Strings;

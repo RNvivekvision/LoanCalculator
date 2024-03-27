@@ -455,9 +455,27 @@ const DummyData = {
   },
   SimpleAndCompound: {
     dropdownData: [
-      { label: Strings.Simple, value: 0 },
-      { label: Strings.Compound, value: 1 },
+      { label: Strings.Simple, value: Strings.Simple },
+      { label: Strings.Compound, value: Strings.Compound },
     ],
+  },
+  CurrencyConversion: {
+    currencies: [
+      { label: Strings.INR, value: Strings.INR, text: 0 },
+      { label: Strings.Dollar, value: Strings.Dollar, text: 0 },
+      { label: Strings.Euro, value: Strings.Euro, text: 0 },
+      { label: Strings.Dihram, value: Strings.Dihram, text: 0 },
+      { label: Strings.Yen, value: Strings.Yen, text: 0 },
+      { label: Strings.Pound, value: Strings.Pound, text: 0 },
+    ],
+    exchangeRates: {
+      INR: 1,
+      Dollar: 0.012002,
+      Euro: 0.011086,
+      Dihram: 0.044,
+      Yen: 1.820458,
+      Pound: 0.009513,
+    },
   },
 };
 

@@ -30,7 +30,7 @@ const SimpleAndCompound = () => {
     const rate = parseFloat(rateOfInterest) / 100; // converting percentage to decimal
     const time = isYear ? parseFloat(tenure) : parseFloat(tenure) / 12; // converting months to years if needed
 
-    if (typeOfInterest.value === 0) {
+    if (typeOfInterest.value === Strings.Simple) {
       const interest = principal * rate * time;
       const maturityAmount = principal + interest;
       setState(p => ({
@@ -39,7 +39,7 @@ const SimpleAndCompound = () => {
         totalInterestValue: Functions.toFixed(interest),
         maturityAmount: Functions.toFixed(maturityAmount),
       }));
-    } else if (typeOfInterest.value === 1) {
+    } else if (typeOfInterest.value === Strings.Compound) {
       const n = 12; // assuming interest is compounded monthly
       const compoundInterest =
         principal * Math.pow(1 + rate / n, n * time) - principal;

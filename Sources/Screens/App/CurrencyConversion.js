@@ -1,26 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RNButton, RNContainer, RNHeader, RNText } from '../../Common';
-import { Strings } from '../../Constants';
-import { LOContainer, LOInput, NativeAd } from '../../Components';
+import { LOContainer, LOInput, NativeAd, LODropDown } from '../../Components';
 import { Colors, FontFamily, hp } from '../../Theme';
+import { DummyData, Functions } from '../../Utils';
+import { Strings } from '../../Constants';
+
+const { currencies, exchangeRates } = DummyData.CurrencyConversion;
 
 const CurrencyConversion = () => {
-  const currencies = [
-    '0 INR',
-    '0 Dollar',
-    '0 Euro',
-    '0 Dihram',
-    '0 Yen',
-    '0 Pound',
-  ];
+  const [State, setState] = useState({
+    amount: '',
+    currencyOfTheAmount: currencies[0],
+    currencies: currencies,
+  });
+
+  const onCalculatePress = () => {
+    const convertedCurrencies = currencies.map(currency => {
+      const convertedAmount =
+        (parseFloat(State.amount) * exchangeRates[currency.label]) /
+        exchangeRates[State.currencyOfTheAmount.label];
+      return { ...currency, text: Functions.toFixed(convertedAmount) };
+    });
+    console.log({ convertedCurrencies });
+    setState(p => ({ ...p, currencies: convertedCurrencies }));
+  };
+
   return (
     <RNContainer>
       <RNHeader title={Strings.CurrencyConversion}>
         <LOContainer>
-          <LOInput title={Strings.Amount} />
-          <LOInput title={Strings.CurrencyOfTheAmount} />
-          <RNButton title={Strings.Calculate} style={{ marginBottom: 0 }} />
+          <LOInput
+            title={Strings.Amount}
+            value={State.amount}
+            onChangeText={v => setState(p => ({ ...p, amount: v }))}
+          />
+          <LODropDown
+            title={Strings.CurrencyOfTheAmount}
+            data={currencies}
+            onChange={v => setState(p => ({ ...p, currencyOfTheAmount: v }))}
+            value={State.currencyOfTheAmount?.value}
+          />
+          <RNButton
+            title={Strings.Calculate}
+            style={{ marginBottom: 0 }}
+            onPress={onCalculatePress}
+          />
         </LOContainer>
 
         <NativeAd />
@@ -29,9 +54,10 @@ const CurrencyConversion = () => {
           <RNText family={FontFamily.Medium} pBottom={hp(2)}>
             {Strings.AmountInDifferentCurrency}
           </RNText>
-          {currencies.map((v, i) => (
+          {State.currencies.map((v, i) => (
             <View key={i} style={styles.renderContainer}>
-              <RNText style={styles.renderText}>{v}</RNText>
+              <RNText
+                style={styles.renderText}>{`${v.text} ${v.label}`}</RNText>
             </View>
           ))}
         </LOContainer>
