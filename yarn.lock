@@ -5716,6 +5716,13 @@ react-native-date-picker@^4.4.2:
   resolved "https://registry.yarnpkg.com/react-native-date-picker/-/react-native-date-picker-4.4.2.tgz#f7bb9daa8559237e08bd30f907ee8487a6e2a6ec"
   integrity sha512-wYKN8nYWhETVHJV/+Im30JOdzkFRwYRrDlEOyyYesOjt+1JTFJh9M7K5CqePLOIB4Nxlf2f2lRSI0VoUyFIovA==
 
+react-native-element-dropdown@^2.10.4:
+  version "2.10.4"
+  resolved "https://registry.yarnpkg.com/react-native-element-dropdown/-/react-native-element-dropdown-2.10.4.tgz#58d8a5e38d2a3fb74498c195bd775d9e1536e6bd"
+  integrity sha512-sbzByNSQmS3iZuNxzeqs0L04MrYQt8uSNUcmnAZAN/vi5IqZ7N0TPHzZ996PSttpYrF2NkiByd+Zlw9Em+VgAw==
+  dependencies:
+    lodash "^4.17.21"
+
 react-native-gesture-handler@^2.15.0:
   version "2.15.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-2.15.0.tgz#f8e6c0451a7bdf065edb7b9be605480db402baa0"

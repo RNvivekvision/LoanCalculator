@@ -453,6 +453,12 @@ const DummyData = {
       ],
     },
   },
+  SimpleAndCompound: {
+    dropdownData: [
+      { label: 'Simple', value: 0 },
+      { label: 'Compound', value: 1 },
+    ],
+  },
 };
 
 export default DummyData;
