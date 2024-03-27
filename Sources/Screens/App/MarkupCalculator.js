@@ -1,16 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RNButton, RNContainer, RNHeader } from '../../Common';
-import { Strings } from '../../Constants';
 import { LOContainer, LOInput, LOResult, NativeAd } from '../../Components';
+import { Strings } from '../../Constants';
+import { Functions } from '../../Utils';
 
 const MarkupCalculator = () => {
+  const [State, setState] = useState({
+    cost: '',
+    revenue: '',
+    markup: 0,
+    profit: 0,
+  });
+
+  const onCalculatePress = () => {
+    // Ensure cost and revenue are numbers
+    const costValue = parseFloat(State.cost);
+    const revenueValue = parseFloat(State.revenue);
+    const markupAmount = revenueValue - costValue;
+    const markupPercentage = (markupAmount / costValue) * 100;
+    const profit = revenueValue - costValue;
+
+    setState(p => ({
+      ...p,
+      markup: Functions.toFixed(markupPercentage),
+      profit: Functions.toFixed(profit),
+    }));
+  };
+
   return (
     <RNContainer>
       <RNHeader title={Strings.MarkupCalculator}>
         <LOContainer>
-          <LOInput title={Strings.Cost} />
-          <LOInput title={Strings.Revenue} />
-          <RNButton title={Strings.Calculate} />
+          <LOInput
+            title={Strings.Cost}
+            value={State.cost}
+            onChangeText={v => setState(p => ({ ...p, cost: v }))}
+          />
+          <LOInput
+            title={Strings.Revenue}
+            value={State.revenue}
+            onChangeText={v => setState(p => ({ ...p, revenue: v }))}
+          />
+          <RNButton title={Strings.Calculate} onPress={onCalculatePress} />
         </LOContainer>
 
         <NativeAd />
@@ -18,8 +49,8 @@ const MarkupCalculator = () => {
         <LOContainer>
           <LOResult
             columns={[
-              { title: Strings.MarkupPercentage, value: 0 },
-              { title: Strings.Profit, value: 0 },
+              { title: Strings.MarkupPercentage, value: State.markup },
+              { title: Strings.Profit, value: State.profit },
             ]}
           />
         </LOContainer>

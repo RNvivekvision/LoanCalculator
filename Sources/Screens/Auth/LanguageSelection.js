@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { I18nManager, StyleSheet, View } from 'react-native';
+import RNRestart from 'react-native-restart';
 import {
   RNContainer,
   RNIcon,
@@ -11,22 +12,31 @@ import { Images, Strings } from '../../Constants';
 import { NativeAd, RenderLanguages } from '../../Components';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import { DummyData, Functions } from '../../Utils';
-import { useInset } from '../../Hooks';
 import { NavRoutes } from '../../Navigation';
 
 const LanguageSelection = ({ navigation }) => {
-  const styles = useStyles();
   const [State, setState] = useState({
     selectedLanguage: DummyData.LanguageSelection[0],
   });
 
   const onLanguageSelectPress = async () => {
     try {
-      await Functions.setAppData({ hasUser: true });
-      navigation.reset({
-        index: 0,
-        routes: [{ name: NavRoutes.Welcome }],
+      const isRtl = State.selectedLanguage.value === 'ar';
+      Strings.setLanguage(State.selectedLanguage.value);
+      I18nManager.forceRTL(isRtl);
+      await Functions.setAppData({
+        lang: State.selectedLanguage.value,
+        hasUser: true,
       });
+
+      if (isRtl) {
+        RNRestart.restart();
+      } else {
+        navigation.reset({
+          index: 0,
+          routes: [{ name: NavRoutes.Welcome }],
+        });
+      }
     } catch (e) {
       console.error(e);
     }
@@ -67,27 +77,24 @@ const LanguageSelection = ({ navigation }) => {
   );
 };
 
-const useStyles = () => {
-  const inset = useInset();
-  return StyleSheet.create({
-    content: {
-      paddingHorizontal: wp(5),
-    },
-    trueButton: {
-      width: wp(15),
-      borderRadius: 100,
-      zIndex: 1,
-    },
-    title: {
-      fontSize: FontSize.font18,
-      fontFamily: FontFamily.Medium,
-      paddingBottom: hp(1),
-    },
-    titleDesc: {
-      fontSize: FontSize.font14,
-      color: Colors.White + '50',
-    },
-  });
-};
+const styles = StyleSheet.create({
+  content: {
+    paddingHorizontal: wp(5),
+  },
+  trueButton: {
+    width: wp(15),
+    borderRadius: 100,
+    zIndex: 1,
+  },
+  title: {
+    fontSize: FontSize.font18,
+    fontFamily: FontFamily.Medium,
+    paddingBottom: hp(1),
+  },
+  titleDesc: {
+    fontSize: FontSize.font14,
+    color: Colors.White + '50',
+  },
+});
 
 export default LanguageSelection;

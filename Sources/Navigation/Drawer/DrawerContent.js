@@ -1,24 +1,27 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Share, StyleSheet, View } from 'react-native';
 import { RNImage, RNStyles, RNText } from '../../Common';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
-import { useInset } from '../../Hooks';
+import { useInset, useDummyData } from '../../Hooks';
 import { Images, Strings } from '../../Constants';
 import { RenderDrawer } from '../../Components';
-import { DummyData } from '../../Utils';
 
 const DrawerContent = ({ navigation }) => {
+  const { Drawer } = useDummyData();
   const styles = useStyles();
 
   const onDrawerPress = item => {
-    if (item.navigate) {
-      navigation.closeDrawer();
-      setTimeout(() => {
-        navigation.navigate(item.navigate);
-      }, 100);
-    } else {
-      navigation.closeDrawer();
+    if (item.share) {
+      Share.share({
+        title: 'Title',
+        message: 'Message',
+        url: 'https://www.google.com/',
+      });
     }
+
+    setTimeout(() => {
+      navigation.closeDrawer();
+    }, 100);
   };
 
   return (
@@ -29,7 +32,7 @@ const DrawerContent = ({ navigation }) => {
       </View>
 
       <View style={styles.ListContainer}>
-        {DummyData.Drawer.map((v, i) => (
+        {Drawer.map((v, i) => (
           <RenderDrawer key={i} item={v} onPress={onDrawerPress} />
         ))}
       </View>

@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavConfigs, NavRoutes } from './index';
 import { useLocalStorage } from '../Hooks';
+import { Strings } from '../Constants';
 import Drawer from './Drawer';
 import {
   ATMFinder,
@@ -39,6 +40,10 @@ const Stack = createStackNavigator();
 
 const Routes = () => {
   const { localdata } = useLocalStorage();
+
+  useEffect(() => {
+    localdata?.lang && Strings.setLanguage(localdata?.lang);
+  }, [localdata?.lang]);
 
   useEffect(() => {
     setTimeout(() => {

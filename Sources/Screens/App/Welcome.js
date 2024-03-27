@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import {
   RNButton,
@@ -14,6 +14,12 @@ import { NativeAd } from '../../Components';
 import { NavRoutes } from '../../Navigation';
 
 const Welcome = ({ navigation }) => {
+  const [State, setState] = useState(false);
+
+  useEffect(() => {
+    setState(true);
+  }, []);
+
   return (
     <RNContainer>
       <RNScrollView safeArea={'top'} style={styles.container}>
@@ -115,11 +121,13 @@ const styles = StyleSheet.create({
   inviteIcon: {
     width: iconSize + wp(4),
     height: iconSize + wp(4),
+    marginTop: hp(4),
   },
   buttonText: {
+    flex: 1,
     fontSize: FontSize.font14,
     fontFamily: FontFamily.Bold,
-    // paddingHorizontal: wp(1),
+    paddingHorizontal: wp(0.5),
   },
 });
 

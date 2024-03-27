@@ -15,7 +15,7 @@ const RenderTopTabs = ({ item, selectedTab, index, onPress }) => {
         activeOpacity={0.6}
         onPress={() => onPress?.(item)}
         style={styles.card}>
-        <RNText style={styles.title}>{item}</RNText>
+        <RNText style={styles.title}>{item.label}</RNText>
       </TouchableOpacity>
     </Reanimated.View>
   );

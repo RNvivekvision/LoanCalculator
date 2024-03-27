@@ -50,57 +50,68 @@ const DummyData = {
     {
       image: Images.US,
       title: Strings.US,
+      value: 'en',
     },
     {
       image: Images.Afrikaans,
       title: Strings.Afrikaans,
+      value: 'af',
     },
     {
       image: Images.Arabic,
       title: Strings.Arabic,
+      value: 'ar',
     },
     {
       image: Images.Bengali,
       title: Strings.Bengali,
+      value: 'bn',
     },
     {
       image: Images.Chinese,
       title: Strings.Chinese,
+      value: 'zh',
     },
     {
       image: Images.Danish,
       title: Strings.Danish,
+      value: 'da',
     },
     {
       image: Images.Dutch,
       title: Strings.Dutch,
+      value: 'nl',
     },
     {
       image: Images.Filipino,
       title: Strings.Filipino,
+      value: 'fil',
     },
   ],
   Drawer: [
     {
       image: Images.Home,
       title: Strings.Home,
-      Navigate: NavRoutes.Home,
     },
     {
       image: Images.InviteFriends,
       title: Strings.ShareThisApp,
+      share: true,
     },
     {
       image: Images.RateUs,
       title: Strings.RateUs,
+      rateUs: true,
     },
     {
       image: Images.PrivacyPolicy,
       title: Strings.PrivacyPolicy,
+      privacyPolicy: true,
     },
     {
       image: Images.AboutUs,
       title: Strings.AboutUs,
+      aboutUs: true,
     },
   ],
   Home: {
@@ -251,9 +262,14 @@ const DummyData = {
     },
   ],
   Theory: {
-    Tabs: [Strings.Bank, Strings.Finance, Strings.Business, Strings.Stock],
+    Tabs: [
+      { label: Strings.Bank, value: 0 },
+      { label: Strings.Finance, value: 1 },
+      { label: Strings.Business, value: 2 },
+      { label: Strings.Stock, value: 3 },
+    ],
     TabContent: {
-      Bank: [
+      0: [
         {
           image: Images.Bank_LoanEligibility,
           title: Strings.LoanEligibility,
@@ -310,7 +326,7 @@ const DummyData = {
           text: Strings.Theory,
         },
       ],
-      Finance: [
+      1: [
         {
           image: Images.Finance_PPF,
           title: Strings.PPF,
@@ -382,7 +398,7 @@ const DummyData = {
           text: Strings.Theory,
         },
       ],
-      Business: [
+      2: [
         {
           image: Images.Business_GrossProfit,
           title: Strings.GrossProfit,
@@ -419,7 +435,7 @@ const DummyData = {
           text: Strings.Theory,
         },
       ],
-      Stock: [
+      3: [
         {
           image: Images.Stock_StockReturn,
           title: Strings.StockReturnsandCapitalGain,

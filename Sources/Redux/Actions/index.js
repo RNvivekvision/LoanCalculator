@@ -1,1 +1,1 @@
-export { setUser } from '../Reducers/UserReducer';
+export { setLocalData } from '../Reducers/UserReducer';
