@@ -10,6 +10,7 @@ import {
   LOResult,
   NativeAd,
 } from '../../Components';
+import { Functions } from '../../Utils';
 
 const TaxCalculation = () => {
   const [State, setState] = useState({
@@ -23,9 +24,9 @@ const TaxCalculation = () => {
   const onCalculatePress = () => {
     const amount = parseFloat(State.amount);
     const interest = parseFloat(State.rateOfTax);
-    const tax = amount * (interest / 100);
-    const net = amount + tax;
-    const total = amount + tax;
+    const tax = Functions.toFixed(amount * (interest / 100));
+    const net = Functions.toFixed(amount + tax);
+    const total = Functions.toFixed(amount + tax);
     setState(p => ({ ...p, net: net, gst: tax, total: total }));
   };
 
@@ -70,7 +71,7 @@ const TaxCalculation = () => {
           />
           <LOResult
             title={Strings.TotalAmount}
-            value={State.amount}
+            value={State.total}
             needBGColor={true}
           />
           <LOButtons

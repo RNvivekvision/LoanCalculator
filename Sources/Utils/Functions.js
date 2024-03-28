@@ -1,5 +1,6 @@
-import { Alert, Linking } from 'react-native';
+import { Alert, Linking, Share } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Rate, { AndroidMarket } from 'react-native-rate';
 
 const ALERT = ({ Title, Text, Buttons }) => Alert.alert(Title, Text, Buttons);
 
@@ -53,7 +54,9 @@ const formatDate = ({ date }) => {
   const month = months[d.getMonth()];
   const day = d.getDate();
   const year = d.getFullYear();
-  return `${day} ${month} ${year}`;
+  if (day && month && year) {
+    return `${day || ''} ${month || ''} ${year || ''}`;
+  }
 };
 
 const toFixed = (amount, digit = 2) => {
@@ -81,6 +84,41 @@ const loanTenure = (startDate, tenure) => {
   return formatDate({ date: newDate });
 };
 
+const RateUs = async ({ onSuccess, onError } = {}) => {
+  const options = {
+    AppleAppID: '1465682080',
+    GooglePackageName: 'com.mywebsite.myapp',
+    AmazonPackageName: 'com.mywebsite.myapp',
+    preferredAndroidMarket: AndroidMarket.Google,
+    preferInApp: true,
+    openAppStoreIfInAppFails: true,
+    fallbackPlatformURL: 'https://github.com/KjellConnelly/react-native-rate',
+    inAppDelay: 1000,
+  };
+  await Rate.rate(options, (success, error) => {
+    if (success) {
+      onSuccess?.(success);
+    }
+    if (error) {
+      onError?.(error);
+    }
+  });
+};
+
+const ShareApp = async ({ title, message, url } = {}) => {
+  const Title = 'LoanGol';
+  const Message =
+    'Share Loan gol app to your friends. by clicking the following url https://play.google.com/store/apps/details?id=com.activision.callofduty.warzone';
+  const Url =
+    'https://play.google.com/store/apps/details?id=com.activision.callofduty.warzone';
+
+  await Share.share({
+    title: title || Title,
+    message: message || Message,
+    url: url || Url,
+  });
+};
+
 const Functions = {
   ALERT,
   OpenUrl,
@@ -93,6 +131,8 @@ const Functions = {
   EMI,
   tenure,
   loanTenure,
+  RateUs,
+  ShareApp,
 };
 
 export default Functions;

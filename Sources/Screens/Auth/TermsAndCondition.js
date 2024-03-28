@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import Reanimated, { FadeInDown } from 'react-native-reanimated';
 import { RNContainer, RNText, RNStyles, RNButton } from '../../Common';
@@ -17,10 +17,16 @@ const TermsAndCondition = ({ navigation }) => {
   };
 
   const Footer = () => {
+    const [State, setState] = useState({ isChecked: true });
+
     return (
       <Reanimated.View entering={FadeInDown.delay(600)}>
-        <LOTerms title={Strings.PleaseCheckFor} />
+        <LOTerms
+          title={Strings.PleaseCheckFor}
+          onPress={v => setState(p => ({ ...p, isChecked: v }))}
+        />
         <RNButton
+          disable={!State.isChecked}
           title={Strings.Announcing}
           style={{ marginVertical: hp(2) }}
           onPress={() => navigation.navigate(NavRoutes.LanguageSelection)}

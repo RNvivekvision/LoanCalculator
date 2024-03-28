@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
   card: {
     ...RNStyles.flexRowCenter,
-    paddingHorizontal: wp(4),
+    paddingHorizontal: wp(3),
     borderRadius: wp(4),
     paddingVertical: hp(2),
   },
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: FontSize.font12,
     fontFamily: FontFamily.Medium,
-    paddingLeft: wp(2),
+    paddingHorizontal: wp(2),
   },
 });
 

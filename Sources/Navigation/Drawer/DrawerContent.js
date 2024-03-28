@@ -1,27 +1,35 @@
 import React from 'react';
-import { Share, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { RNImage, RNStyles, RNText } from '../../Common';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import { useInset, useDummyData } from '../../Hooks';
 import { Images, Strings } from '../../Constants';
 import { RenderDrawer } from '../../Components';
+import { Functions } from '../../Utils';
 
 const DrawerContent = ({ navigation }) => {
   const { Drawer } = useDummyData();
   const styles = useStyles();
 
-  const onDrawerPress = item => {
-    if (item.share) {
-      Share.share({
-        title: 'Title',
-        message: 'Message',
-        url: 'https://www.google.com/',
-      });
-    }
+  const onDrawerPress = async item => {
+    try {
+      if (item.rateUs) {
+        await Functions.RateUs({
+          onSuccess: s => console.log('Drawer rate us Success -> ', s),
+          onError: e => console.log('Drawer rate us Error -> ', e),
+        });
+      }
 
-    setTimeout(() => {
-      navigation.closeDrawer();
-    }, 100);
+      if (item.share) {
+        await Functions.ShareApp();
+      }
+
+      setTimeout(() => {
+        navigation.closeDrawer();
+      }, 100);
+    } catch (e) {
+      console.error('Error onDrawerPress -> ', e);
+    }
   };
 
   return (

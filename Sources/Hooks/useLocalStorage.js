@@ -7,7 +7,7 @@ const useLocalStorage = () => {
   const [State, setState] = useState({ localdata: null });
   const dispatch = useDispatch();
 
-  console.log('useLocalStorage -> ', JSON.stringify(State, null, 2));
+  // console.log('useLocalStorage -> ', JSON.stringify(State, null, 2));
 
   useEffect(() => {
     getDataFromLocalStorage();

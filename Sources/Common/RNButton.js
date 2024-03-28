@@ -16,6 +16,8 @@ const RNButton = ({
   iconStyle,
   isLoading,
 }) => {
+  const styles = useStyles({ disable });
+
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -35,26 +37,28 @@ const RNButton = ({
 };
 
 const iconSize = wp(6);
-const styles = StyleSheet.create({
-  Container: {
-    ...RNStyles.center,
-    ...RNStyles.flexRow,
-    backgroundColor: Colors.Button,
-    paddingVertical: hp(1.7),
-    paddingHorizontal: wp(4),
-    marginHorizontal: wp(4),
-    marginVertical: hp(1),
-    borderRadius: 100,
-  },
-  buttonText: {
-    fontFamily: FontFamily.Bold,
-    color: Colors.Black,
-  },
-  icon: {
-    width: iconSize,
-    height: iconSize,
-    marginRight: wp(2),
-  },
-});
+const useStyles = ({ disable }) => {
+  return StyleSheet.create({
+    Container: {
+      ...RNStyles.center,
+      ...RNStyles.flexRow,
+      backgroundColor: disable ? Colors.Placeholder : Colors.Button,
+      paddingVertical: hp(1.7),
+      paddingHorizontal: wp(4),
+      marginHorizontal: wp(4),
+      marginVertical: hp(1),
+      borderRadius: 100,
+    },
+    buttonText: {
+      fontFamily: FontFamily.Bold,
+      color: Colors.Black,
+    },
+    icon: {
+      width: iconSize,
+      height: iconSize,
+      marginRight: wp(2),
+    },
+  });
+};
 
 export default RNButton;

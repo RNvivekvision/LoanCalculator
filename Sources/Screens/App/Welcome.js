@@ -12,6 +12,7 @@ import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import { Images, Strings } from '../../Constants';
 import { NativeAd } from '../../Components';
 import { NavRoutes } from '../../Navigation';
+import { Functions } from '../../Utils';
 
 const Welcome = ({ navigation }) => {
   const [State, setState] = useState(false);
@@ -19,6 +20,32 @@ const Welcome = ({ navigation }) => {
   useEffect(() => {
     setState(true);
   }, []);
+
+  const onInvitePress = async () => {
+    try {
+      await Functions.ShareApp();
+    } catch (e) {
+      console.log('Error onInvitePress -> ', e);
+    }
+  };
+
+  const onPrivacyPolicyPress = async () => {
+    try {
+    } catch (e) {
+      console.log('Error onPrivacyPolicyPress -> ', e);
+    }
+  };
+
+  const onRateUsPress = async () => {
+    try {
+      await Functions.RateUs({
+        onSuccess: s => console.log('Welcome rate us Success -> ', s),
+        onError: e => console.log('Welcome rate us Error -> ', e),
+      });
+    } catch (e) {
+      console.log('Error onRateUsPress -> ', e);
+    }
+  };
 
   return (
     <RNContainer>
@@ -47,6 +74,7 @@ const Welcome = ({ navigation }) => {
         <View style={RNStyles.flexRow}>
           <TouchableOpacity
             activeOpacity={0.6}
+            onPress={onInvitePress}
             style={[styles.buttonContainer, styles.inviteContainer]}>
             <RNImage source={Images.InviteFriends} style={styles.inviteIcon} />
             <RNText style={styles.buttonText} pTop={hp(2)}>
@@ -57,6 +85,7 @@ const Welcome = ({ navigation }) => {
           <View style={{ flex: 1 }}>
             <TouchableOpacity
               activeOpacity={0.6}
+              onPress={onPrivacyPolicyPress}
               style={styles.buttonContainer}>
               <RNImage source={Images.PrivacyPolicy} style={styles.icon} />
               <RNText style={styles.buttonText}>{Strings.PrivacyPolicy}</RNText>
@@ -64,6 +93,7 @@ const Welcome = ({ navigation }) => {
 
             <TouchableOpacity
               activeOpacity={0.6}
+              onPress={onRateUsPress}
               style={styles.buttonContainer}>
               <RNImage source={Images.RateUs} style={styles.icon} />
               <RNText style={styles.buttonText}>{Strings.RateUs}</RNText>
