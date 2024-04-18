@@ -18,7 +18,7 @@ const REQUEST = async ({
     data: Params,
     url: URL.AppUrl + EndPoint,
   };
-  console.log('options -> ', JSON.stringify(options, null, 2));
+  // console.log('options -> ', JSON.stringify(options, null, 2));
   // const response = await Axios(options);
   // return response.data;
 
