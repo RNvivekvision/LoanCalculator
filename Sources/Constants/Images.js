@@ -2,6 +2,7 @@ const ImagePath = '../Assets/Images/';
 const png = '.png';
 
 const Images = {
+  appicon: require(ImagePath + 'appicon' + png),
   True: require(ImagePath + 'True' + png),
   onboarding_0: require(ImagePath + 'onboarding_0' + png),
   onboarding_1: require(ImagePath + 'onboarding_1' + png),

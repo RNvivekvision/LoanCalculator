@@ -1,4 +1,4 @@
-package com.loancalculator
+package com.loangol
 
 import android.app.Application
 import com.facebook.react.PackageList

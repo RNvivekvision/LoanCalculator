@@ -13,8 +13,10 @@ import { NativeAd, RenderLanguages } from '../../Components';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import { DummyData, Functions } from '../../Utils';
 import { NavRoutes } from '../../Navigation';
+import { useInset } from '../../Hooks';
 
 const LanguageSelection = ({ navigation }) => {
+  const styles = useStyles();
   const [State, setState] = useState({
     selectedLanguage: DummyData.LanguageSelection[0],
   });
@@ -43,7 +45,7 @@ const LanguageSelection = ({ navigation }) => {
   };
 
   return (
-    <RNContainer>
+    <RNContainer style={styles.container}>
       <RNScrollView safeArea={'top'}>
         <View style={styles.content}>
           <View style={RNStyles.flexRow}>
@@ -77,24 +79,31 @@ const LanguageSelection = ({ navigation }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  content: {
-    paddingHorizontal: wp(5),
-  },
-  trueButton: {
-    width: wp(15),
-    borderRadius: 100,
-    zIndex: 1,
-  },
-  title: {
-    fontSize: FontSize.font18,
-    fontFamily: FontFamily.Medium,
-    paddingBottom: hp(1),
-  },
-  titleDesc: {
-    fontSize: FontSize.font14,
-    color: Colors.White + '50',
-  },
-});
+const useStyles = () => {
+  const inset = useInset();
+
+  return StyleSheet.create({
+    container: {
+      paddingBottom: inset.bottom,
+    },
+    content: {
+      paddingHorizontal: wp(5),
+    },
+    trueButton: {
+      width: wp(15),
+      borderRadius: 100,
+      zIndex: 1,
+    },
+    title: {
+      fontSize: FontSize.font18,
+      fontFamily: FontFamily.Medium,
+      paddingBottom: hp(1),
+    },
+    titleDesc: {
+      fontSize: FontSize.font14,
+      color: Colors.White + '50',
+    },
+  });
+};
 
 export default LanguageSelection;

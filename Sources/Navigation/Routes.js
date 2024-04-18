@@ -3,7 +3,7 @@ import SplashScreen from 'react-native-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavConfigs, NavRoutes } from './index';
-import { useLocalStorage } from '../Hooks';
+import { useGoogleAds, useLocalStorage } from '../Hooks';
 import { Strings } from '../Constants';
 import Drawer from './Drawer';
 import {
@@ -35,20 +35,26 @@ import {
   Theory,
   Welcome,
 } from '../Screens';
+import { useDispatch } from 'react-redux';
+import { getAdData } from '../Redux/ExtraReducers';
 
 const Stack = createStackNavigator();
 
 const Routes = () => {
   const { localdata } = useLocalStorage();
+  const { showAppOpenAd } = useGoogleAds();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     localdata?.lang && Strings.setLanguage(localdata?.lang);
   }, [localdata?.lang]);
 
   useEffect(() => {
+    dispatch(getAdData());
     setTimeout(() => {
       SplashScreen.hide();
-    }, 1000);
+      showAppOpenAd();
+    }, 3000);
   }, []);
 
   const Screens = useCallback(() => {

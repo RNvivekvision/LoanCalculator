@@ -1,0 +1,1 @@
+export { getAdData } from './AdExtraReducer';

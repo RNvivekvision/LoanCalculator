@@ -10,6 +10,7 @@ import {
   RenderOnboarding,
   LOPagginationDots,
   NativeAd,
+  BannerAd,
 } from '../../Components';
 import Reanimated, {
   useAnimatedScrollHandler,
@@ -25,7 +26,7 @@ const Onboarding = ({ navigation }) => {
   }, []);
 
   return (
-    <RNContainer>
+    <RNContainer style={styles.container}>
       <View style={styles.flatlistContainer}>
         <RNIcon
           icon={Images.True}
@@ -50,12 +51,8 @@ const Onboarding = ({ navigation }) => {
         />
       </View>
 
-      <View style={styles.adsContainer}>
-        <View style={styles.fixedAds}>
-          <RNText style={styles.ads}>{'Fix Ads'}</RNText>
-        </View>
-        <NativeAd />
-      </View>
+      <BannerAd />
+      <NativeAd />
     </RNContainer>
   );
 };
@@ -64,6 +61,9 @@ const useStyles = () => {
   const inset = useInset();
 
   return StyleSheet.create({
+    container: {
+      paddingBottom: inset.bottom,
+    },
     trueButton: {
       position: 'absolute',
       top: inset.top + hp(2),
@@ -75,15 +75,6 @@ const useStyles = () => {
     flatlistContainer: {
       flex: 2,
       paddingVertical: hp(4),
-    },
-    fixedAds: {
-      ...RNStyles.center,
-      backgroundColor: Colors.White + '10',
-      paddingVertical: hp(3),
-    },
-    adsContainer: {
-      flex: 1,
-      paddingBottom: inset.bottom,
     },
     ads: {
       fontSize: FontSize.font18,

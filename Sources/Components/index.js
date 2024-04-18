@@ -25,7 +25,7 @@ export {
   LOTopTabs,
   LODropDown,
 };
-export { NativeAd } from './Ads';
+export { BannerAd, NativeAd } from './Ads';
 export {
   RenderOnboarding,
   RenderTerms,

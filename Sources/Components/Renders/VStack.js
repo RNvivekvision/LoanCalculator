@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     width: wp(27),
     height: wp(30),
     marginBottom: hp(2),
-    marginHorizontal: wp(1.8),
+    marginHorizontal: wp(1.7),
     borderRadius: wp(3),
     backgroundColor: Colors.White + '15',
   },

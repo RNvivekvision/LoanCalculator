@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import Reanimated, { FadeInDown } from 'react-native-reanimated';
 import { RNContainer, RNText, RNStyles, RNButton } from '../../Common';
-import { LOTerms, RenderTerms } from '../../Components';
+import { BannerAd, LOTerms, RenderTerms } from '../../Components';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import { Strings } from '../../Constants';
 import { DummyData } from '../../Utils';
@@ -48,7 +48,7 @@ const TermsAndCondition = ({ navigation }) => {
         )}
       />
       <View style={styles.banner}>
-        <RNText>{'For Banner'}</RNText>
+        <BannerAd />
       </View>
     </RNContainer>
   );
@@ -68,14 +68,7 @@ const useStyles = () => {
       paddingBottom: hp(2),
     },
     banner: {
-      ...RNStyles.center,
-      paddingVertical: hp(2),
-      borderWidth: 1,
-      borderColor: Colors.White + '60',
-      borderStyle: 'dashed',
       marginBottom: inset.bottom,
-      marginHorizontal: wp(2),
-      borderRadius: wp(4),
     },
   });
 };

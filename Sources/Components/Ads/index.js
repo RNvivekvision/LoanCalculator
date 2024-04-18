@@ -1,2 +1,3 @@
+import BannerAd from './BannerAd';
 import NativeAd from './NativeAd';
-export { NativeAd };
+export { BannerAd, NativeAd };
