@@ -11,16 +11,18 @@ const BannerAds = () => {
   const unitId = __DEV__ ? TestIds.BANNER : Admob?.banner;
 
   return (
-    <BannerAd
-      size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
-      unitId={unitId}
-      onPaid={e => {
-        // console.log('BannerAd onPaid -> ', e);
-      }}
-      onAdFailedToLoad={error => {
-        console.log('Error BannerAd -> ', error);
-      }}
-    />
+    unitId && (
+      <BannerAd
+        size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+        unitId={unitId}
+        onPaid={e => {
+          // console.log('BannerAd onPaid -> ', e);
+        }}
+        onAdFailedToLoad={error => {
+          console.log('Error BannerAd -> ', error);
+        }}
+      />
+    )
   );
 };
 

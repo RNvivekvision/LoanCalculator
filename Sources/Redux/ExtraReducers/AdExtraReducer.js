@@ -1,12 +1,11 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import DeviceInfo from 'react-native-device-info';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { FetchMethod, URL } from '../../Api';
 import { DummyData } from '../../Utils';
 
 const getAdData = createAsyncThunk('getAdData', async () => {
   try {
     const device = await DeviceInfo.getAndroidId();
-    console.log({ device });
     const ipaddress = await DeviceInfo.getIpAddress();
     const version = await DeviceInfo.getVersion();
 
@@ -14,12 +13,13 @@ const getAdData = createAsyncThunk('getAdData', async () => {
       logo: DummyData.appInfo.appIconBase64,
       appName: DummyData.appInfo.appName,
       packageName: DummyData.appInfo.packageName,
-      apiKeyText: 'none',
+      apiKeyText: DummyData.appInfo.appName,
       device: device,
       keyForm: __DEV__ ? 'Debug' : 'Release',
       ipaddress: ipaddress,
       version: version,
     };
+    // console.log('Params -> ', JSON.stringify(Params, null, 2));
 
     const response = await FetchMethod.POST({
       EndPoint: URL.createAppRequest,

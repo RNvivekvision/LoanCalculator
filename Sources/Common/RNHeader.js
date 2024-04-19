@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Colors, FontFamily, FontSize, hp, wp } from '../Theme';
 import { RNIcon, RNStyles, RNText, RNScrollView } from './index';
 import { Images } from '../Constants';
-import { useInset } from '../Hooks';
+import { useInset, useUserClicks } from '../Hooks';
 
 const RNHeader = ({
   title,
@@ -17,8 +17,13 @@ const RNHeader = ({
   drawer,
   noScroll,
 }) => {
+  const { increaseCount } = useUserClicks();
   const navigation = useNavigation();
   const styles = useStyles();
+  const onBackPress = () => {
+    increaseCount();
+    drawer ? navigation.openDrawer() : navigation.goBack();
+  };
 
   return (
     <View style={RNStyles.container}>
@@ -26,9 +31,7 @@ const RNHeader = ({
         <RNIcon
           icon={drawer ? Images.Drawer : Images.Back}
           iconStyle={RNStyles.image60}
-          onPress={() =>
-            drawer ? navigation.openDrawer() : navigation.goBack()
-          }
+          onPress={onBackPress}
           containerStyle={styles.icon}
         />
         <RNText style={[styles.title, titleStyle]}>{title}</RNText>

@@ -35,12 +35,14 @@ import {
   Theory,
   Welcome,
 } from '../Screens';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAdData } from '../Redux/ExtraReducers';
 
 const Stack = createStackNavigator();
 
 const Routes = () => {
+  // const { userClicks } = useSelector(({ UserReducer }) => UserReducer);
+  // console.log({ userClicks });
   const { localdata } = useLocalStorage();
   const { showAppOpenAd } = useGoogleAds();
   const dispatch = useDispatch();

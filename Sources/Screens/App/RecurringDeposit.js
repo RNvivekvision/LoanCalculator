@@ -11,8 +11,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
+import { useUserClicks } from '../../Hooks';
 
 const RecurringDeposit = () => {
+  const { increaseCount } = useUserClicks();
   const [State, setState] = useState({
     investmentAmount: '',
     expectedRateOfInterest: '',
@@ -26,6 +28,8 @@ const RecurringDeposit = () => {
   });
 
   const onCalculatePress = () => {
+    increaseCount();
+
     // Convert strings to numbers
     const investment = parseFloat(State.investmentAmount);
     const rate = parseFloat(State.expectedRateOfInterest);

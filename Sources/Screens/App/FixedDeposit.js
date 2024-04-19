@@ -11,8 +11,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
+import { useUserClicks } from '../../Hooks';
 
 const FixedDeposit = () => {
+  const { increaseCount } = useUserClicks();
   const [State, setState] = useState({
     investmentAmount: '',
     expectedRateOfInterest: '',
@@ -26,6 +28,7 @@ const FixedDeposit = () => {
   });
 
   const onCalculatePress = () => {
+    increaseCount();
     const tenureInMonths = Functions.tenure(State.tenure, State.isYear);
     const maturityDate = new Date(State.date);
     maturityDate.setMonth(maturityDate.getMonth() + tenureInMonths);

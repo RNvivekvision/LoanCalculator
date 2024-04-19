@@ -3,23 +3,27 @@ import { StyleSheet, View } from 'react-native';
 import { RNImage, RNStyles, RNText } from '../../Common';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import Reanimated, { FadeInDown } from 'react-native-reanimated';
+import { NativeAd } from '../Ads';
 
 const RenderTabContent = ({ item, index }) => {
   return (
-    <Reanimated.View
-      entering={FadeInDown.delay(index * 100)}
-      style={styles.container}>
-      <RNImage source={item.image} style={styles.image} />
-      <View style={styles.content}>
-        <RNText family={FontFamily.Medium}>{item.title}</RNText>
-        <RNText
-          size={FontSize.font12}
-          family={FontFamily.Medium}
-          color={Colors.White + '50'}>
-          {item.text}
-        </RNText>
-      </View>
-    </Reanimated.View>
+    <>
+      {item?.showNativeAd && <NativeAd />}
+      <Reanimated.View
+        entering={FadeInDown.delay(index * 100)}
+        style={styles.container}>
+        <RNImage source={item.image} style={styles.image} />
+        <View style={styles.content}>
+          <RNText family={FontFamily.Medium}>{item.title}</RNText>
+          <RNText
+            size={FontSize.font12}
+            family={FontFamily.Medium}
+            color={Colors.White + '50'}>
+            {item.text}
+          </RNText>
+        </View>
+      </Reanimated.View>
+    </>
   );
 };
 

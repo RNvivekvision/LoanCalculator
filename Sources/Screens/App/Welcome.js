@@ -9,13 +9,16 @@ import {
   RNText,
 } from '../../Common';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
+import { useInset, useUserClicks } from '../../Hooks';
 import { Images, Strings } from '../../Constants';
 import { NativeAd } from '../../Components';
 import { NavRoutes } from '../../Navigation';
 import { Functions } from '../../Utils';
-import { useInset } from '../../Hooks';
+import { useSelector } from 'react-redux';
 
 const Welcome = ({ navigation }) => {
+  const { adDataLoading } = useSelector(({ UserReducer }) => UserReducer);
+  const { increaseCount } = useUserClicks();
   const [State, setState] = useState(false);
   const styles = useStyles();
 
@@ -23,7 +26,13 @@ const Welcome = ({ navigation }) => {
     setState(true);
   }, []);
 
+  const onStartAppPress = () => {
+    increaseCount();
+    navigation.replace(NavRoutes.Home);
+  };
+
   const onInvitePress = async () => {
+    // increaseCount();
     try {
       await Functions.ShareApp();
     } catch (e) {
@@ -33,6 +42,7 @@ const Welcome = ({ navigation }) => {
 
   const onPrivacyPolicyPress = async () => {
     try {
+      // increaseCount();
     } catch (e) {
       console.log('Error onPrivacyPolicyPress -> ', e);
     }
@@ -40,6 +50,7 @@ const Welcome = ({ navigation }) => {
 
   const onRateUsPress = async () => {
     try {
+      // increaseCount();
       await Functions.RateUs({
         onSuccess: s => console.log('Welcome rate us Success -> ', s),
         onError: e => console.log('Welcome rate us Error -> ', e),
@@ -50,7 +61,7 @@ const Welcome = ({ navigation }) => {
   };
 
   return (
-    <RNContainer style={styles.container}>
+    <RNContainer style={styles.container} isLoading={adDataLoading}>
       <View style={styles.content}>
         <RNScrollView safeArea={'top'}>
           <RNText size={FontSize.font18} family={FontFamily.Bold}>
@@ -73,7 +84,7 @@ const Welcome = ({ navigation }) => {
           <RNButton
             title={Strings.StartApp}
             style={{ marginVertical: hp(2) }}
-            onPress={() => navigation.replace(NavRoutes.Home)}
+            onPress={onStartAppPress}
           />
 
           <View style={RNStyles.flexRow}>

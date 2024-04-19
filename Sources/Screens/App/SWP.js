@@ -11,8 +11,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
+import { useUserClicks } from '../../Hooks';
 
 const SWP = () => {
+  const { increaseCount } = useUserClicks();
   const [State, setState] = useState({
     investmentAmount: '',
     expectedRateOfInterest: '',
@@ -27,6 +29,7 @@ const SWP = () => {
   });
 
   const onCalculatePress = () => {
+    increaseCount();
     // Retrieve values from State
     const {
       investmentAmount,

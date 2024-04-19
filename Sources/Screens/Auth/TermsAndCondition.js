@@ -6,10 +6,11 @@ import { BannerAd, LOTerms, RenderTerms } from '../../Components';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import { Strings } from '../../Constants';
 import { DummyData } from '../../Utils';
-import { useInset } from '../../Hooks';
+import { useInset, useUserClicks } from '../../Hooks';
 import { NavRoutes } from '../../Navigation';
 
 const TermsAndCondition = ({ navigation }) => {
+  const { increaseCount } = useUserClicks();
   const styles = useStyles();
 
   const Header = () => {
@@ -18,6 +19,11 @@ const TermsAndCondition = ({ navigation }) => {
 
   const Footer = () => {
     const [State, setState] = useState({ isChecked: true });
+
+    const onAnnouncingPress = () => {
+      increaseCount();
+      navigation.navigate(NavRoutes.LanguageSelection);
+    };
 
     return (
       <Reanimated.View entering={FadeInDown.delay(600)}>
@@ -29,7 +35,7 @@ const TermsAndCondition = ({ navigation }) => {
           disable={!State.isChecked}
           title={Strings.Announcing}
           style={{ marginVertical: hp(2) }}
-          onPress={() => navigation.navigate(NavRoutes.LanguageSelection)}
+          onPress={onAnnouncingPress}
         />
       </Reanimated.View>
     );

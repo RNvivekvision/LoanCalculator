@@ -8,15 +8,14 @@ import NativeAdView, {
   StarRatingView,
   StoreView,
   TaglineView,
+  TestIds,
 } from 'react-native-admob-native-ads';
 import { RNStyles } from '../../Common';
 import { useSelector } from 'react-redux';
 
-const testNativeAdId = 'ca-app-pub-3940256099942544/2247696110';
-
 const NativeAd = () => {
-  const { adData, Admob } = useSelector(({ UserReducer }) => UserReducer);
-  const adUnitID = __DEV__ ? testNativeAdId : Admob?.nativeAdvanced;
+  const { Admob } = useSelector(({ UserReducer }) => UserReducer);
+  const adUnitID = __DEV__ ? TestIds.Image : Admob?.nativeAdvanced;
   const [State, setState] = useState({ showButton: false });
   const NativeAdRef = useRef();
 
@@ -25,42 +24,44 @@ const NativeAd = () => {
   }, []);
 
   return (
-    <NativeAdView
-      ref={NativeAdRef}
-      adUnitID={adUnitID}
-      onAdLoaded={() => setState(p => ({ ...p, showButton: true }))}
-      onAdFailedToLoad={() => setState(p => ({ ...p, showButton: false }))}>
-      <View style={styles.container}>
-        <IconView style={styles.iconView} />
+    adUnitID && (
+      <NativeAdView
+        ref={NativeAdRef}
+        adUnitID={adUnitID}
+        onAdLoaded={() => setState(p => ({ ...p, showButton: true }))}
+        onAdFailedToLoad={() => setState(p => ({ ...p, showButton: false }))}>
+        <View style={styles.container}>
+          <IconView style={styles.iconView} />
 
-        <View style={styles.content}>
-          <HeadlineView hello="abc" style={styles.headlineView} />
-          <TaglineView numberOfLines={2} style={styles.taglineView} />
+          <View style={styles.content}>
+            <HeadlineView hello="abc" style={styles.headlineView} />
+            <TaglineView numberOfLines={2} style={styles.taglineView} />
 
-          <View style={styles.storeViewContainer}>
-            <StoreView style={styles.taglineView} />
-            <StarRatingView
-              starSize={12}
-              fullStarColor={Colors.Button}
-              emptyStarColor={Colors.White}
-              style={styles.starRating}
-            />
+            <View style={styles.storeViewContainer}>
+              <StoreView style={styles.taglineView} />
+              <StarRatingView
+                starSize={12}
+                fullStarColor={Colors.Button}
+                emptyStarColor={Colors.White}
+                style={styles.starRating}
+              />
+            </View>
           </View>
-        </View>
 
-        {State.showButton && (
-          <CallToActionView
-            style={styles.button}
-            allCaps={true}
-            textStyle={{
-              fontSize: FontSize.font12,
-              fontFamily: FontFamily.Bold,
-              color: Colors.White,
-            }}
-          />
-        )}
-      </View>
-    </NativeAdView>
+          {State.showButton && (
+            <CallToActionView
+              style={styles.button}
+              allCaps={true}
+              textStyle={{
+                fontSize: FontSize.font12,
+                fontFamily: FontFamily.Bold,
+                color: Colors.White,
+              }}
+            />
+          )}
+        </View>
+      </NativeAdView>
+    )
   );
 };
 

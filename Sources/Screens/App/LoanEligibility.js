@@ -10,8 +10,10 @@ import {
   LOYearMonth,
   NativeAd,
 } from '../../Components';
+import { useUserClicks } from '../../Hooks';
 
 const LoanEligibility = () => {
+  const { increaseCount } = useUserClicks();
   const [State, setState] = useState({
     grossMonthlyIncome: '',
     totalMonthlyEmi: '',
@@ -24,6 +26,7 @@ const LoanEligibility = () => {
   });
 
   const onCalculatePress = () => {
+    increaseCount();
     const monthlyInterestRate = parseFloat(State.interestRate) / 100 / 12;
     const totalMonths = State.isYear
       ? parseInt(State.tenure) * 12

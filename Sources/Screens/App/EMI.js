@@ -11,8 +11,10 @@ import {
   LOButtons,
 } from '../../Components';
 import { Functions } from '../../Utils';
+import { useUserClicks } from '../../Hooks';
 
 const EMI = () => {
+  const { increaseCount } = useUserClicks();
   const [State, setState] = useState({
     principalAmount: '',
     interest: '',
@@ -33,6 +35,7 @@ const EMI = () => {
   };
 
   const onCalculatePress = () => {
+    increaseCount();
     const { principalAmount, interest, loanTenure, isYear, date } = State;
     const tenureMonths = isYear ? 12 * loanTenure : loanTenure;
 

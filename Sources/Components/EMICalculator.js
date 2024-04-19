@@ -6,9 +6,15 @@ import { Images, Strings } from '../Constants';
 import { useNavigation } from '@react-navigation/native';
 import { NavRoutes } from '../Navigation';
 import Reanimated, { ZoomIn } from 'react-native-reanimated';
+import { useUserClicks } from '../Hooks';
 
 const EMICalculator = () => {
+  const { increaseCount } = useUserClicks();
   const navigation = useNavigation();
+  const onPress = () => {
+    increaseCount();
+    navigation.navigate(NavRoutes.EMI);
+  };
   return (
     <Reanimated.View entering={ZoomIn.delay(200)} style={styles.container}>
       <View style={styles.content}>
@@ -28,7 +34,7 @@ const EMICalculator = () => {
           title={Strings.CalculateNow}
           style={styles.button}
           textStyle={styles.buttonText}
-          onPress={() => navigation.navigate(NavRoutes.EMI)}
+          onPress={onPress}
         />
       </View>
       <RNImage source={Images.EmiCalculator} style={styles.EmiCalculator} />

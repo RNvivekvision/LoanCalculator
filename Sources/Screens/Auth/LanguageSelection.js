@@ -13,9 +13,10 @@ import { NativeAd, RenderLanguages } from '../../Components';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import { DummyData, Functions } from '../../Utils';
 import { NavRoutes } from '../../Navigation';
-import { useInset } from '../../Hooks';
+import { useInset, useUserClicks } from '../../Hooks';
 
 const LanguageSelection = ({ navigation }) => {
+  const { increaseCount } = useUserClicks();
   const styles = useStyles();
   const [State, setState] = useState({
     selectedLanguage: DummyData.LanguageSelection[0],
@@ -34,6 +35,7 @@ const LanguageSelection = ({ navigation }) => {
       if (isRtl) {
         RNRestart.restart();
       } else {
+        increaseCount();
         navigation.reset({
           index: 0,
           routes: [{ name: NavRoutes.Welcome }],

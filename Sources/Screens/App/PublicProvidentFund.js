@@ -10,8 +10,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
+import { useUserClicks } from '../../Hooks';
 
 const PublicProvidentFund = () => {
+  const { increaseCount } = useUserClicks();
   const [State, setState] = useState({
     investmentAmount: '',
     rateOfInterest: '',
@@ -24,6 +26,8 @@ const PublicProvidentFund = () => {
   });
 
   const onCalculatePress = () => {
+    increaseCount();
+
     // Convert rate of interest to a decimal
     const interestRate = parseFloat(State.rateOfInterest) / 100;
 

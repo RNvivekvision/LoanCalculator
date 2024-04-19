@@ -4,15 +4,23 @@ import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import { RNImage, RNStyles, RNText } from '../../Common';
 import { useNavigation } from '@react-navigation/native';
 import Reanimated, { ZoomIn } from 'react-native-reanimated';
+import { useUserClicks } from '../../Hooks';
 
 const HStack = ({ item, index }) => {
+  const { increaseCount } = useUserClicks();
   const navigation = useNavigation();
+
+  const onPress = () => {
+    increaseCount();
+    navigation.navigate(item.navigate);
+  };
+
   return (
     <Reanimated.View
       entering={ZoomIn.delay(index * 200)}
       style={styles.container}>
       <TouchableOpacity
-        onPress={() => navigation.navigate(item.navigate)}
+        onPress={onPress}
         activeOpacity={0.6}
         style={styles.card}>
         <View style={styles.image}>

@@ -296,6 +296,7 @@ const useDummyData = () => {
             image: Images.Bank_Saving,
             title: Strings.Saving,
             text: Strings.Theory,
+            showNativeAd: true,
           },
           {
             image: Images.Bank_LoanToDepositeRatio,
@@ -358,6 +359,7 @@ const useDummyData = () => {
             image: Images.Finance_EMI,
             title: Strings.EMI,
             text: Strings.Theory,
+            showNativeAd: true,
           },
           {
             image: Images.Finance_Mortgage,
@@ -420,6 +422,7 @@ const useDummyData = () => {
             image: Images.Business_SWOT,
             title: Strings.SWOTAnalysis,
             text: Strings.Theory,
+            showNativeAd: true,
           },
           {
             image: Images.Business_Product,
@@ -457,6 +460,7 @@ const useDummyData = () => {
             image: Images.Stock_Share,
             title: Strings.ShareMarket,
             text: Strings.Theory,
+            showNativeAd: true,
           },
           {
             image: Images.Stock_BullBear,

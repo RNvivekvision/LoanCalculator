@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { RNStyles, RNIcon, RNText, RNContainer } from '../../Common';
-import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
+import { RNIcon, RNContainer } from '../../Common';
+import { FontFamily, FontSize, hp, wp } from '../../Theme';
 import { Images } from '../../Constants';
 import { DummyData } from '../../Utils';
 import { NavRoutes } from '../../Navigation';
-import { useInset } from '../../Hooks';
+import { useInset, useUserClicks } from '../../Hooks';
 import {
   RenderOnboarding,
   LOPagginationDots,
@@ -18,6 +18,7 @@ import Reanimated, {
 } from 'react-native-reanimated';
 
 const Onboarding = ({ navigation }) => {
+  const { increaseCount } = useUserClicks();
   const scroll = useSharedValue(0);
   const styles = useStyles();
 
@@ -25,13 +26,18 @@ const Onboarding = ({ navigation }) => {
     scroll.value = contentOffset.x;
   }, []);
 
+  const onTrueIconPress = () => {
+    increaseCount();
+    navigation.navigate(NavRoutes.TermsAndCondition);
+  };
+
   return (
     <RNContainer style={styles.container}>
       <View style={styles.flatlistContainer}>
         <RNIcon
           icon={Images.True}
           containerStyle={styles.trueButton}
-          onPress={() => navigation.navigate(NavRoutes.TermsAndCondition)}
+          onPress={onTrueIconPress}
         />
         <Reanimated.FlatList
           data={DummyData.onboarding}
