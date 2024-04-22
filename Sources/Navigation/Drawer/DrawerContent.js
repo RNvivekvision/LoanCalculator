@@ -6,22 +6,28 @@ import { useInset, useDummyData } from '../../Hooks';
 import { Images, Strings } from '../../Constants';
 import { RenderDrawer } from '../../Components';
 import { Functions } from '../../Utils';
+import { useSelector } from 'react-redux';
 
 const DrawerContent = ({ navigation }) => {
+  const { adData } = useSelector(({ UserReducer }) => UserReducer);
+  console.log('adData -> ', JSON.stringify(adData, null, 2));
   const { Drawer } = useDummyData();
   const styles = useStyles();
 
   const onDrawerPress = async item => {
     try {
+      console.log({ item });
+      if (item.share) {
+        await Functions.ShareApp();
+      }
       if (item.rateUs) {
         await Functions.RateUs({
           onSuccess: s => console.log('Drawer rate us Success -> ', s),
           onError: e => console.log('Drawer rate us Error -> ', e),
         });
       }
-
-      if (item.share) {
-        await Functions.ShareApp();
+      if (item.privacyPolicy) {
+        Functions.OpenUrl(adData?.appPrivacyPolicyLink);
       }
 
       setTimeout(() => {

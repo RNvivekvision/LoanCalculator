@@ -14,7 +14,7 @@ const getAdData = createAsyncThunk('getAdData', async () => {
       appName: DummyData.appInfo.appName,
       packageName: DummyData.appInfo.packageName,
       apiKeyText: DummyData.appInfo.appName,
-      device: device,
+      device: device === 'unknown' ? '84361f1427227255' : device,
       keyForm: __DEV__ ? 'Debug' : 'Release',
       ipaddress: ipaddress,
       version: version,
@@ -26,7 +26,7 @@ const getAdData = createAsyncThunk('getAdData', async () => {
       NeedToken: false,
       Params: Params,
     });
-    console.log('getAdData -> ', JSON.stringify(response, null, 2));
+    // console.log('getAdData -> ', JSON.stringify(response, null, 2));
     if (response?.isSuccess) {
       return response?.data;
     }

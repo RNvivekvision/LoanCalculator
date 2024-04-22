@@ -23,22 +23,22 @@ const useGoogleAds = () => {
 
   const appState = useRef(AppState.currentState);
 
-  useEffect(() => {
-    const subscription = AppState.addEventListener('change', nextAppState => {
-      if (
-        appState.current.match(/inactive|background/) &&
-        nextAppState === 'active'
-      ) {
-        show(appOpenAd);
-      }
-      // console.log('App state -> ', nextAppState);
-      appState.current = nextAppState;
-    });
+  // useEffect(() => {
+  //   const subscription = AppState.addEventListener('change', nextAppState => {
+  //     if (
+  //       appState.current.match(/inactive|background/) &&
+  //       nextAppState === 'active'
+  //     ) {
+  //       show(appOpenAd);
+  //     }
+  //     // console.log('App state -> ', nextAppState);
+  //     appState.current = nextAppState;
+  //   });
 
-    return () => {
-      subscription.remove();
-    };
-  }, []);
+  //   return () => {
+  //     subscription.remove();
+  //   };
+  // }, [adData]);
 
   useEffect(() => {
     const interstitialLoaded = interstitialAd.addAdEventListener(
@@ -70,24 +70,22 @@ const useGoogleAds = () => {
       rewardedLoad();
       rewardedEarn();
     };
-  }, []);
+  }, [adData]);
 
   const show = method => {
-    console.log('adData -> ', JSON.stringify(adData?.showAdInApp, null, 2));
-    if (method.loaded) {
+    const s = !adData?.showAdInApp;
+    if (method.loaded && s) {
       method.show();
     } else {
       method.load();
     }
   };
 
-  const showAds = useMemo(() => {
-    return {
-      showAppOpenAd: () => adData?.showAdInApp && show(appOpenAd),
-      showInterstitialAd: () => adData?.showAdInApp && show(interstitialAd),
-      showRewardAd: () => adData?.showAdInApp && show(rewardAd),
-    };
-  }, [adData?.showAdInApp]);
+  const showAds = {
+    showAppOpenAd: () => show(appOpenAd),
+    showInterstitialAd: () => show(interstitialAd),
+    showRewardAd: () => show(rewardAd),
+  };
 
   return showAds;
 };

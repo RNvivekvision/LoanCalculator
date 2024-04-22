@@ -3,7 +3,7 @@ import SplashScreen from 'react-native-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavConfigs, NavRoutes } from './index';
-import { useGoogleAds, useLocalStorage } from '../Hooks';
+import { useLocalStorage } from '../Hooks';
 import { Strings } from '../Constants';
 import Drawer from './Drawer';
 import {
@@ -37,27 +37,64 @@ import {
 } from '../Screens';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAdData } from '../Redux/ExtraReducers';
+import { AdSettings } from 'react-native-fbads';
 
 const Stack = createStackNavigator();
 
 const Routes = () => {
-  // const { userClicks } = useSelector(({ UserReducer }) => UserReducer);
+  const { adData } = useSelector(({ UserReducer }) => UserReducer);
   // console.log({ userClicks });
   const { localdata } = useLocalStorage();
-  const { showAppOpenAd } = useGoogleAds();
+  // const { showAppOpenAd } = useGoogleAds();
   const dispatch = useDispatch();
 
   useEffect(() => {
     localdata?.lang && Strings.setLanguage(localdata?.lang);
   }, [localdata?.lang]);
 
+  // useEffect(() => {
+  //   if (adData) {
+  //     SplashScreen.hide();
+  //     setTimeout(() => {
+  //       showAppOpenAd();
+  //     }, 1000);
+  //   }
+  // }, [adData]);
+
   useEffect(() => {
-    dispatch(getAdData());
     setTimeout(() => {
       SplashScreen.hide();
-      showAppOpenAd();
-    }, 3000);
+    }, 1000);
   }, []);
+
+  useEffect(() => {
+    Init();
+    return () => AdSettings.clearTestDevices();
+  }, []);
+
+  useEffect(() => {
+    dispatch(getAdData());
+  }, []);
+
+  const Init = async () => {
+    try {
+      console.log('currentDeviceHash -> ', AdSettings.currentDeviceHash);
+      AdSettings.setLogLevel('debug');
+      AdSettings.addTestDevice(AdSettings.currentDeviceHash);
+      const requestedStatus = await AdSettings.requestTrackingPermission();
+      if (
+        requestedStatus === 'authorized' ||
+        requestedStatus === 'unavailable'
+      ) {
+        AdSettings.setAdvertiserIDCollectionEnabled(true);
+        // Both calls are not related to each other
+        // FB won't deliver any ads if this is set to false or not called at all.
+        AdSettings.setAdvertiserTrackingEnabled(true);
+      }
+    } catch (e) {
+      console.log('Error Init facebook -> ', e);
+    }
+  };
 
   const Screens = useCallback(() => {
     return (
