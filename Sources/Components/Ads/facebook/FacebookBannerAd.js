@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 const FacebookBannerAd = () => {
   const { bannerId } = useFacebookAds();
   const { fbAds } = useSelector(({ UserReducer }) => UserReducer);
-  console.log('FacebookBannerAd fbAds-> ', fbAds);
 
   return (
     bannerId && (

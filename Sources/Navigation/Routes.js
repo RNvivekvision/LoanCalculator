@@ -63,11 +63,11 @@ const Routes = () => {
 
   const Init = async () => {
     try {
-      console.log('currentDeviceHash -> ', AdSettings.currentDeviceHash);
+      // console.log('currentDeviceHash -> ', AdSettings.currentDeviceHash);
       AdSettings.setLogLevel('debug');
       AdSettings.addTestDevice(AdSettings.currentDeviceHash);
       const requestedStatus = await AdSettings.requestTrackingPermission();
-      console.log({ requestedStatus });
+      // console.log('requestedStatus -> ', requestedStatus);
       if (
         requestedStatus === 'authorized' ||
         requestedStatus === 'unavailable'

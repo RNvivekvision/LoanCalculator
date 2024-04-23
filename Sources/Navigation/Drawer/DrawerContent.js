@@ -1,16 +1,15 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { RNImage, RNStyles, RNText } from '../../Common';
+import { useSelector } from 'react-redux';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
+import { RNImage, RNStyles, RNText } from '../../Common';
 import { useInset, useDummyData } from '../../Hooks';
 import { Images, Strings } from '../../Constants';
 import { RenderDrawer } from '../../Components';
 import { Functions } from '../../Utils';
-import { useSelector } from 'react-redux';
 
 const DrawerContent = ({ navigation }) => {
   const { adData } = useSelector(({ UserReducer }) => UserReducer);
-  console.log('adData -> ', JSON.stringify(adData, null, 2));
   const { Drawer } = useDummyData();
   const styles = useStyles();
 

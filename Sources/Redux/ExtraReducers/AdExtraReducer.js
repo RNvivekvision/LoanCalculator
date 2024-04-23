@@ -11,7 +11,7 @@ const getAdData = createAsyncThunk('getAdData', async () => {
     const version = await DeviceInfo.getVersion();
 
     const Params = {
-      logo: 'base64' || DummyData.appInfo.appIconBase64,
+      logo: DummyData.appInfo.appIconBase64,
       appName: DummyData.appInfo.appName,
       packageName: DummyData.appInfo.packageName,
       apiKeyText: DummyData.appInfo.appName,

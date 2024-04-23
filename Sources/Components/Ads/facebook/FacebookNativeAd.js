@@ -15,7 +15,6 @@ import { useSelector } from 'react-redux';
 const FacebookNativeAd = () => {
   const { nativeId } = useFacebookAds();
   const { fbAds } = useSelector(({ UserReducer }) => UserReducer);
-  console.log('FacebookNativeAd fbAds-> ', fbAds);
 
   const adsManager = new NativeAdsManager(nativeId, 3);
 

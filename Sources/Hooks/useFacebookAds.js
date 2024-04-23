@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 
 const useFacebookAds = () => {
   const { fbAds } = useSelector(({ UserReducer }) => UserReducer);
-  console.log({ fbAds });
 
   const bannerId = __DEV__
     ? IMG_16_9_APP_INSTALL +
