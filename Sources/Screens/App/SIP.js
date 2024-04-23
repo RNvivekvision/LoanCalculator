@@ -11,10 +11,8 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
-import { useUserClicks } from '../../Hooks';
 
 const SIP = () => {
-  const { increaseCount } = useUserClicks();
   const [State, setState] = useState({
     investment: '',
     interest: '',
@@ -28,8 +26,6 @@ const SIP = () => {
   });
 
   const onCalculatePress = () => {
-    increaseCount();
-
     // Parse start date
     const startDateObj = new Date(State.date);
 

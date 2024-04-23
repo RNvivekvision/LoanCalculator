@@ -5,12 +5,10 @@ import { LOContainer, LOInput, NativeAd, LODropDown } from '../../Components';
 import { Colors, FontFamily, hp } from '../../Theme';
 import { DummyData, Functions } from '../../Utils';
 import { Strings } from '../../Constants';
-import { useUserClicks } from '../../Hooks';
 
 const { currencies, exchangeRates } = DummyData.CurrencyConversion;
 
 const CurrencyConversion = () => {
-  const { increaseCount } = useUserClicks();
   const [State, setState] = useState({
     amount: '',
     currencyOfTheAmount: currencies[0],
@@ -18,7 +16,6 @@ const CurrencyConversion = () => {
   });
 
   const onCalculatePress = () => {
-    increaseCount();
     const convertedCurrencies = currencies.map(currency => {
       const convertedAmount =
         (parseFloat(State.amount) * exchangeRates[currency.label]) /

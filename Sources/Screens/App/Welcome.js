@@ -9,7 +9,7 @@ import {
   RNText,
 } from '../../Common';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
-import { useInset, useUserClicks } from '../../Hooks';
+import { useInset } from '../../Hooks';
 import { Images, Strings } from '../../Constants';
 import { NativeAd } from '../../Components';
 import { NavRoutes } from '../../Navigation';
@@ -18,7 +18,6 @@ import { useSelector } from 'react-redux';
 
 const Welcome = ({ navigation }) => {
   const { adDataLoading } = useSelector(({ UserReducer }) => UserReducer);
-  const { increaseCount } = useUserClicks();
   const [State, setState] = useState(false);
   const styles = useStyles();
 
@@ -27,7 +26,6 @@ const Welcome = ({ navigation }) => {
   }, []);
 
   const onStartAppPress = () => {
-    increaseCount();
     navigation.replace(NavRoutes.Home);
   };
 

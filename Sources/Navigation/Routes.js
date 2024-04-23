@@ -35,33 +35,22 @@ import {
   Theory,
   Welcome,
 } from '../Screens';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getAdData } from '../Redux/ExtraReducers';
 import { AdSettings } from 'react-native-fbads';
 
 const Stack = createStackNavigator();
 
 const Routes = () => {
-  const { adData } = useSelector(({ UserReducer }) => UserReducer);
-  // console.log({ userClicks });
   const { localdata } = useLocalStorage();
-  // const { showAppOpenAd } = useGoogleAds();
   const dispatch = useDispatch();
 
   useEffect(() => {
     localdata?.lang && Strings.setLanguage(localdata?.lang);
   }, [localdata?.lang]);
 
-  // useEffect(() => {
-  //   if (adData) {
-  //     SplashScreen.hide();
-  //     setTimeout(() => {
-  //       showAppOpenAd();
-  //     }, 1000);
-  //   }
-  // }, [adData]);
-
   useEffect(() => {
+    dispatch(getAdData());
     setTimeout(() => {
       SplashScreen.hide();
     }, 1000);
@@ -72,16 +61,13 @@ const Routes = () => {
     return () => AdSettings.clearTestDevices();
   }, []);
 
-  useEffect(() => {
-    dispatch(getAdData());
-  }, []);
-
   const Init = async () => {
     try {
       console.log('currentDeviceHash -> ', AdSettings.currentDeviceHash);
       AdSettings.setLogLevel('debug');
       AdSettings.addTestDevice(AdSettings.currentDeviceHash);
       const requestedStatus = await AdSettings.requestTrackingPermission();
+      console.log({ requestedStatus });
       if (
         requestedStatus === 'authorized' ||
         requestedStatus === 'unavailable'

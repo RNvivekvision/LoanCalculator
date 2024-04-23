@@ -1,0 +1,22 @@
+diff --git a/node_modules/react-native-fbads/ios/ReactNativeAdsFacebook/EXAdSettingsManager.m b/node_modules/react-native-fbads/ios/ReactNativeAdsFacebook/EXAdSettingsManager.m
+index 56bb991..335f874 100644
+--- a/node_modules/react-native-fbads/ios/ReactNativeAdsFacebook/EXAdSettingsManager.m
++++ b/node_modules/react-native-fbads/ios/ReactNativeAdsFacebook/EXAdSettingsManager.m
+@@ -7,7 +7,7 @@
+ #import <FBAudienceNetwork/FBAudienceNetwork.h>
+ #import <AppTrackingTransparency/AppTrackingTransparency.h>
+ 
+-#import <FBSDKCoreKit/FBSDKSettings.h>
++// #import <FBSDKCoreKit/FBSDKSettings.h>
+ 
+ @implementation RCTConvert (EXNativeAdView)
+ 
+@@ -126,7 +126,7 @@ RCT_EXPORT_METHOD(requestTrackingPermission:(RCTPromiseResolveBlock)resolve reje
+ 
+ RCT_EXPORT_METHOD(setAdvertiserIDCollectionEnabled:(BOOL)enabled)
+ {
+-    [FBSDKSettings setAdvertiserIDCollectionEnabled:enabled];
++    // [FBSDKSettings setAdvertiserIDCollectionEnabled:enabled];
+ }
+ 
+ 

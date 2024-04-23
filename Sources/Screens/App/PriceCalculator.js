@@ -3,10 +3,8 @@ import { RNButton, RNContainer, RNHeader } from '../../Common';
 import { Strings } from '../../Constants';
 import { LOContainer, LOInput, LOResult, NativeAd } from '../../Components';
 import { Functions } from '../../Utils';
-import { useUserClicks } from '../../Hooks';
 
 const PriceCalculator = () => {
-  const { increaseCount } = useUserClicks();
   const [State, setState] = useState({
     cost: '',
     grossMargin: '',
@@ -14,7 +12,6 @@ const PriceCalculator = () => {
   });
 
   const onCalculatePress = () => {
-    increaseCount();
     const costValue = parseFloat(State.cost);
     const grossMarginValue = parseFloat(State.grossMargin) / 100; // Convert percentage to decimal
     const sellingPrice = costValue + costValue * grossMarginValue;

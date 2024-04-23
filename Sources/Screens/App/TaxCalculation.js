@@ -11,10 +11,8 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
-import { useUserClicks } from '../../Hooks';
 
 const TaxCalculation = () => {
-  const { increaseCount } = useUserClicks();
   const [State, setState] = useState({
     amount: '',
     rateOfTax: '',
@@ -24,7 +22,6 @@ const TaxCalculation = () => {
   });
 
   const onCalculatePress = () => {
-    increaseCount();
     const amount = parseFloat(State.amount);
     const interest = parseFloat(State.rateOfTax);
     const tax = Functions.toFixed(amount * (interest / 100));

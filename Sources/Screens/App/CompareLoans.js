@@ -12,10 +12,8 @@ import {
   RNText,
 } from '../../Common';
 import { Functions } from '../../Utils';
-import { useUserClicks } from '../../Hooks';
 
 const CompareLoans = () => {
-  const { increaseCount } = useUserClicks();
   const [State, setState] = useState({
     loan1: {
       principalAmount: '',
@@ -48,7 +46,6 @@ const CompareLoans = () => {
   // console.log('State -> ', JSON.stringify(State, null, 2));
 
   const onCalculatePress = () => {
-    increaseCount();
     const { tenure, EMI, toFixed } = Functions;
     const tenure1 = tenure(State.loan1.loanTenure, State.isYear);
     const tenure2 = tenure(State.loan2.loanTenure, State.isYear);

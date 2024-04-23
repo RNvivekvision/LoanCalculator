@@ -11,10 +11,8 @@ import {
   LOYearMonth,
   NativeAd,
 } from '../../Components';
-import { useUserClicks } from '../../Hooks';
 
 const SimpleAndCompound = () => {
-  const { increaseCount } = useUserClicks();
   const [State, setState] = useState({
     amount: '',
     rateOfInterest: '',
@@ -27,7 +25,6 @@ const SimpleAndCompound = () => {
   });
 
   const onCalculatePress = () => {
-    increaseCount();
     const { amount, rateOfInterest, tenure, isYear, typeOfInterest } = State;
     const principal = parseFloat(amount);
     const rate = parseFloat(rateOfInterest) / 100; // converting percentage to decimal

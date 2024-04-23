@@ -11,10 +11,8 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
-import { useUserClicks } from '../../Hooks';
 
 const EquityLinkedScheme = () => {
-  const { increaseCount } = useUserClicks();
   const [State, setState] = useState({
     investmentAmount: '',
     expectedRateOfInterest: '',
@@ -28,8 +26,6 @@ const EquityLinkedScheme = () => {
   });
 
   const onCalculatePress = () => {
-    increaseCount();
-
     // Convert strings to numbers
     const amount = parseFloat(State.investmentAmount);
     const rate = parseFloat(State.expectedRateOfInterest) / 12 / 100;

@@ -6,13 +6,10 @@ import { Images, Strings } from '../Constants';
 import { useNavigation } from '@react-navigation/native';
 import { NavRoutes } from '../Navigation';
 import Reanimated, { ZoomIn } from 'react-native-reanimated';
-import { useUserClicks } from '../Hooks';
 
 const EMICalculator = () => {
-  const { increaseCount } = useUserClicks();
   const navigation = useNavigation();
   const onPress = () => {
-    increaseCount();
     navigation.navigate(NavRoutes.EMI);
   };
   return (

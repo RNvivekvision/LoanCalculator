@@ -5,7 +5,7 @@ import { FontFamily, FontSize, hp, wp } from '../../Theme';
 import { Images } from '../../Constants';
 import { DummyData } from '../../Utils';
 import { NavRoutes } from '../../Navigation';
-import { useInset, useUserClicks } from '../../Hooks';
+import { useInset } from '../../Hooks';
 import {
   RenderOnboarding,
   LOPagginationDots,
@@ -18,7 +18,6 @@ import Reanimated, {
 } from 'react-native-reanimated';
 
 const Onboarding = ({ navigation }) => {
-  const { increaseCount } = useUserClicks();
   const scroll = useSharedValue(0);
   const styles = useStyles();
 
@@ -27,7 +26,6 @@ const Onboarding = ({ navigation }) => {
   }, []);
 
   const onTrueIconPress = () => {
-    increaseCount();
     navigation.navigate(NavRoutes.TermsAndCondition);
   };
 
@@ -57,8 +55,10 @@ const Onboarding = ({ navigation }) => {
         />
       </View>
 
-      <BannerAd />
-      <NativeAd />
+      <View style={{ flex: 1 }}>
+        <BannerAd />
+        <NativeAd />
+      </View>
     </RNContainer>
   );
 };

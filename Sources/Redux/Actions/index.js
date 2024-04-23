@@ -1,6 +1,1 @@
-export {
-  setLocalData,
-  increaseUserClicks,
-  decreaseUserClicks,
-  updateUserClicks,
-} from '../Reducers/UserReducer';
+export { setLocalData } from '../Reducers/UserReducer';

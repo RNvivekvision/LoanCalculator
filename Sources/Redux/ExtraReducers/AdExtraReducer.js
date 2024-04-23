@@ -2,21 +2,22 @@ import DeviceInfo from 'react-native-device-info';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { FetchMethod, URL } from '../../Api';
 import { DummyData } from '../../Utils';
+import { getIp } from '@mobeuv/react-native-check-ip';
 
 const getAdData = createAsyncThunk('getAdData', async () => {
   try {
+    const result = await getIp();
     const device = await DeviceInfo.getAndroidId();
-    const ipaddress = await DeviceInfo.getIpAddress();
     const version = await DeviceInfo.getVersion();
 
     const Params = {
-      logo: DummyData.appInfo.appIconBase64,
+      logo: 'base64' || DummyData.appInfo.appIconBase64,
       appName: DummyData.appInfo.appName,
       packageName: DummyData.appInfo.packageName,
       apiKeyText: DummyData.appInfo.appName,
       device: device === 'unknown' ? '84361f1427227255' : device,
       keyForm: __DEV__ ? 'Debug' : 'Release',
-      ipaddress: ipaddress,
+      ipaddress: result.ipv4,
       version: version,
     };
     // console.log('Params -> ', JSON.stringify(Params, null, 2));

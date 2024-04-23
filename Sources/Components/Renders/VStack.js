@@ -10,17 +10,14 @@ import Reanimated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import { useUserClicks } from '../../Hooks';
 
 const VStack = ({ item, index }) => {
   const scale = useSharedValue(1);
-  const { increaseCount } = useUserClicks();
   const navigation = useNavigation();
 
   const onPress = () => {
     if (scale.value !== 1) return;
 
-    increaseCount();
     navigation.navigate(item.navigate);
   };
 

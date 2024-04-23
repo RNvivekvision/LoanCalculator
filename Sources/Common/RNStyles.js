@@ -3,7 +3,6 @@ import { Colors, hp, wp } from '../Theme';
 const RNStyles = StyleSheet.create({
   flexCenter: {
     flex: 1,
-    backgroundColor: Colors.White,
     alignItems: 'center',
     justifyContent: 'center',
   },

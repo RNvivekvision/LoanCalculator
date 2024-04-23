@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import Reanimated, { FadeInDown } from 'react-native-reanimated';
-import { RNContainer, RNText, RNStyles, RNButton } from '../../Common';
+import { RNContainer, RNText, RNButton } from '../../Common';
 import { BannerAd, LOTerms, RenderTerms } from '../../Components';
-import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
+import { FontFamily, FontSize, hp, wp } from '../../Theme';
 import { Strings } from '../../Constants';
 import { DummyData } from '../../Utils';
-import { useInset, useUserClicks } from '../../Hooks';
+import { useInset } from '../../Hooks';
 import { NavRoutes } from '../../Navigation';
 
 const TermsAndCondition = ({ navigation }) => {
-  const { increaseCount } = useUserClicks();
   const styles = useStyles();
 
   const Header = () => {
@@ -21,7 +20,6 @@ const TermsAndCondition = ({ navigation }) => {
     const [State, setState] = useState({ isChecked: true });
 
     const onAnnouncingPress = () => {
-      increaseCount();
       navigation.navigate(NavRoutes.LanguageSelection);
     };
 
