@@ -13,7 +13,7 @@ import { useSelector } from 'react-redux';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../../Theme';
 import { RNStyles } from '../../../Common';
 
-const NativeAd = () => {
+const GoogleNativeAd = () => {
   const NativeAdRef = useRef();
   const { adData, Admob } = useSelector(({ UserReducer }) => UserReducer);
   const [State, setState] = useState({ showButton: false });
@@ -32,13 +32,16 @@ const NativeAd = () => {
   };
 
   useEffect(() => {
-    NativeAdRef.current?.loadAd();
-  }, []);
+    if (adUnitID) {
+      NativeAdRef.current?.loadAd();
+    }
+  }, [adUnitID]);
 
   return (
     adUnitID && (
       <NativeAdView
         ref={NativeAdRef}
+        show={false}
         adUnitID={adUnitID}
         onAdLoaded={() => setState(p => ({ ...p, showButton: true }))}
         onAdFailedToLoad={() => setState(p => ({ ...p, showButton: false }))}>
@@ -125,4 +128,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NativeAd;
+export default GoogleNativeAd;

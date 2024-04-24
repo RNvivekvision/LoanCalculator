@@ -55,10 +55,8 @@ const Onboarding = ({ navigation }) => {
         />
       </View>
 
-      <View style={{ flex: 1 }}>
-        <BannerAd />
-        <NativeAd />
-      </View>
+      <BannerAd />
+      <NativeAd />
     </RNContainer>
   );
 };

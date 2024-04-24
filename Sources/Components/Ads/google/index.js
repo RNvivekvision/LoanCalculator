@@ -1,2 +1,3 @@
 import GoogleBannerAd from './GoogleBannerAd';
-export { GoogleBannerAd };
+import GoogleNativeAd from './GoogleNativeAd';
+export { GoogleBannerAd, GoogleNativeAd };

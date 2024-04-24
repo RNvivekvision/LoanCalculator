@@ -1,11 +1,11 @@
-import { GoogleBannerAd } from './google';
+import { GoogleNativeAd } from './google';
 import { FacebookNativeAd } from './facebook';
 import { View } from 'react-native';
 
 const NativeAd = () => {
   return (
     <View>
-      <GoogleBannerAd large={true} style={{ alignItems: 'center' }} />
+      <GoogleNativeAd />
       {/* <FacebookNativeAd /> */}
     </View>
   );
