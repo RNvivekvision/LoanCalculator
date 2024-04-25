@@ -17,7 +17,10 @@ import { Functions } from '../../Utils';
 import { useSelector } from 'react-redux';
 
 const Welcome = ({ navigation }) => {
-  const { adDataLoading } = useSelector(({ UserReducer }) => UserReducer);
+  const { adDataLoading, adData } = useSelector(
+    ({ UserReducer }) => UserReducer,
+  );
+  console.log('adData -> ', JSON.stringify(adData, null, 2));
   const [State, setState] = useState(false);
   const styles = useStyles();
 
@@ -41,6 +44,7 @@ const Welcome = ({ navigation }) => {
   const onPrivacyPolicyPress = async () => {
     try {
       // increaseCount();
+      await Functions.OpenUrl(adData?.appPrivacyPolicyLink);
     } catch (e) {
       console.log('Error onPrivacyPolicyPress -> ', e);
     }

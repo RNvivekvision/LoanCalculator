@@ -15,6 +15,8 @@ const initialState = {
   adDataLoading: false,
   Admob: defaultAdsObj,
   fbAds: defaultAdsObj,
+  loveinAds: defaultAdsObj,
+  loveinAdsLoaded: false,
 };
 
 const UserReducer = createSlice({
@@ -23,6 +25,9 @@ const UserReducer = createSlice({
   reducers: {
     setLocalData: (s, a) => {
       s.appData = a.payload;
+    },
+    setLoveinAdsLoaded: (s, a) => {
+      s.loveinAdsLoaded = a.payload;
     },
   },
   extraReducers: b => {
@@ -34,6 +39,7 @@ const UserReducer = createSlice({
       s.adData = a.payload;
       s.Admob = a.payload?.placement?.Admob ?? defaultAdsObj;
       s.fbAds = a.payload?.placement?.Facebook ?? defaultAdsObj;
+      s.loveinAds = a.payload?.placement?.AppLovin ?? defaultAdsObj;
     });
     b.addCase(getAdData.rejected, (s, a) => {
       s.adDataLoading = false;
@@ -43,5 +49,5 @@ const UserReducer = createSlice({
   },
 });
 
-export const { setLocalData } = UserReducer.actions;
+export const { setLocalData, setLoveinAdsLoaded } = UserReducer.actions;
 export default UserReducer.reducer;

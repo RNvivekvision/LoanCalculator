@@ -498,6 +498,46 @@ const DummyData = {
     appName: 'LoanGol',
     packageName: 'com.loanGol',
   },
+  adKeys: {
+    facebook: {
+      IMG_16_9_APP_INSTALL: 'IMG_16_9_APP_INSTALL#',
+      VID_HD_9_16_39S_APP_INSTALL: 'VID_HD_9_16_39S_APP_INSTALL#',
+      VID_HD_16_9_15S_APP_INSTALL: 'VID_HD_16_9_15S_APP_INSTALL#',
+      android: {
+        banner: '931958428934809_931959862267999',
+        interstitial: '931958428934809_931959938934658',
+        native: '931958428934809_931960002267985',
+        nativeBanner: '931958428934809_931960078934644',
+        rewardInterstitial: '931958428934809_931960358934616',
+        rewardVideo: '931958428934809_931960238934628',
+      },
+      ios: {
+        banner: '931958428934809_931959198934732',
+        interstitial: '931958428934809_931959248934727',
+        native: '931958428934809_931959578934694',
+        nativeBanner: '931958428934809_931959338934718',
+        rewardInterstitial: '931958428934809_931959432268042',
+        rewardVideo: '931958428934809_931959522268033',
+      },
+    },
+    appLovein: {
+      SDK: '6oKi55gEg-0Bp6bTyOHaoqwfI2Qc-AhZqDrwJd5UWvwfn_4nbRQIyC35_TdUfMhd_OO76PwyV7UHZKoHGPEgHI',
+      android: {
+        appOpen: '401b9efbf5878b99',
+        banner: '0682fc5dc68da5bd',
+        interstitial: '000533b883d8bd69',
+        native: '2b1c5f5a2eecbe75',
+        reward: '4d40a4299328cfc1',
+      },
+      ios: {
+        appOpen: '66375036b67d043a',
+        banner: 'd7a28f5d5b2f09a4',
+        interstitial: 'd740694b35cfe9f2',
+        native: 'd2ba71418402086d',
+        reward: '244f05f65fe299f3',
+      },
+    },
+  },
 };
 
 export default DummyData;

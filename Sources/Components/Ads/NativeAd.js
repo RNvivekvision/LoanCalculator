@@ -1,14 +1,11 @@
 import { GoogleNativeAd } from './google';
 import { FacebookNativeAd } from './facebook';
-import { View } from 'react-native';
+import { AppLoveInNativeAd } from './appLoveIn';
 
 const NativeAd = () => {
-  return (
-    <View>
-      <GoogleNativeAd />
-      {/* <FacebookNativeAd /> */}
-    </View>
-  );
+  return <AppLoveInNativeAd />;
+  return <FacebookNativeAd />;
+  return <GoogleNativeAd />;
 };
 
 export default NativeAd;

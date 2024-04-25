@@ -38,6 +38,9 @@ import {
 import { useDispatch } from 'react-redux';
 import { getAdData } from '../Redux/ExtraReducers';
 import { AdSettings } from 'react-native-fbads';
+import { AppLovinMAX, AppOpenAd } from 'react-native-applovin-max';
+import { DummyData } from '../Utils';
+import { setLoveinAdsLoaded } from '../Redux/Actions';
 
 const Stack = createStackNavigator();
 
@@ -57,11 +60,12 @@ const Routes = () => {
   }, []);
 
   useEffect(() => {
-    Init();
+    initAppLoveinAds();
+    initFacebookAds();
     return () => AdSettings.clearTestDevices();
   }, []);
 
-  const Init = async () => {
+  const initFacebookAds = async () => {
     try {
       // console.log('currentDeviceHash -> ', AdSettings.currentDeviceHash);
       AdSettings.setLogLevel('debug');
@@ -79,6 +83,40 @@ const Routes = () => {
       }
     } catch (e) {
       console.log('Error Init facebook -> ', e);
+    }
+  };
+
+  const initAppLoveinAds = async () => {
+    const AppOpenAd = () => {
+      const showAdIfReady = async () => {
+        const isAppOpenAdReady = await AppOpenAd.isAdReady(
+          DummyData.adKeys.appLovein.android.appOpen,
+        );
+        if (isAppOpenAdReady) {
+          AppOpenAd.showAd(DummyData.adKeys.appLovein.android.appOpen);
+        } else {
+          AppOpenAd.loadAd(DummyData.adKeys.appLovein.android.appOpen);
+        }
+      };
+      AppOpenAd.addAdLoadedEventListener(adInfo => {
+        console.log('AppOpen ad loaded from ' + adInfo.networkName);
+        // showAdIfReady();
+      });
+      AppOpenAd.addAdLoadFailedEventListener(errorInfo => {
+        console.log('AppOpen ad failed to load with code ' + errorInfo.code);
+      });
+      // showAdIfReady();
+    };
+
+    try {
+      const config = await AppLovinMAX.initialize(
+        DummyData.adKeys.appLovein.SDK,
+      );
+      dispatch(setLoveinAdsLoaded(true));
+      // AppOpenAd();
+    } catch (e) {
+      dispatch(setLoveinAdsLoaded(false));
+      console.error('Error initAppLoveinAds -> ', e);
     }
   };
 

@@ -69,6 +69,11 @@ def enableProguardInReleaseBuilds = false
  */
 def jscFlavor = 'org.webkit:android-jsc:+'
 
+apply plugin: 'applovin-quality-service'
+applovin {
+    apiKey "KhnMUTE6qPxWPD7TPIK-zX8mukFpSUNy71uyG2Ip0ouUJTKTNpSRkaZqvlOEsXp4H-rQpom5cDET1JzX1bFGpK"    
+}
+
 android {
     ndkVersion rootProject.ext.ndkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -114,16 +119,11 @@ dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
     implementation("com.facebook.react:flipper-integration")
-    implementation("com.facebook.android:facebook-login:latest.release")
-    
+    implementation("com.facebook.android:facebook-android-sdk:17.0.0")
+    implementation("com.facebook.android:facebook-login:17.0.0")
     implementation "com.android.support:recyclerview-v7:28.0.0"
     implementation 'com.facebook.android:audience-network-sdk:6.16.0'
     implementation 'com.facebook.android:facebook-android-sdk:17.0.0'
-
-    implementation "com.google.android.gms:play-services-ads:23.0.0"
-    implementation 'com.android.support:support-annotations:28.0.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")

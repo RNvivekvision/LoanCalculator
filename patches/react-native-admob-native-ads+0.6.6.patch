@@ -1,0 +1,35 @@
+diff --git a/node_modules/react-native-admob-native-ads/android/build.gradle b/node_modules/react-native-admob-native-ads/android/build.gradle
+index 1cb369c..37d60c1 100755
+--- a/node_modules/react-native-admob-native-ads/android/build.gradle
++++ b/node_modules/react-native-admob-native-ads/android/build.gradle
+@@ -53,8 +53,8 @@ repositories {
+ 
+ dependencies {
+     implementation 'com.facebook.react:react-native:+'
+-    implementation "com.google.android.gms:play-services-ads:${safeExtGet('googlePlayServicesAdsVersion', '20.+')}"
++    implementation "com.google.android.gms:play-services-ads:23.0.0"
+     implementation 'com.android.support:support-annotations:28.0.0'
+-    implementation 'androidx.appcompat:appcompat:1.2.0'
++    implementation 'androidx.appcompat:appcompat:1.6.1'
+     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
+ }
+\ No newline at end of file
+diff --git a/node_modules/react-native-admob-native-ads/ios/RNAdMobManager/RNAdmobNativeAdsManager.m b/node_modules/react-native-admob-native-ads/ios/RNAdMobManager/RNAdmobNativeAdsManager.m
+index eb5596f..5f6a5ad 100644
+--- a/node_modules/react-native-admob-native-ads/ios/RNAdMobManager/RNAdmobNativeAdsManager.m
++++ b/node_modules/react-native-admob-native-ads/ios/RNAdMobManager/RNAdmobNativeAdsManager.m
+@@ -67,12 +67,12 @@ RCT_EXPORT_METHOD(setRequestConfiguration:(NSDictionary *)config resolver:(RCTPr
+ 
+     if ([[config allKeys] containsObject:@"tagForChildDirectedTreatment"]) {
+         NSNumber *tag = [config valueForKey:@"tagForChildDirectedTreatment"];
+-        [[[GADMobileAds sharedInstance] requestConfiguration] tagForChildDirectedTreatment:tag.boolValue];
++//        [[[GADMobileAds sharedInstance] requestConfiguration] tagForChildDirectedTreatment:tag.boolValue];
+     };
+ 
+     if ([[config allKeys] containsObject:@"tagForUnderAgeConsent"]) {
+         NSNumber *tagC = [config valueForKey:@"tagForUnderAgeConsent"];
+-        [[[GADMobileAds sharedInstance] requestConfiguration] tagForUnderAgeOfConsent:tagC.boolValue];
++//        [[[GADMobileAds sharedInstance] requestConfiguration] tagForUnderAgeOfConsent:tagC.boolValue];
+     };
+ 
+     if ([[config allKeys] containsObject:@"testDeviceIds"]) {
