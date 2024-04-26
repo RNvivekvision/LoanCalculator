@@ -14,6 +14,7 @@
    	  <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
       <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-3940256099942544~3347511713"/>
       <meta-data android:name="applovin.sdk.key" android:value="6oKi55gEg-0Bp6bTyOHaoqwfI2Qc-AhZqDrwJd5UWvwfn_4nbRQIyC35_TdUfMhd_OO76PwyV7UHZKoHGPEgHI"/>
+      <meta-data android:name="com.google.android.gms.ads.AD_MANAGER_APP" android:value="true"/>
 
       <activity
         android:name=".MainActivity"

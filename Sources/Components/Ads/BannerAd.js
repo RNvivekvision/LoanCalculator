@@ -3,8 +3,8 @@ import { FacebookBannerAd } from './facebook';
 import { GoogleBannerAd } from './google';
 
 const BannerAds = () => {
-  return <AppLoveInBannerAd />;
-  return <FacebookBannerAd />;
+  // return <AppLoveInBannerAd />;
+  // return <FacebookBannerAd />;
   return <GoogleBannerAd />;
 };
 

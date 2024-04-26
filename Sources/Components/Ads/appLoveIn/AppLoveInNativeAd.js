@@ -1,81 +1,55 @@
 import { useEffect, useRef } from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useAppLoveinAds } from '../../../Hooks';
 import {
   AdvertiserView,
   BodyView,
   CallToActionView,
   IconView,
-  InterstitialAd,
   MediaView,
   NativeAdView,
   OptionsView,
   StarRatingView,
   TitleView,
 } from 'react-native-applovin-max';
-import { DummyData } from '../../../Utils';
+import { hp, wp } from '../../../Theme';
 
 const AppLoveInNativeAd = () => {
+  const nativeAdRef = useRef();
   const { loveinAdsLoaded, nativeId } = useAppLoveinAds();
 
-  const nativeAdRef = useRef();
-
   useEffect(() => {
-    setTimeout(() => {
-      nativeAdRef.current?.loadAd();
-    }, 5000);
+    nativeAdRef.current?.loadAd();
   }, []);
 
-  const showInterstitialAd = async () => {
-    InterstitialAd.loadAd(DummyData.adKeys.appLovein.android.interstitial);
-    const isInterstitialReady = await InterstitialAd.isAdReady(
-      DummyData.adKeys.appLovein.android.interstitial,
-    );
-    if (isInterstitialReady) {
-      InterstitialAd.showAd(DummyData.adKeys.appLovein.android.interstitial);
-    }
-  };
-
-  return (
-    loveinAdsLoaded && (
-      <NativeAdView
-        adUnitId={nativeId}
-        ref={nativeAdRef}
-        style={{ height: 150 }}
-        onAdLoaded={v => {
-          console.log('NativeAdView onAdLoaded -> ' + v);
-        }}
-        onAdLoadFailed={e => {
-          console.log('NativeAdView onAdLoadFailed -> ', e);
-        }}
-        onAdClicked={v => {
-          console.log('NativeAdView onAdClicked -> ', v);
-        }}
-        onAdRevenuePaid={v => {
-          console.log('NativeAdView onAdRevenuePaid -> ', v);
-        }}>
-        <View
-          style={{
-            flex: 1,
-          }}>
-          <View
-            style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-            <IconView style={styles.icon} />
-            <View style={{ flexDirection: 'column', flexGrow: 1 }}>
-              <TitleView numberOfLines={1} style={styles.title} />
-              <AdvertiserView numberOfLines={1} style={styles.advertiser} />
-              <StarRatingView style={styles.starRatingView} />
-            </View>
-            <OptionsView style={styles.optionsView} />
+  return loveinAdsLoaded ? (
+    <NativeAdView
+      ref={nativeAdRef}
+      adUnitId={nativeId}
+      style={{ height: hp(21), width: wp(100) }}
+      onAdLoaded={v => {
+        console.log('NativeAdView onAdLoaded -> ' + v);
+      }}
+      onAdLoadFailed={e => {
+        console.log('NativeAdView onAdLoadFailed -> ', e);
+      }}>
+      <View style={{ flex: 1 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+          <IconView style={styles.icon} />
+          <View style={{ flexDirection: 'column', flexGrow: 1 }}>
+            <TitleView numberOfLines={1} style={styles.title} />
+            <AdvertiserView numberOfLines={1} style={styles.advertiser} />
+            <StarRatingView style={styles.starRatingView} />
           </View>
-          <BodyView numberOfLines={2} style={styles.body} />
-          <MediaView style={styles.mediaView} />
-          <View style={{ height: 10 }} />
-          <CallToActionView style={styles.callToAction} />
+          <OptionsView style={styles.optionsView} />
         </View>
-      </NativeAdView>
-    )
-  );
+        <BodyView numberOfLines={2} style={styles.body} />
+        <MediaView style={styles.mediaView} />
+        <View style={{ height: 10 }} />
+        <CallToActionView style={styles.callToAction} />
+      </View>
+    </NativeAdView>
+  ) : null;
 };
 
 const styles = StyleSheet.create({
@@ -102,12 +76,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'left',
     fontWeight: 'bold',
-    color: 'black',
+    color: '#fff',
   },
   advertiser: {
     fontSize: 12,
     textAlign: 'left',
-    color: 'gray',
+    color: '#fff',
   },
   starRatingView: {
     fontSize: 10, // size of each star as unicode symbol
@@ -124,6 +98,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: 'center',
     textAlignVertical: 'center',
+    color: '#fff',
   },
   mediaView: {
     alignSelf: 'center',
@@ -141,7 +116,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    color: 'white',
+    color: '#fff',
     backgroundColor: '#2d545e',
   },
 });

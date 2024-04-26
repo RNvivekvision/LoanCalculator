@@ -38,7 +38,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { getAdData } from '../Redux/ExtraReducers';
 import { AdSettings } from 'react-native-fbads';
-import { AppLovinMAX, AppOpenAd } from 'react-native-applovin-max';
+import { AppLovinMAX } from 'react-native-applovin-max';
 import { DummyData } from '../Utils';
 import { setLoveinAdsLoaded } from '../Redux/Actions';
 
@@ -98,12 +98,12 @@ const Routes = () => {
           AppOpenAd.loadAd(DummyData.adKeys.appLovein.android.appOpen);
         }
       };
-      AppOpenAd.addAdLoadedEventListener(adInfo => {
-        console.log('AppOpen ad loaded from ' + adInfo.networkName);
+      AppOpenAd.addAdLoadedEventListener(v => {
+        console.log('AppOpen addAdLoadedEventListener -> ', v);
         // showAdIfReady();
       });
-      AppOpenAd.addAdLoadFailedEventListener(errorInfo => {
-        console.log('AppOpen ad failed to load with code ' + errorInfo.code);
+      AppOpenAd.addAdLoadFailedEventListener(e => {
+        console.log('AppOpen addAdLoadFailedEventListener -> ', e);
       });
       // showAdIfReady();
     };

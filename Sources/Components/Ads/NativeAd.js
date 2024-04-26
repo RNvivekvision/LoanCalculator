@@ -3,8 +3,8 @@ import { FacebookNativeAd } from './facebook';
 import { AppLoveInNativeAd } from './appLoveIn';
 
 const NativeAd = () => {
-  return <AppLoveInNativeAd />;
-  return <FacebookNativeAd />;
+  // return <AppLoveInNativeAd />;
+  // return <FacebookNativeAd />;
   return <GoogleNativeAd />;
 };
 

@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-// import NativeAdView, {
-//   CallToActionView,
-//   HeadlineView,
-//   IconView,
-//   StarRatingView,
-//   StoreView,
-//   TaglineView,
-//   TestIds,
-// } from 'react-native-admob-native-ads';
+import NativeAdView, {
+  CallToActionView,
+  HeadlineView,
+  IconView,
+  StarRatingView,
+  StoreView,
+  TaglineView,
+  TestIds,
+} from 'react-native-admob-native-ads';
 import { useSelector } from 'react-redux';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../../Theme';
 import { RNStyles } from '../../../Common';
@@ -34,8 +34,6 @@ const GoogleNativeAd = () => {
   useEffect(() => {
     NativeAdRef.current?.loadAd();
   }, []);
-
-  return null;
 
   return (
     adUnitID && (
