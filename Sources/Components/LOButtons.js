@@ -2,9 +2,21 @@ import { StyleSheet, View } from 'react-native';
 import Share from 'react-native-share';
 import { RNButton, RNStyles } from '../Common';
 import { FontSize, wp } from '../Theme';
+import { useGoogleAds, useUserClick } from '../Hooks';
 
-const LOButtons = ({ button1, button2, value, onButton2Press }) => {
+const LOButtons = ({
+  button1,
+  button2,
+  value,
+  // onButton1Press,
+  onButton2Press,
+}) => {
+  const { incrementCount } = useUserClick();
+  const { showInterstitialAd } = useGoogleAds();
+
   const onButton1Press = async () => {
+    incrementCount();
+    await showInterstitialAd();
     try {
       const messagesArray = Object.entries(value).map(
         ([key, val]) => `${key} : ${val}\n`,
@@ -27,12 +39,14 @@ const LOButtons = ({ button1, button2, value, onButton2Press }) => {
         onPress={onButton1Press}
         textStyle={styles.buttonText}
       />
-      <RNButton
-        title={button2}
-        style={styles.button}
-        onPress={onButton2Press}
-        textStyle={styles.buttonText}
-      />
+      {button2 && (
+        <RNButton
+          title={button2}
+          style={styles.button}
+          onPress={onButton2Press}
+          textStyle={styles.buttonText}
+        />
+      )}
     </View>
   );
 };

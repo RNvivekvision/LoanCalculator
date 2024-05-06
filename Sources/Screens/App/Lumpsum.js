@@ -11,9 +11,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
-import { useUserClick } from '../../Hooks';
+import { useGoogleAds, useUserClick } from '../../Hooks';
 
 const Lumpsum = () => {
+  const { showInterstitialAd } = useGoogleAds();
   const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     investmentAmount: '',
@@ -29,6 +30,7 @@ const Lumpsum = () => {
 
   const onCalculatePress = () => {
     incrementCount();
+    showInterstitialAd();
     const investmentAmount = parseFloat(State.investmentAmount);
     const rateOfInterest = parseFloat(State.expectedRateOfInterest);
     const tenure = Functions.tenure(State.tenure, State.isYear);
@@ -106,7 +108,7 @@ const Lumpsum = () => {
           />
           <LOButtons
             button1={Strings.ShareResult}
-            button2={Strings.ConvertPDF}
+            // button2={Strings.ConvertPDF}
             value={{
               [Strings.InvestmentAmount]: State.investment,
               [Strings.TotalInterestValue]: State.totalInterest,

@@ -12,10 +12,11 @@ import {
   RNText,
 } from '../../Common';
 import { Functions } from '../../Utils';
-import { useUserClick } from '../../Hooks';
+import { useGoogleAds, useUserClick } from '../../Hooks';
 
 const CompareLoans = () => {
   const { incrementCount } = useUserClick();
+  const { showInterstitialAd } = useGoogleAds();
   const [State, setState] = useState({
     loan1: {
       principalAmount: '',
@@ -49,6 +50,7 @@ const CompareLoans = () => {
 
   const onCalculatePress = () => {
     incrementCount();
+    showInterstitialAd();
     const { tenure, EMI, toFixed } = Functions;
     const tenure1 = tenure(State.loan1.loanTenure, State.isYear);
     const tenure2 = tenure(State.loan2.loanTenure, State.isYear);
@@ -276,8 +278,6 @@ const CompareLoans = () => {
               {Strings.Difference + State.totalPaymentAmount.difference}
             </RNText>
           </View>
-
-          <RNButton title={Strings.ConvertPDF} />
         </LOContainer>
       </RNHeader>
     </RNContainer>

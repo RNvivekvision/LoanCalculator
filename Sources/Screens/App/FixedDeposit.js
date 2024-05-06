@@ -11,9 +11,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
-import { useUserClick } from '../../Hooks';
+import { useGoogleAds, useUserClick } from '../../Hooks';
 
 const FixedDeposit = () => {
+  const { showInterstitialAd } = useGoogleAds();
   const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     investmentAmount: '',
@@ -29,6 +30,7 @@ const FixedDeposit = () => {
 
   const onCalculatePress = () => {
     incrementCount();
+    showInterstitialAd();
     const tenureInMonths = Functions.tenure(State.tenure, State.isYear);
     const maturityDate = new Date(State.date);
     maturityDate.setMonth(maturityDate.getMonth() + tenureInMonths);
@@ -106,7 +108,7 @@ const FixedDeposit = () => {
           />
           <LOButtons
             button1={Strings.ShareResult}
-            button2={Strings.ConvertPDF}
+            // button2={Strings.ConvertPDF}
             value={{
               [Strings.TotalInvestmentAmount]: State.totalInvestment,
               [Strings.TotalInterestValue]: State.totalInterest,

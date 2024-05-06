@@ -10,9 +10,10 @@ import {
   LOYearMonth,
   NativeAd,
 } from '../../Components';
-import { useUserClick } from '../../Hooks';
+import { useGoogleAds, useUserClick } from '../../Hooks';
 
 const LoanEligibility = () => {
+  const { showInterstitialAd } = useGoogleAds();
   const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     grossMonthlyIncome: '',
@@ -27,6 +28,7 @@ const LoanEligibility = () => {
 
   const onCalculatePress = () => {
     incrementCount();
+    showInterstitialAd();
     const monthlyInterestRate = parseFloat(State.interestRate) / 100 / 12;
     const totalMonths = State.isYear
       ? parseInt(State.tenure) * 12
@@ -105,7 +107,7 @@ const LoanEligibility = () => {
           />
           <LOButtons
             button1={Strings.ShareResult}
-            button2={Strings.ConvertPDF}
+            // button2={Strings.ConvertPDF}
             value={{
               [Strings.LoanAmountYouAreEligibleFor]: State.eligibleAmount,
               [Strings.EMIYouAreEligibleFor]: State.eligibleEmi,

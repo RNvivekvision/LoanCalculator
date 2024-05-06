@@ -3,9 +3,10 @@ import { RNButton, RNContainer, RNHeader } from '../../Common';
 import { LOContainer, LOInput, LOResult, NativeAd } from '../../Components';
 import { Strings } from '../../Constants';
 import { Functions } from '../../Utils';
-import { useUserClick } from '../../Hooks';
+import { useGoogleAds, useUserClick } from '../../Hooks';
 
 const MarkupCalculator = () => {
+  const { showInterstitialAd } = useGoogleAds();
   const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     cost: '',
@@ -16,6 +17,7 @@ const MarkupCalculator = () => {
 
   const onCalculatePress = () => {
     incrementCount();
+    showInterstitialAd();
     // Ensure cost and revenue are numbers
     const costValue = parseFloat(State.cost);
     const revenueValue = parseFloat(State.revenue);

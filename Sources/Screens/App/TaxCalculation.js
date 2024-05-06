@@ -11,9 +11,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
-import { useUserClick } from '../../Hooks';
+import { useGoogleAds, useUserClick } from '../../Hooks';
 
 const TaxCalculation = () => {
+  const { showInterstitialAd } = useGoogleAds();
   const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     amount: '',
@@ -25,6 +26,7 @@ const TaxCalculation = () => {
 
   const onCalculatePress = () => {
     incrementCount();
+    showInterstitialAd();
     const amount = parseFloat(State.amount);
     const interest = parseFloat(State.rateOfTax);
     const tax = Functions.toFixed(amount * (interest / 100));
@@ -79,7 +81,7 @@ const TaxCalculation = () => {
           />
           <LOButtons
             button1={Strings.ShareResult}
-            button2={Strings.ConvertPDF}
+            // button2={Strings.ConvertPDF}
             value={{
               [Strings.NetAmount]: State.net,
               [Strings.GSTAmount]: State.gst,

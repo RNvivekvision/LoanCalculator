@@ -11,9 +11,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
-import { useUserClick } from '../../Hooks';
+import { useGoogleAds, useUserClick } from '../../Hooks';
 
 const SWP = () => {
+  const { showInterstitialAd } = useGoogleAds();
   const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     investmentAmount: '',
@@ -30,6 +31,7 @@ const SWP = () => {
 
   const onCalculatePress = () => {
     incrementCount();
+    showInterstitialAd();
     // Retrieve values from State
     const {
       investmentAmount,
@@ -149,7 +151,7 @@ const SWP = () => {
           />
           <LOButtons
             button1={Strings.ShareResult}
-            button2={Strings.ConvertPDF}
+            // button2={Strings.ConvertPDF}
             value={{
               [Strings.TotalInvestmentAmount]: State.totalInvestmentAmount,
               [Strings.TotalInterestValue]: State.totalInterestValue,

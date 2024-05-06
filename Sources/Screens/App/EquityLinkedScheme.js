@@ -11,9 +11,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
-import { useUserClick } from '../../Hooks';
+import { useGoogleAds, useUserClick } from '../../Hooks';
 
 const EquityLinkedScheme = () => {
+  const { showInterstitialAd } = useGoogleAds();
   const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     investmentAmount: '',
@@ -29,6 +30,7 @@ const EquityLinkedScheme = () => {
 
   const onCalculatePress = () => {
     incrementCount();
+    showInterstitialAd();
     // Convert strings to numbers
     const amount = parseFloat(State.investmentAmount);
     const rate = parseFloat(State.expectedRateOfInterest) / 12 / 100;
@@ -112,7 +114,7 @@ const EquityLinkedScheme = () => {
           />
           <LOButtons
             button1={Strings.ShareResult}
-            button2={Strings.ConvertPDF}
+            // button2={Strings.ConvertPDF}
             value={{
               [Strings.InvestmentAmount]: State.investment,
               [Strings.TotalInterestValue]: State.totalInterest,

@@ -3,9 +3,10 @@ import { RNButton, RNContainer, RNHeader } from '../../Common';
 import { Strings } from '../../Constants';
 import { LOContainer, LOInput, LOResult, NativeAd } from '../../Components';
 import { Functions } from '../../Utils';
-import { useUserClick } from '../../Hooks';
+import { useGoogleAds, useUserClick } from '../../Hooks';
 
 const MarginCalculator = () => {
+  const { showInterstitialAd } = useGoogleAds();
   const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     cost: '',
@@ -16,6 +17,7 @@ const MarginCalculator = () => {
 
   const onCalculatePress = () => {
     incrementCount();
+    showInterstitialAd();
     const cost = parseFloat(State.cost);
     const revenue = parseFloat(State.revenue);
     const markup = Functions.toFixed(((revenue - cost) / cost) * 100);

@@ -5,12 +5,13 @@ import { LOContainer, LOInput, NativeAd, LODropDown } from '../../Components';
 import { Colors, FontFamily, hp } from '../../Theme';
 import { DummyData, Functions } from '../../Utils';
 import { Strings } from '../../Constants';
-import { useUserClick } from '../../Hooks';
+import { useGoogleAds, useUserClick } from '../../Hooks';
 
 const { currencies, exchangeRates } = DummyData.CurrencyConversion;
 
 const CurrencyConversion = () => {
   const { incrementCount } = useUserClick();
+  const { showInterstitialAd } = useGoogleAds();
   const [State, setState] = useState({
     amount: '',
     currencyOfTheAmount: currencies[0],
@@ -19,6 +20,7 @@ const CurrencyConversion = () => {
 
   const onCalculatePress = () => {
     incrementCount();
+    showInterstitialAd();
     const convertedCurrencies = currencies.map(currency => {
       const convertedAmount =
         (parseFloat(State.amount) * exchangeRates[currency.label]) /

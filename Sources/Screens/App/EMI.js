@@ -11,9 +11,10 @@ import {
   LOButtons,
 } from '../../Components';
 import { Functions } from '../../Utils';
-import { useUserClick } from '../../Hooks';
+import { useGoogleAds, useUserClick } from '../../Hooks';
 
 const EMI = () => {
+  const { showInterstitialAd } = useGoogleAds();
   const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     principalAmount: '',
@@ -36,6 +37,7 @@ const EMI = () => {
 
   const onCalculatePress = () => {
     incrementCount();
+    showInterstitialAd();
     const { principalAmount, interest, loanTenure, isYear, date } = State;
     const tenureMonths = isYear ? 12 * loanTenure : loanTenure;
 
@@ -127,7 +129,7 @@ const EMI = () => {
           />
           <LOButtons
             button1={Strings.ShareResult}
-            button2={Strings.ConvertPDF}
+            // button2={Strings.ConvertPDF}
             value={{
               [Strings.TotalInterest]: State.totalInterest,
               [Strings.TotalPrinciple]: State.totalPrinciple,

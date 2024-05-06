@@ -11,9 +11,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
-import { useUserClick } from '../../Hooks';
+import { useGoogleAds, useUserClick } from '../../Hooks';
 
 const RecurringDeposit = () => {
+  const { showInterstitialAd } = useGoogleAds();
   const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     investmentAmount: '',
@@ -29,6 +30,7 @@ const RecurringDeposit = () => {
 
   const onCalculatePress = () => {
     incrementCount();
+    showInterstitialAd();
     // Convert strings to numbers
     const investment = parseFloat(State.investmentAmount);
     const rate = parseFloat(State.expectedRateOfInterest);
@@ -122,7 +124,7 @@ const RecurringDeposit = () => {
           />
           <LOButtons
             button1={Strings.ShareResult}
-            button2={Strings.ConvertPDF}
+            // button2={Strings.ConvertPDF}
             value={{
               [Strings.TotalInvestmentAmount]: State.totalInvestment,
               [Strings.TotalInterestValue]: State.totalInterest,

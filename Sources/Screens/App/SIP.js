@@ -11,9 +11,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
-import { useUserClick } from '../../Hooks';
+import { useGoogleAds, useUserClick } from '../../Hooks';
 
 const SIP = () => {
+  const { showInterstitialAd } = useGoogleAds();
   const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     investment: '',
@@ -29,6 +30,7 @@ const SIP = () => {
 
   const onCalculatePress = () => {
     incrementCount();
+    showInterstitialAd();
     // Parse start date
     const startDateObj = new Date(State.date);
 
@@ -120,7 +122,7 @@ const SIP = () => {
           />
           <LOButtons
             button1={Strings.ShareResult}
-            button2={Strings.ConvertPDF}
+            // button2={Strings.ConvertPDF}
             value={{
               [Strings.TotalInvestmentAmount]: State.totalInvestmentAmount,
               [Strings.TotalInterestValue]: State.totalInterestValue,

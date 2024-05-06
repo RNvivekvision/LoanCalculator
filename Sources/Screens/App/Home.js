@@ -18,7 +18,6 @@ const Home = ({ navigation }) => {
     if (item.navigate) {
       navigation.navigate(item.navigate);
     }
-
     if (item.link) {
       Functions.OpenUrl(item.link);
     }

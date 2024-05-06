@@ -3,9 +3,10 @@ import { RNButton, RNContainer, RNHeader } from '../../Common';
 import { Strings } from '../../Constants';
 import { LOContainer, LOInput, LOResult, NativeAd } from '../../Components';
 import { Functions } from '../../Utils';
-import { useUserClick } from '../../Hooks';
+import { useGoogleAds, useUserClick } from '../../Hooks';
 
 const DiscountCalculator = () => {
+  const { showInterstitialAd } = useGoogleAds();
   const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     price: '',
@@ -16,6 +17,7 @@ const DiscountCalculator = () => {
 
   const onCalculatePress = () => {
     incrementCount();
+    showInterstitialAd();
     const price = parseFloat(State.price);
     const discountPercentage = parseFloat(State.discount);
 
