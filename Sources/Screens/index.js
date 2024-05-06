@@ -21,8 +21,7 @@ export {
   MarkupCalculator,
   OperatingMargin,
   MarginWithSales,
-  BankFinder,
-  ATMFinder,
   Theory,
   FAQ,
+  AboutUs,
 } from './App';

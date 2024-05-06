@@ -1,51 +1,15 @@
-import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import { RNImage, RNStyles, RNText } from '../../Common';
-import { useNavigation } from '@react-navigation/native';
-import Reanimated, {
-  Easing,
-  ZoomIn,
-  useAnimatedStyle,
-  useSharedValue,
-  withTiming,
-} from 'react-native-reanimated';
+import Reanimated, { ZoomIn } from 'react-native-reanimated';
 
-const VStack = ({ item, index }) => {
-  const scale = useSharedValue(1);
-  const navigation = useNavigation();
-
-  const onPress = () => {
-    if (scale.value !== 1) return;
-
-    navigation.navigate(item.navigate);
-  };
-
-  const onPressIn = () => {
-    scale.value = withTiming(1.3, {
-      duration: 1500,
-      easing: Easing.bezier(0.2, 0.8, 0, 1),
-    });
-  };
-
-  const onPressOut = () => {
-    scale.value = withTiming(1);
-  };
-
-  const animatedStyles = useAnimatedStyle(() => {
-    return {
-      transform: [{ scale: scale.value }],
-    };
-  }, []);
-
+const VStack = ({ item, index, onPress }) => {
   return (
     <Reanimated.View
       entering={ZoomIn.delay(index * 100)}
       style={styles.container}>
       <TouchableOpacity
-        onPress={onPress}
-        // onPressIn={onPressIn}
-        // onPressOut={onPressOut}
+        onPress={() => onPress?.(item)}
         activeOpacity={0.6}
         style={styles.card}>
         <View style={styles.image}>

@@ -219,12 +219,12 @@ const useDummyData = () => {
         {
           image: Images.BankFinder,
           title: Strings.BankFinder,
-          navigate: NavRoutes.BankFinder,
+          link: `http://maps.apple.com/?q=Bank`,
         },
         {
           image: Images.ATMFinder,
           title: Strings.ATMFinder,
-          navigate: NavRoutes.ATMFinder,
+          link: `http://maps.apple.com/?q=ATM`,
         },
       ],
       moreOptions: [

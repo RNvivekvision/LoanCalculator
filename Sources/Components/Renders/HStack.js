@@ -2,22 +2,15 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import { RNImage, RNStyles, RNText } from '../../Common';
-import { useNavigation } from '@react-navigation/native';
 import Reanimated, { ZoomIn } from 'react-native-reanimated';
 
-const HStack = ({ item, index }) => {
-  const navigation = useNavigation();
-
-  const onPress = () => {
-    navigation.navigate(item.navigate);
-  };
-
+const HStack = ({ item, index, onPress }) => {
   return (
     <Reanimated.View
       entering={ZoomIn.delay(index * 200)}
       style={styles.container}>
       <TouchableOpacity
-        onPress={onPress}
+        onPress={() => onPress?.(item)}
         activeOpacity={0.6}
         style={styles.card}>
         <View style={styles.image}>

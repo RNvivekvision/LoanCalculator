@@ -201,6 +201,10 @@ const Danish = {
   Dihram: 'Dirham',
   Yen: 'Yen',
   Pound: 'Pund',
+  aboutusDescription_1:
+    'Vi brænder for mobile apps. Vores mål er at skabe apps, der kan hjælpe vores brugere i deres daglige liv. Apps, der kan hjælpe dig med at komme i form, apps, der kan gøre dit liv lettere, hjælpe dig med at føre en bedre og lykkeligere tilværelse.',
+  aboutusDescription_2:
+    "Vores apps' primære mål er at give brugerne en nem måde at bruge en god økonomisk regnemaskine og en nem måde at bruge den på. Vi vil meget gerne høre fra dig. Del venligst din feedback, så det kan hjælpe os med at forbedre vores apps.",
 };
 
 export default Danish;

@@ -3,9 +3,6 @@ PODS:
   - boost (1.83.0)
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
-  - FBAEMKit (17.0.0):
-    - FBSDKCoreKit_Basics (= 17.0.0)
-  - FBAudienceNetwork (6.15.0)
   - FBLazyVector (0.73.6)
   - FBReactNativeSpec (0.73.6):
     - RCT-Folly (= 2022.05.16.00)
@@ -14,18 +11,6 @@ PODS:
     - React-Core (= 0.73.6)
     - React-jsi (= 0.73.6)
     - ReactCommon/turbomodule/core (= 0.73.6)
-  - FBSDKCoreKit (17.0.0):
-    - FBAEMKit (= 17.0.0)
-    - FBSDKCoreKit_Basics (= 17.0.0)
-  - FBSDKCoreKit_Basics (17.0.0)
-  - FBSDKGamingServicesKit (17.0.0):
-    - FBSDKCoreKit (= 17.0.0)
-    - FBSDKCoreKit_Basics (= 17.0.0)
-    - FBSDKShareKit (= 17.0.0)
-  - FBSDKLoginKit (17.0.0):
-    - FBSDKCoreKit (= 17.0.0)
-  - FBSDKShareKit (17.0.0):
-    - FBSDKCoreKit (= 17.0.0)
   - Flipper (0.201.0):
     - Flipper-Folly (~> 2.6)
   - Flipper-Boost-iOSX (1.76.0.1.11)
@@ -966,25 +951,10 @@ PODS:
   - react-native-admob-native-ads (0.6.6):
     - Google-Mobile-Ads-SDK
     - React-Core
-  - react-native-applovin-max (6.4.1):
+  - react-native-applovin-max (6.4.2):
     - AppLovinSDK (= 12.4.1)
     - React
   - react-native-date-picker (4.4.2):
-    - React-Core
-  - react-native-fbsdk-next (13.0.0):
-    - React-Core
-    - react-native-fbsdk-next/Core (= 13.0.0)
-    - react-native-fbsdk-next/Login (= 13.0.0)
-    - react-native-fbsdk-next/Share (= 13.0.0)
-  - react-native-fbsdk-next/Core (13.0.0):
-    - FBSDKCoreKit (~> 17.0.0)
-    - React-Core
-  - react-native-fbsdk-next/Login (13.0.0):
-    - FBSDKLoginKit (~> 17.0.0)
-    - React-Core
-  - react-native-fbsdk-next/Share (13.0.0):
-    - FBSDKGamingServicesKit (~> 17.0.0)
-    - FBSDKShareKit (~> 17.0.0)
     - React-Core
   - react-native-restart (0.0.27):
     - React-Core
@@ -1159,9 +1129,6 @@ PODS:
     - React-jsi (= 0.73.6)
     - React-logger (= 0.73.6)
     - React-perflogger (= 0.73.6)
-  - ReactNativeAdsFacebook (7.1.1):
-    - FBAudienceNetwork
-    - React
   - ReactNativeLocalization (2.3.2):
     - React-Core
   - RNCAsyncStorage (1.23.1):
@@ -1170,11 +1137,11 @@ PODS:
     - React-Core
   - RNDeviceInfo (10.13.2):
     - React-Core
-  - RNGestureHandler (2.16.0):
+  - RNGestureHandler (2.16.1):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
-  - RNGoogleMobileAds (13.2.0):
+  - RNGoogleMobileAds (13.2.1):
     - glog
     - Google-Mobile-Ads-SDK (= 11.2.0)
     - GoogleUserMessagingPlatform (= 2.3.0)
@@ -1182,7 +1149,7 @@ PODS:
     - React-Core
   - RNRate (1.2.12):
     - React-Core
-  - RNReanimated (3.8.1):
+  - RNReanimated (3.10.0):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
@@ -1192,7 +1159,9 @@ PODS:
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
     - React-RCTImage
-  - RNVectorIcons (10.0.3):
+  - RNShare (10.2.0):
+    - React-Core
+  - RNVectorIcons (10.1.0):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
@@ -1255,7 +1224,6 @@ DEPENDENCIES:
   - react-native-admob-native-ads (from `../node_modules/react-native-admob-native-ads`)
   - react-native-applovin-max (from `../node_modules/react-native-applovin-max`)
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
-  - react-native-fbsdk-next (from `../node_modules/react-native-fbsdk-next`)
   - react-native-restart (from `../node_modules/react-native-restart`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
@@ -1279,7 +1247,6 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - ReactNativeAdsFacebook (from `../node_modules/react-native-fbads`)
   - ReactNativeLocalization (from `../node_modules/react-native-localization`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-masked-view/masked-view`)"
@@ -1289,6 +1256,7 @@ DEPENDENCIES:
   - RNRate (from `../node_modules/react-native-rate`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNShare (from `../node_modules/react-native-share`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -1296,13 +1264,6 @@ SPEC REPOS:
   trunk:
     - AppLovinSDK
     - CocoaAsyncSocket
-    - FBAEMKit
-    - FBAudienceNetwork
-    - FBSDKCoreKit
-    - FBSDKCoreKit_Basics
-    - FBSDKGamingServicesKit
-    - FBSDKLoginKit
-    - FBSDKShareKit
     - Flipper
     - Flipper-Boost-iOSX
     - Flipper-DoubleConversion
@@ -1380,8 +1341,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-applovin-max"
   react-native-date-picker:
     :path: "../node_modules/react-native-date-picker"
-  react-native-fbsdk-next:
-    :path: "../node_modules/react-native-fbsdk-next"
   react-native-restart:
     :path: "../node_modules/react-native-restart"
   react-native-safe-area-context:
@@ -1428,8 +1387,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/utils"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
-  ReactNativeAdsFacebook:
-    :path: "../node_modules/react-native-fbads"
   ReactNativeLocalization:
     :path: "../node_modules/react-native-localization"
   RNCAsyncStorage:
@@ -1448,6 +1405,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNShare:
+    :path: "../node_modules/react-native-share"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   Yoga:
@@ -1458,15 +1417,8 @@ SPEC CHECKSUMS:
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: fea03f2699887d960129cc54bba7e52542b6f953
-  FBAEMKit: 31a20c2d8744d8c57d3a5b7ae4e27b4fdd819193
-  FBAudienceNetwork: 80a035aa69cc3a71c99e44cb5c2874e4cef9909f
   FBLazyVector: f64d1e2ea739b4d8f7e4740cde18089cd97fe864
   FBReactNativeSpec: 9f2b8b243131565335437dba74923a8d3015e780
-  FBSDKCoreKit: dac911b656816f8d0b06e5fa4bac60e89505bb3b
-  FBSDKCoreKit_Basics: 92b7b7458d57091370b0b6cc197578874c3b4b16
-  FBSDKGamingServicesKit: 0ae05466560dca03aa6c8691746e664c351b5d9e
-  FBSDKLoginKit: 5d5271ebfd1e39c6b071de8db5c4bd6255be3561
-  FBSDKShareKit: 09dbbe11cf43a4a831b92f064f974e9a01b4f8bc
   Flipper: c7a0093234c4bdd456e363f2f19b2e4b27652d44
   Flipper-Boost-iOSX: fd1e2b8cbef7e662a122412d7ac5f5bea715403c
   Flipper-DoubleConversion: 2dc99b02f658daf147069aad9dbd29d8feb06d30
@@ -1504,9 +1456,8 @@ SPEC CHECKSUMS:
   React-logger: 3eb80a977f0d9669468ef641a5e1fabbc50a09ec
   React-Mapbuffer: 84ea43c6c6232049135b1550b8c60b2faac19fab
   react-native-admob-native-ads: 97b6667c5d4d3e5a75baf264450dbb54ba53a181
-  react-native-applovin-max: b94e1ac4c4fbb00e01222f72723d5b484fd3850c
+  react-native-applovin-max: e6ab61ac0e0924e3e5285dd9b0d300298638b20e
   react-native-date-picker: 312c387d2ff873c66c5e4cf78ff6827fa91644e2
-  react-native-fbsdk-next: 84746ea062dc3b1a422154d7674ba4c5836b6d82
   react-native-restart: 7595693413fe3ca15893702f2c8306c62a708162
   react-native-safe-area-context: dcab599c527c2d7de2d76507a523d20a0b83823d
   react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
@@ -1530,17 +1481,17 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 9636eee762c699ca7c85751a359101797e4c8b3b
   React-utils: d16c1d2251c088ad817996621947d0ac8167b46c
   ReactCommon: 2aa35648354bd4c4665b9a5084a7d37097b89c10
-  ReactNativeAdsFacebook: 001bdca972dc6f0a04a85b4caca10d9b7985d0d6
   ReactNativeLocalization: fb171138cdc80d5d0d4f20243d2fc82c2b3cc48f
   RNCAsyncStorage: 826b603ae9c0f88b5ac4e956801f755109fa4d5c
   RNCMaskedView: 090213d32d8b3bb83a4dcb7d12c18f0152591906
   RNDeviceInfo: 42aadf1282ffa0a88dc38a504a7be145eb010dfa
-  RNGestureHandler: bc2cdb2dc42facdf34992ae364b8a728e19a3686
-  RNGoogleMobileAds: 6a1d0ffbf5532bc0efad36414619fa5bbedc155d
+  RNGestureHandler: a8825f964c319a5ea23cc3fa28ae2add62863071
+  RNGoogleMobileAds: a3c8d06747767bc34341abd6d8f064102bf20e8d
   RNRate: ef3bcff84f39bb1d1e41c5593d3eea4aab2bd73a
-  RNReanimated: 8a4d86eb951a4a99d8e86266dc71d7735c0c30a9
+  RNReanimated: 6baa9e16c17a4420a8a9d671e0885532dfd06926
   RNScreens: 134a7511b12b8eb440b87aac21e36a71295d6024
-  RNVectorIcons: 73ab573085f65a572d3b6233e68996d4707fd505
+  RNShare: 554a91f5cfbe4adac4cfe3654826ee8b299fe365
+  RNVectorIcons: 96e8c5c45609932bb2f8347e1c709bcca0e95654
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 805bf71192903b20fc14babe48080582fee65a80
 

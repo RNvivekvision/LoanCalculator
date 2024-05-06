@@ -11,8 +11,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
+import { useUserClick } from '../../Hooks';
 
 const Lumpsum = () => {
+  const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     investmentAmount: '',
     expectedRateOfInterest: '',
@@ -26,6 +28,7 @@ const Lumpsum = () => {
   });
 
   const onCalculatePress = () => {
+    incrementCount();
     const investmentAmount = parseFloat(State.investmentAmount);
     const rateOfInterest = parseFloat(State.expectedRateOfInterest);
     const tenure = Functions.tenure(State.tenure, State.isYear);
@@ -80,7 +83,6 @@ const Lumpsum = () => {
             style={{ marginTop: 25 }}
             onPress={onCalculatePress}
           />
-          <RNButton title={Strings.Statistic} style={{ marginBottom: 0 }} />
         </LOContainer>
 
         <NativeAd />
@@ -105,6 +107,12 @@ const Lumpsum = () => {
           <LOButtons
             button1={Strings.ShareResult}
             button2={Strings.ConvertPDF}
+            value={{
+              [Strings.InvestmentAmount]: State.investment,
+              [Strings.TotalInterestValue]: State.totalInterest,
+              [Strings.MaturityDate]: State.maturityDate,
+              [Strings.MaturityValue]: State.maturityValue,
+            }}
           />
         </LOContainer>
       </RNHeader>

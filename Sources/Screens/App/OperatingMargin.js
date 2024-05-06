@@ -3,8 +3,10 @@ import { RNButton, RNContainer, RNHeader } from '../../Common';
 import { LOContainer, LOInput, LOResult, NativeAd } from '../../Components';
 import { Strings } from '../../Constants';
 import { Functions } from '../../Utils';
+import { useUserClick } from '../../Hooks';
 
 const OperatingMargin = () => {
+  const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     operatingIncome: '',
     revenue: '',
@@ -12,6 +14,7 @@ const OperatingMargin = () => {
   });
 
   const onCalculatePress = () => {
+    incrementCount();
     const operatingIncome = parseFloat(State.operatingIncome);
     const revenue = parseFloat(State.revenue);
     const profit = Functions.toFixed((operatingIncome / revenue) * 100);

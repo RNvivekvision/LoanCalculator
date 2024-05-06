@@ -11,8 +11,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
+import { useUserClick } from '../../Hooks';
 
 const FixedDeposit = () => {
+  const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     investmentAmount: '',
     expectedRateOfInterest: '',
@@ -26,6 +28,7 @@ const FixedDeposit = () => {
   });
 
   const onCalculatePress = () => {
+    incrementCount();
     const tenureInMonths = Functions.tenure(State.tenure, State.isYear);
     const maturityDate = new Date(State.date);
     maturityDate.setMonth(maturityDate.getMonth() + tenureInMonths);
@@ -77,7 +80,6 @@ const FixedDeposit = () => {
             style={{ marginTop: 25 }}
             onPress={onCalculatePress}
           />
-          <RNButton title={Strings.Statistic} style={{ marginBottom: 0 }} />
         </LOContainer>
 
         <NativeAd />
@@ -105,6 +107,12 @@ const FixedDeposit = () => {
           <LOButtons
             button1={Strings.ShareResult}
             button2={Strings.ConvertPDF}
+            value={{
+              [Strings.TotalInvestmentAmount]: State.totalInvestment,
+              [Strings.TotalInterestValue]: State.totalInterest,
+              [Strings.MaturityDate]: State.maturityDate,
+              [Strings.MaturityValue]: State.maturityValue,
+            }}
           />
         </LOContainer>
       </RNHeader>

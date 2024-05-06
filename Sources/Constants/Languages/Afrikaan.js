@@ -197,6 +197,10 @@ const Afrikaan = {
   Dihram: 'Dihram',
   Yen: 'Yen',
   Pound: 'Pond',
+  aboutusDescription_1:
+    "Ons is passievol oor mobiele programme. Ons doel is om programme te bou wat ons gebruikers in hul daaglikse lewens kan help. Programme wat jou kan help om fiks te bly, programme wat jou lewe makliker kan maak, jou kan help om 'n beter en gelukkiger lewe te lei.",
+  aboutusDescription_2:
+    "Ons app se hoofdoel is om gebruikers 'n maklike manier te bied om 'n goeie Finansies Rekenaar te gebruik en 'n maklike manier om dit te gebruik. Ons sal graag van jou wil hoor. Deel asseblief jou terugvoer sodat dit ons kan help om ons programme te verbeter.",
 };
 
 export default Afrikaan;

@@ -201,6 +201,10 @@ const Dutch = {
   Dihram: 'Dirham',
   Yen: 'Yen',
   Pound: 'Pond',
+  aboutusDescription_1:
+    'We zijn gepassioneerd over mobiele apps. Ons doel is om apps te bouwen die onze gebruikers kunnen helpen in hun dagelijks leven. Apps die je kunnen helpen fit te blijven, apps die je leven gemakkelijker kunnen maken, je helpen een beter en gelukkiger leven te leiden.',
+  aboutusDescription_2:
+    'Het belangrijkste doel van onze app is gebruikers een eenvoudige manier te bieden om een goede Financiële Calculator te gebruiken en deze gemakkelijk te gebruiken. We horen graag van je. Deel alsjeblieft je feedback zodat het ons kan helpen onze apps te verbeteren.',
 };
 
 export default Dutch;

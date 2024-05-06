@@ -11,8 +11,10 @@ import {
   LOYearMonth,
   NativeAd,
 } from '../../Components';
+import { useUserClick } from '../../Hooks';
 
 const SimpleAndCompound = () => {
+  const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     amount: '',
     rateOfInterest: '',
@@ -25,6 +27,7 @@ const SimpleAndCompound = () => {
   });
 
   const onCalculatePress = () => {
+    incrementCount();
     const { amount, rateOfInterest, tenure, isYear, typeOfInterest } = State;
     const principal = parseFloat(amount);
     const rate = parseFloat(rateOfInterest) / 100; // converting percentage to decimal
@@ -112,6 +115,11 @@ const SimpleAndCompound = () => {
           <LOButtons
             button1={Strings.ShareResult}
             button2={Strings.ConvertPDF}
+            value={{
+              [Strings.InvestmentAmount]: State.investmentAmount,
+              [Strings.TotalInterestValue]: State.totalInterestValue,
+              [Strings.MaturityAmount]: State.maturityAmount,
+            }}
           />
         </LOContainer>
       </RNHeader>

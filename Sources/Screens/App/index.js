@@ -19,10 +19,9 @@ import MarginCalculator from './MarginCalculator';
 import MarkupCalculator from './MarkupCalculator';
 import OperatingMargin from './OperatingMargin';
 import MarginWithSales from './MarginWithSales';
-import BankFinder from './BankFinder';
-import ATMFinder from './ATMFinder';
 import Theory from './Theory';
 import FAQ from './FAQ';
+import AboutUs from './AboutUs';
 export {
   Welcome,
   Home,
@@ -45,8 +44,7 @@ export {
   MarkupCalculator,
   OperatingMargin,
   MarginWithSales,
-  BankFinder,
-  ATMFinder,
   Theory,
   FAQ,
+  AboutUs,
 };

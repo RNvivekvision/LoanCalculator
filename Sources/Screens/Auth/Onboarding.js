@@ -5,12 +5,11 @@ import { FontFamily, FontSize, hp, wp } from '../../Theme';
 import { Images } from '../../Constants';
 import { DummyData } from '../../Utils';
 import { NavRoutes } from '../../Navigation';
-import { useInset } from '../../Hooks';
+import { useGoogleAds, useInset } from '../../Hooks';
 import {
   RenderOnboarding,
   LOPagginationDots,
   NativeAd,
-  BannerAd,
 } from '../../Components';
 import Reanimated, {
   useAnimatedScrollHandler,
@@ -18,6 +17,7 @@ import Reanimated, {
 } from 'react-native-reanimated';
 
 const Onboarding = ({ navigation }) => {
+  const { showInterstitialAd } = useGoogleAds();
   const scroll = useSharedValue(0);
   const styles = useStyles();
 
@@ -25,7 +25,8 @@ const Onboarding = ({ navigation }) => {
     scroll.value = contentOffset.x;
   }, []);
 
-  const onTrueIconPress = () => {
+  const onTrueIconPress = async () => {
+    await showInterstitialAd();
     navigation.navigate(NavRoutes.TermsAndCondition);
   };
 
@@ -55,7 +56,6 @@ const Onboarding = ({ navigation }) => {
         />
       </View>
 
-      <BannerAd />
       <NativeAd />
     </RNContainer>
   );
@@ -77,7 +77,7 @@ const useStyles = () => {
       zIndex: 1,
     },
     flatlistContainer: {
-      flex: 2,
+      flex: 3,
       paddingVertical: hp(4),
     },
     ads: {

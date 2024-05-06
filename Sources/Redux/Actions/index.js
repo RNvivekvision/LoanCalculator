@@ -1,1 +1,5 @@
-export { setLocalData, setLoveinAdsLoaded } from '../Reducers/UserReducer';
+export {
+  setLocalData,
+  setLoveinAdsLoaded,
+  incrementCount,
+} from '../Reducers/UserReducer';

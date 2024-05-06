@@ -11,8 +11,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
+import { useUserClick } from '../../Hooks';
 
 const TaxCalculation = () => {
+  const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     amount: '',
     rateOfTax: '',
@@ -22,6 +24,7 @@ const TaxCalculation = () => {
   });
 
   const onCalculatePress = () => {
+    incrementCount();
     const amount = parseFloat(State.amount);
     const interest = parseFloat(State.rateOfTax);
     const tax = Functions.toFixed(amount * (interest / 100));
@@ -77,6 +80,11 @@ const TaxCalculation = () => {
           <LOButtons
             button1={Strings.ShareResult}
             button2={Strings.ConvertPDF}
+            value={{
+              [Strings.NetAmount]: State.net,
+              [Strings.GSTAmount]: State.gst,
+              [Strings.TotalAmount]: State.total,
+            }}
           />
         </LOContainer>
       </RNHeader>

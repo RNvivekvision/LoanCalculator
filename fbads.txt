@@ -1,0 +1,5 @@
+package.json
+"react-native-fbads": "^7.1.1",
+"react-native-fbsdk-next": "^13.0.0",
+
+

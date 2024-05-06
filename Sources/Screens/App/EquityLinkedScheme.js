@@ -11,8 +11,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
+import { useUserClick } from '../../Hooks';
 
 const EquityLinkedScheme = () => {
+  const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     investmentAmount: '',
     expectedRateOfInterest: '',
@@ -26,6 +28,7 @@ const EquityLinkedScheme = () => {
   });
 
   const onCalculatePress = () => {
+    incrementCount();
     // Convert strings to numbers
     const amount = parseFloat(State.investmentAmount);
     const rate = parseFloat(State.expectedRateOfInterest) / 12 / 100;
@@ -86,7 +89,6 @@ const EquityLinkedScheme = () => {
             style={{ marginTop: 25 }}
             onPress={onCalculatePress}
           />
-          <RNButton title={Strings.Statistic} style={{ marginBottom: 0 }} />
         </LOContainer>
 
         <NativeAd />
@@ -111,6 +113,12 @@ const EquityLinkedScheme = () => {
           <LOButtons
             button1={Strings.ShareResult}
             button2={Strings.ConvertPDF}
+            value={{
+              [Strings.InvestmentAmount]: State.investment,
+              [Strings.TotalInterestValue]: State.totalInterest,
+              [Strings.MaturityDate]: State.maturityDate,
+              [Strings.MaturityValue]: State.maturityValue,
+            }}
           />
         </LOContainer>
       </RNHeader>

@@ -11,8 +11,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
+import { useUserClick } from '../../Hooks';
 
 const SWP = () => {
+  const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     investmentAmount: '',
     expectedRateOfInterest: '',
@@ -27,6 +29,7 @@ const SWP = () => {
   });
 
   const onCalculatePress = () => {
+    incrementCount();
     // Retrieve values from State
     const {
       investmentAmount,
@@ -117,7 +120,6 @@ const SWP = () => {
             style={{ marginTop: 25 }}
             onPress={onCalculatePress}
           />
-          <RNButton title={Strings.Statistic} style={{ marginBottom: 0 }} />
         </LOContainer>
 
         <NativeAd />
@@ -148,6 +150,12 @@ const SWP = () => {
           <LOButtons
             button1={Strings.ShareResult}
             button2={Strings.ConvertPDF}
+            value={{
+              [Strings.TotalInvestmentAmount]: State.totalInvestmentAmount,
+              [Strings.TotalInterestValue]: State.totalInterestValue,
+              [Strings.MaturityDate]: State.maturityDate,
+              [Strings.MaturityValue]: State.maturityValue,
+            }}
           />
         </LOContainer>
       </RNHeader>

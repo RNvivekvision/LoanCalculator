@@ -17,6 +17,7 @@ const initialState = {
   fbAds: defaultAdsObj,
   loveinAds: defaultAdsObj,
   loveinAdsLoaded: false,
+  innerPageClickCount: 0,
 };
 
 const UserReducer = createSlice({
@@ -28,6 +29,10 @@ const UserReducer = createSlice({
     },
     setLoveinAdsLoaded: (s, a) => {
       s.loveinAdsLoaded = a.payload;
+    },
+    incrementCount: (s, a) => {
+      s.innerPageClickCount = s.innerPageClickCount + 1;
+      console.log('innerPageClickCount -> ', s.innerPageClickCount);
     },
   },
   extraReducers: b => {
@@ -49,5 +54,6 @@ const UserReducer = createSlice({
   },
 });
 
-export const { setLocalData, setLoveinAdsLoaded } = UserReducer.actions;
+export const { setLocalData, setLoveinAdsLoaded, incrementCount } =
+  UserReducer.actions;
 export default UserReducer.reducer;

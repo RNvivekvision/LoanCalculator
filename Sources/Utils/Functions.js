@@ -106,16 +106,14 @@ const RateUs = async ({ onSuccess, onError } = {}) => {
 };
 
 const ShareApp = async ({ title, message, url } = {}) => {
+  const appLink = 'https://apps.apple.com/in/app/xcode/id497799835';
   const Title = 'LoanGol';
-  const Message =
-    'Share Loan gol app to your friends. by clicking the following url https://play.google.com/store/apps/details?id=com.activision.callofduty.warzone';
-  const Url =
-    'https://play.google.com/store/apps/details?id=com.activision.callofduty.warzone';
+  const Message = `Share Loan gol app to your friends. by clicking the following url ${appLink}`;
 
   await Share.share({
-    title: title || Title,
-    message: message || Message,
-    url: url || Url,
+    title: title ?? Title,
+    message: message ?? Message,
+    url: url ?? appLink,
   });
 };
 

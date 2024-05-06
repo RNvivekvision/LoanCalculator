@@ -11,8 +11,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
+import { useUserClick } from '../../Hooks';
 
 const RecurringDeposit = () => {
+  const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     investmentAmount: '',
     expectedRateOfInterest: '',
@@ -26,6 +28,7 @@ const RecurringDeposit = () => {
   });
 
   const onCalculatePress = () => {
+    incrementCount();
     // Convert strings to numbers
     const investment = parseFloat(State.investmentAmount);
     const rate = parseFloat(State.expectedRateOfInterest);
@@ -93,7 +96,6 @@ const RecurringDeposit = () => {
             style={{ marginTop: 25 }}
             onPress={onCalculatePress}
           />
-          <RNButton title={Strings.Statistic} style={{ marginBottom: 0 }} />
         </LOContainer>
 
         <NativeAd />
@@ -121,6 +123,12 @@ const RecurringDeposit = () => {
           <LOButtons
             button1={Strings.ShareResult}
             button2={Strings.ConvertPDF}
+            value={{
+              [Strings.TotalInvestmentAmount]: State.totalInvestment,
+              [Strings.TotalInterestValue]: State.totalInterest,
+              [Strings.MaturityDate]: State.maturityDate,
+              [Strings.MaturityValue]: State.maturityValue,
+            }}
           />
         </LOContainer>
       </RNHeader>

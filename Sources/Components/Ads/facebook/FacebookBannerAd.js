@@ -1,11 +1,11 @@
-import { BannerView } from 'react-native-fbads';
+// import { BannerView } from 'react-native-fbads';
 import { useFacebookAds } from '../../../Hooks';
 import { useSelector } from 'react-redux';
 
 const FacebookBannerAd = () => {
   const { bannerId } = useFacebookAds();
   const { fbAds } = useSelector(({ UserReducer }) => UserReducer);
-
+  return null;
   return (
     bannerId && (
       <BannerView

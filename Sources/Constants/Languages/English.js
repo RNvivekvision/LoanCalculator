@@ -200,6 +200,8 @@ const English = {
   Dihram: 'Dihram',
   Yen: 'Yen',
   Pound: 'Pound',
+  aboutusDescription_1: `We are passionate about mobile apps. Our aim to build apps which can help our users in their day to day lives. Apps which can help you get fit, apps that can make your life easier, help you lead a better and happier life.`,
+  aboutusDescription_2: `Our app main goal to users easy wau to good Finance Calculator and easy way to use. We would love to hear from you. Please share your feedback so it can help us improve our apps.`,
 };
 
 export default English;

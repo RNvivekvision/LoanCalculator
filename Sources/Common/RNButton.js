@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { Colors, FontFamily, hp, wp } from '../Theme';
+import { useGoogleAds, useUserClick } from '../Hooks';
 import RNPagginationLoader from './RNPagginationLoader';
 import RNStyles from './RNStyles';
 import RNText from './RNText';
@@ -16,7 +17,15 @@ const RNButton = ({
   iconStyle,
   isLoading,
 }) => {
+  // const { showInterstitialAd } = useGoogleAds();
+  // const { incrementCount } = useUserClick();
   const styles = useStyles({ disable });
+
+  // const onButtonPress = async () => {
+  //   incrementCount();
+  //   await showInterstitialAd();
+  //   onPress?.();
+  // };
 
   return (
     <TouchableOpacity

@@ -10,8 +10,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
+import { useUserClick } from '../../Hooks';
 
 const PublicProvidentFund = () => {
+  const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     investmentAmount: '',
     rateOfInterest: '',
@@ -24,6 +26,7 @@ const PublicProvidentFund = () => {
   });
 
   const onCalculatePress = () => {
+    incrementCount();
     // Convert rate of interest to a decimal
     const interestRate = parseFloat(State.rateOfInterest) / 100;
 
@@ -112,6 +115,12 @@ const PublicProvidentFund = () => {
           <LOButtons
             button1={Strings.ShareResult}
             button2={Strings.ConvertPDF}
+            value={{
+              [Strings.TotalInvestmentAmount]: State.totalInvestment,
+              [Strings.TotalInterestValue]: State.totalInterest,
+              [Strings.MaturityDate]: State.maturityDate,
+              [Strings.MaturityValue]: State.maturityValue,
+            }}
           />
         </LOContainer>
       </RNHeader>

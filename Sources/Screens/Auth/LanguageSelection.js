@@ -11,11 +11,12 @@ import {
 import { Images, Strings } from '../../Constants';
 import { NativeAd, RenderLanguages } from '../../Components';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
+import { useGoogleAds, useInset } from '../../Hooks';
 import { DummyData, Functions } from '../../Utils';
 import { NavRoutes } from '../../Navigation';
-import { useInset } from '../../Hooks';
 
 const LanguageSelection = ({ navigation }) => {
+  const { showInterstitialAd } = useGoogleAds();
   const styles = useStyles();
   const [State, setState] = useState({
     selectedLanguage: DummyData.LanguageSelection[0],
@@ -34,6 +35,7 @@ const LanguageSelection = ({ navigation }) => {
       if (isRtl) {
         RNRestart.restart();
       } else {
+        showInterstitialAd();
         navigation.reset({
           index: 0,
           routes: [{ name: NavRoutes.Welcome }],

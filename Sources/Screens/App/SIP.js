@@ -11,8 +11,10 @@ import {
   NativeAd,
 } from '../../Components';
 import { Functions } from '../../Utils';
+import { useUserClick } from '../../Hooks';
 
 const SIP = () => {
+  const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     investment: '',
     interest: '',
@@ -26,6 +28,7 @@ const SIP = () => {
   });
 
   const onCalculatePress = () => {
+    incrementCount();
     // Parse start date
     const startDateObj = new Date(State.date);
 
@@ -40,7 +43,6 @@ const SIP = () => {
     let totalInterest = 0;
     let maturityDate = new Date(startDateObj);
     maturityDate.setMonth(maturityDate.getMonth() + tenureInMonths);
-    console.log({ maturityDate });
 
     for (let i = 0; i < tenureInMonths; i++) {
       totalInvestment += parseInt(State.investment);
@@ -89,7 +91,6 @@ const SIP = () => {
             style={{ marginTop: 25 }}
             onPress={onCalculatePress}
           />
-          <RNButton title={Strings.Statistic} style={{ marginBottom: 0 }} />
         </LOContainer>
 
         <NativeAd />
@@ -120,6 +121,12 @@ const SIP = () => {
           <LOButtons
             button1={Strings.ShareResult}
             button2={Strings.ConvertPDF}
+            value={{
+              [Strings.TotalInvestmentAmount]: State.totalInvestmentAmount,
+              [Strings.TotalInterestValue]: State.totalInterestValue,
+              [Strings.MaturityDate]: State.maturityDate,
+              [Strings.MaturityValue]: State.maturityValue,
+            }}
           />
         </LOContainer>
       </RNHeader>

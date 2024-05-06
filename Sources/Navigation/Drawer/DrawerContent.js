@@ -3,19 +3,22 @@ import { StyleSheet, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import { RNImage, RNStyles, RNText } from '../../Common';
-import { useInset, useDummyData } from '../../Hooks';
+import { useInset, useDummyData, useUserClick } from '../../Hooks';
 import { Images, Strings } from '../../Constants';
 import { RenderDrawer } from '../../Components';
 import { Functions } from '../../Utils';
+import NavRoutes from '../NavRoutes';
 
 const DrawerContent = ({ navigation }) => {
   const { adData } = useSelector(({ UserReducer }) => UserReducer);
   const { Drawer } = useDummyData();
+  const { incrementCount } = useUserClick();
   const styles = useStyles();
 
   const onDrawerPress = async item => {
+    incrementCount();
     try {
-      console.log({ item });
+      // console.log({ item });
       if (item.share) {
         await Functions.ShareApp();
       }
@@ -27,6 +30,9 @@ const DrawerContent = ({ navigation }) => {
       }
       if (item.privacyPolicy) {
         Functions.OpenUrl(adData?.appPrivacyPolicyLink);
+      }
+      if (item.aboutUs) {
+        navigation.navigate(NavRoutes.AboutUs);
       }
 
       setTimeout(() => {

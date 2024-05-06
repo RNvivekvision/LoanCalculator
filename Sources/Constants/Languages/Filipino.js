@@ -202,6 +202,10 @@ const Filipino = {
   Dihram: 'Dihram',
   Yen: 'Yen',
   Pound: 'Pound',
+  aboutusDescription_1:
+    'Passionate kami sa mga mobile app. Layunin namin na bumuo ng mga app na makakatulong sa aming mga tagagamit sa kanilang pang-araw-araw na buhay. Mga app na makakatulong sa iyo na maging malusog, mga app na makakapagpabuti sa iyong buhay, makakatulong sa iyo na mamuhay ng mas maginhawa at mas masaya.',
+  aboutusDescription_2:
+    'Ang pangunahing layunin ng aming app ay bigyan ang mga tagagamit ng madaling paraan upang gamitin ang isang mahusay na Financial Calculator at madaling paraan upang gamitin ito. Gusto naming marinig mula sa inyo. Mangyaring ibahagi ang iyong feedback upang makatulong sa amin na mapabuti ang aming mga app.',
 };
 
 export default Filipino;

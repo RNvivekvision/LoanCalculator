@@ -3,9 +3,22 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 import { RNText, RNStyles } from '../../Common';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
 import Reanimated, { SlideInRight } from 'react-native-reanimated';
+import { useGoogleAds, useUserClick } from '../../Hooks';
+import { useSelector } from 'react-redux';
 
 const RenderTopTabs = ({ item, selectedTab, index, onPress }) => {
+  const { incrementCount } = useUserClick();
   const styles = useStyles({ selectedTab });
+  const { showInterstitialAd } = useGoogleAds();
+  const { innerPageClickCount: count, adData } = useSelector(
+    ({ UserReducer }) => UserReducer,
+  );
+
+  const _onPress = () => {
+    incrementCount();
+    showInterstitialAd();
+    onPress?.(item);
+  };
 
   return (
     <Reanimated.View
@@ -13,7 +26,7 @@ const RenderTopTabs = ({ item, selectedTab, index, onPress }) => {
       style={styles.container}>
       <TouchableOpacity
         activeOpacity={0.6}
-        onPress={() => onPress?.(item)}
+        onPress={_onPress}
         style={styles.card}>
         <RNText style={styles.title}>{item.label}</RNText>
       </TouchableOpacity>

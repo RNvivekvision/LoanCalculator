@@ -2,16 +2,11 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RNButton, RNImage, RNStyles, RNText } from '../Common';
 import { Colors, FontFamily, FontSize, hp, wp } from '../Theme';
-import { Images, Strings } from '../Constants';
-import { useNavigation } from '@react-navigation/native';
-import { NavRoutes } from '../Navigation';
 import Reanimated, { ZoomIn } from 'react-native-reanimated';
+import { Images, Strings } from '../Constants';
+import { NavRoutes } from '../Navigation';
 
-const EMICalculator = () => {
-  const navigation = useNavigation();
-  const onPress = () => {
-    navigation.navigate(NavRoutes.EMI);
-  };
+const EMICalculator = ({ onPress }) => {
   return (
     <Reanimated.View entering={ZoomIn.delay(200)} style={styles.container}>
       <View style={styles.content}>
@@ -31,7 +26,7 @@ const EMICalculator = () => {
           title={Strings.CalculateNow}
           style={styles.button}
           textStyle={styles.buttonText}
-          onPress={onPress}
+          onPress={() => onPress?.({ navigate: NavRoutes.EMI })}
         />
       </View>
       <RNImage source={Images.EmiCalculator} style={styles.EmiCalculator} />

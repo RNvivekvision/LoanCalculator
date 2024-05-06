@@ -9,7 +9,7 @@ import {
   RNText,
 } from '../../Common';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
-import { useInset } from '../../Hooks';
+import { useInset, useUserClick } from '../../Hooks';
 import { Images, Strings } from '../../Constants';
 import { NativeAd } from '../../Components';
 import { NavRoutes } from '../../Navigation';
@@ -17,10 +17,11 @@ import { Functions } from '../../Utils';
 import { useSelector } from 'react-redux';
 
 const Welcome = ({ navigation }) => {
+  const { incrementCount } = useUserClick();
   const { adDataLoading, adData } = useSelector(
     ({ UserReducer }) => UserReducer,
   );
-  console.log('adData -> ', JSON.stringify(adData, null, 2));
+  // console.log('adData -> ', JSON.stringify(adData, null, 2));
   const [State, setState] = useState(false);
   const styles = useStyles();
 
@@ -29,11 +30,12 @@ const Welcome = ({ navigation }) => {
   }, []);
 
   const onStartAppPress = () => {
+    incrementCount();
     navigation.replace(NavRoutes.Home);
   };
 
   const onInvitePress = async () => {
-    // increaseCount();
+    incrementCount();
     try {
       await Functions.ShareApp();
     } catch (e) {
@@ -42,8 +44,8 @@ const Welcome = ({ navigation }) => {
   };
 
   const onPrivacyPolicyPress = async () => {
+    incrementCount();
     try {
-      // increaseCount();
       await Functions.OpenUrl(adData?.appPrivacyPolicyLink);
     } catch (e) {
       console.log('Error onPrivacyPolicyPress -> ', e);
@@ -51,8 +53,8 @@ const Welcome = ({ navigation }) => {
   };
 
   const onRateUsPress = async () => {
+    incrementCount();
     try {
-      // increaseCount();
       await Functions.RateUs({
         onSuccess: s => console.log('Welcome rate us Success -> ', s),
         onError: e => console.log('Welcome rate us Error -> ', e),

@@ -1,9 +1,24 @@
-import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import Share from 'react-native-share';
 import { RNButton, RNStyles } from '../Common';
 import { FontSize, wp } from '../Theme';
 
-const LOButtons = ({ button1, button2, onButton1Press, onButton2Press }) => {
+const LOButtons = ({ button1, button2, value, onButton2Press }) => {
+  const onButton1Press = async () => {
+    try {
+      const messagesArray = Object.entries(value).map(
+        ([key, val]) => `${key} : ${val}\n`,
+      );
+      const message = messagesArray.join('\n');
+      await Share.open({
+        title: 'Result',
+        message: message,
+      });
+    } catch (e) {
+      console.log('Error onButton1Press -> ', e);
+    }
+  };
+
   return (
     <View style={RNStyles.flexRow}>
       <RNButton

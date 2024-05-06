@@ -25,10 +25,9 @@ const NavRoutes = {
   MarkupCalculator: 'Markup Calculator',
   OperatingMargin: 'Operating Margin',
   MarginWithSales: 'Margin With Sales',
-  BankFinder: 'Bank Finder',
-  ATMFinder: 'ATM Finder',
   AllCalculatorTheory: 'All Calculator Theory',
   FAQ: 'FAQ',
+  AboutUs: 'About Us',
 };
 
 export default NavRoutes;

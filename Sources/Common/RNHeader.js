@@ -4,7 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 import { Colors, FontFamily, FontSize, hp, wp } from '../Theme';
 import { RNIcon, RNStyles, RNText, RNScrollView } from './index';
 import { Images } from '../Constants';
-import { useInset } from '../Hooks';
+import { useGoogleAds, useInset, useUserClick } from '../Hooks';
+import { useSelector } from 'react-redux';
 
 const RNHeader = ({
   title,
@@ -17,10 +18,20 @@ const RNHeader = ({
   drawer,
   noScroll,
 }) => {
-  const navigation = useNavigation();
   const styles = useStyles();
-  const onBackPress = () => {
-    drawer ? navigation.openDrawer() : navigation.goBack();
+  const navigation = useNavigation();
+  const { showInterstitialAd } = useGoogleAds();
+  const { incrementCount } = useUserClick();
+
+  const onBackPress = async () => {
+    if (drawer) {
+      navigation.openDrawer();
+      return;
+    }
+
+    incrementCount();
+    await showInterstitialAd();
+    navigation.goBack();
   };
 
   return (

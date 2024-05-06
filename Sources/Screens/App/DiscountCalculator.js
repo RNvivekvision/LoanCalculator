@@ -3,8 +3,10 @@ import { RNButton, RNContainer, RNHeader } from '../../Common';
 import { Strings } from '../../Constants';
 import { LOContainer, LOInput, LOResult, NativeAd } from '../../Components';
 import { Functions } from '../../Utils';
+import { useUserClick } from '../../Hooks';
 
 const DiscountCalculator = () => {
+  const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     price: '',
     discount: '',
@@ -13,6 +15,7 @@ const DiscountCalculator = () => {
   });
 
   const onCalculatePress = () => {
+    incrementCount();
     const price = parseFloat(State.price);
     const discountPercentage = parseFloat(State.discount);
 

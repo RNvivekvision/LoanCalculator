@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import {
-  AdIconView,
-  TriggerableView,
-  withNativeAd,
-  NativeAdsManager,
-  AdChoicesView,
-} from 'react-native-fbads';
+// import {
+//   AdIconView,
+//   TriggerableView,
+//   withNativeAd,
+//   NativeAdsManager,
+//   AdChoicesView,
+// } from 'react-native-fbads';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../../Theme';
 import { RNStyles } from '../../../Common';
 import { useFacebookAds } from '../../../Hooks';
@@ -17,7 +17,7 @@ const FacebookNativeAd = () => {
   const { fbAds } = useSelector(({ UserReducer }) => UserReducer);
 
   const adsManager = new NativeAdsManager(nativeId, 3);
-
+  return null;
   return (
     nativeId && (
       <NativeAdView adsManager={adsManager} adChoicePosition="bottomRight" />

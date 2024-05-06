@@ -5,7 +5,7 @@ import { FontFamily, FontSize, hp, wp } from '../Theme';
 import { HStack, VStack } from './Renders';
 import Reanimated, { FadeIn } from 'react-native-reanimated';
 
-const LOScreens = ({ title, data, horizontal }) => {
+const LOScreens = ({ title, data, horizontal, onPress }) => {
   return (
     <Reanimated.View entering={FadeIn.delay(200)} style={styles.container}>
       <RNText pBottom={hp(2)} size={FontSize.font18} family={FontFamily.Bold}>
@@ -13,8 +13,12 @@ const LOScreens = ({ title, data, horizontal }) => {
       </RNText>
       <View style={RNStyles.flexWrapHorizontal}>
         {horizontal
-          ? data.map((v, i) => <HStack key={i} item={v} index={i} />)
-          : data.map((v, i) => <VStack key={i} item={v} index={i} />)}
+          ? data.map((v, i) => (
+              <HStack key={i} item={v} index={i} onPress={onPress} />
+            ))
+          : data.map((v, i) => (
+              <VStack key={i} item={v} index={i} onPress={onPress} />
+            ))}
       </View>
     </Reanimated.View>
   );

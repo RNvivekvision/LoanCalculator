@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { RNButton, RNContainer, RNHeader } from '../../Common';
 import { Images, Strings } from '../../Constants';
 import {
@@ -11,8 +11,10 @@ import {
   LOButtons,
 } from '../../Components';
 import { Functions } from '../../Utils';
+import { useUserClick } from '../../Hooks';
 
 const EMI = () => {
+  const { incrementCount } = useUserClick();
   const [State, setState] = useState({
     principalAmount: '',
     interest: '',
@@ -33,6 +35,7 @@ const EMI = () => {
   };
 
   const onCalculatePress = () => {
+    incrementCount();
     const { principalAmount, interest, loanTenure, isYear, date } = State;
     const tenureMonths = isYear ? 12 * loanTenure : loanTenure;
 
@@ -96,7 +99,6 @@ const EMI = () => {
             style={{ marginTop: 25 }}
             onPress={onCalculatePress}
           />
-          <RNButton title={Strings.Statistic} style={{ marginVertical: 0 }} />
         </LOContainer>
 
         <NativeAd />
@@ -126,6 +128,13 @@ const EMI = () => {
           <LOButtons
             button1={Strings.ShareResult}
             button2={Strings.ConvertPDF}
+            value={{
+              [Strings.TotalInterest]: State.totalInterest,
+              [Strings.TotalPrinciple]: State.totalPrinciple,
+              [Strings.TotalPaymentPrincipleInterest]: State.totalPayment,
+              [Strings.LoanLastDate]: State.loanLastDate,
+              [Strings.EMIMonthlyPayment]: State.emi,
+            }}
           />
         </LOContainer>
       </RNHeader>
