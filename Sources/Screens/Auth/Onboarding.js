@@ -15,12 +15,16 @@ import Reanimated, {
   useAnimatedScrollHandler,
   useSharedValue,
 } from 'react-native-reanimated';
+import { useSelector } from 'react-redux';
 
 const Onboarding = ({ navigation }) => {
+  const { Admob, Admanager1, Admanager2 } = useSelector(
+    ({ UserReducer }) => UserReducer,
+  );
   const { showInterstitialAd } = useGoogleAds();
   const scroll = useSharedValue(0);
   const styles = useStyles();
-
+  // console.log(JSON.stringify({ Admob, Admanager1, Admanager2 }, null, 2));
   const onScroll = useAnimatedScrollHandler(({ contentOffset }) => {
     scroll.value = contentOffset.x;
   }, []);

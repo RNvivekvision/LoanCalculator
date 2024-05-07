@@ -15,9 +15,15 @@ import { RNStyles } from '../../../Common';
 
 const GoogleNativeAd = () => {
   const NativeAdRef = useRef();
-  const { adData, Admob } = useSelector(({ UserReducer }) => UserReducer);
-  const [State, setState] = useState({ showButton: false });
-  const adUnitID = __DEV__ ? TestIds.Image : Admob?.nativeAdvanced;
+  const { adData, Admob, Admanager1, Admanager2 } = useSelector(
+    ({ UserReducer }) => UserReducer,
+  );
+  const [State, setState] = useState({
+    showButton: false,
+    adUnitID: Admob?.nativeAdvanced,
+    index: 0,
+  });
+  const adUnitID = __DEV__ ? TestIds.Image : State.adUnitID;
 
   // styles...
   const containerBgColor = {
@@ -35,6 +41,25 @@ const GoogleNativeAd = () => {
     NativeAdRef.current?.loadAd();
   }, []);
 
+  const onAdFailedToLoad = e => {
+    console.log('Error NativeAd -> ', e);
+    setState(p => ({ ...p, showButton: false }));
+    const newIndex = State.index + 1;
+    if (newIndex == 1) {
+      setState(p => ({
+        ...p,
+        adUnitID: Admanager1?.nativeAdvanced,
+        index: newIndex,
+      }));
+    } else if (newIndex == 2) {
+      setState(p => ({
+        ...p,
+        adUnitID: Admanager2?.nativeAdvanced,
+        index: newIndex,
+      }));
+    }
+  };
+
   return (
     adUnitID && (
       <NativeAdView
@@ -42,7 +67,7 @@ const GoogleNativeAd = () => {
         show={false}
         adUnitID={adUnitID}
         onAdLoaded={() => setState(p => ({ ...p, showButton: true }))}
-        onAdFailedToLoad={() => setState(p => ({ ...p, showButton: false }))}>
+        onAdFailedToLoad={onAdFailedToLoad}>
         <View style={styles.container}>
           <IconView style={styles.iconView} />
 
