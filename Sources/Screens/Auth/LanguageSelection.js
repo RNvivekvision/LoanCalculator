@@ -11,18 +11,20 @@ import {
 import { Images, Strings } from '../../Constants';
 import { NativeAd, RenderLanguages } from '../../Components';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
-import { useGoogleAds, useInset } from '../../Hooks';
+import { useGoogleAds, useInset, useUserClick } from '../../Hooks';
 import { DummyData, Functions } from '../../Utils';
 import { NavRoutes } from '../../Navigation';
 
 const LanguageSelection = ({ navigation }) => {
   const { showInterstitialAd } = useGoogleAds();
+  const { incrementCount } = useUserClick();
   const styles = useStyles();
   const [State, setState] = useState({
     selectedLanguage: DummyData.LanguageSelection[0],
   });
 
   const onLanguageSelectPress = async () => {
+    incrementCount();
     try {
       const isRtl = State.selectedLanguage.value === 'ar';
       Strings.setLanguage(State.selectedLanguage.value);

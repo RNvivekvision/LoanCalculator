@@ -59,39 +59,26 @@ const Routes = () => {
         nextAppState === 'active'
       ) {
         showAppOpenAd();
-        // appOpenAd.load();
-        // setTimeout(() => {
-        //   appOpenAd.loaded && appOpenAd.show();
-        // }, 500);
       }
-      // console.log('App state -> ', nextAppState);
       appState.current = nextAppState;
     });
 
     return () => {
       subscription.remove();
     };
-  }, [adData]);
+  }, [adData?.showAdInApp, adData?.splashAd]);
 
   useEffect(() => {
     localdata?.lang && Strings.setLanguage(localdata?.lang);
   }, [localdata?.lang]);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     // showAppOpenAd();
-  //     appOpenAd.load();
-  //     setTimeout(() => {
-  //       appOpenAd.loaded && appOpenAd.show();
-  //     }, 2000);
-  //   }, 1000);
-  // }, [adData]);
-
   useEffect(() => {
-    dispatch(getAdData());
-    setTimeout(() => {
-      SplashScreen.hide();
-    }, 1000);
+    (async () => {
+      await dispatch(getAdData());
+      setTimeout(() => {
+        SplashScreen.hide();
+      }, 1000);
+    })();
   }, []);
 
   useEffect(() => {
@@ -106,14 +93,11 @@ const Routes = () => {
       AdSettings.setLogLevel('debug');
       AdSettings.addTestDevice(AdSettings.currentDeviceHash);
       const requestedStatus = await AdSettings.requestTrackingPermission();
-      // console.log('requestedStatus -> ', requestedStatus);
       if (
         requestedStatus === 'authorized' ||
         requestedStatus === 'unavailable'
       ) {
         AdSettings.setAdvertiserIDCollectionEnabled(true);
-        // Both calls are not related to each other
-        // FB won't deliver any ads if this is set to false or not called at all.
         AdSettings.setAdvertiserTrackingEnabled(true);
       }
     } catch (e) {

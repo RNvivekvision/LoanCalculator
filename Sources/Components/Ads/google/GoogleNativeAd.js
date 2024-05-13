@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     ...RNStyles.flexRow,
     backgroundColor: Colors.Black,
     paddingHorizontal: wp(4),
-    paddingVertical: hp(1),
+    paddingVertical: hp(2),
   },
   iconView: {
     width: iconSize,

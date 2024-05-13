@@ -1137,7 +1137,7 @@ PODS:
     - React-Core
   - RNDeviceInfo (10.13.2):
     - React-Core
-  - RNGestureHandler (2.16.1):
+  - RNGestureHandler (2.16.2):
     - glog
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
@@ -1485,7 +1485,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 826b603ae9c0f88b5ac4e956801f755109fa4d5c
   RNCMaskedView: 090213d32d8b3bb83a4dcb7d12c18f0152591906
   RNDeviceInfo: 42aadf1282ffa0a88dc38a504a7be145eb010dfa
-  RNGestureHandler: a8825f964c319a5ea23cc3fa28ae2add62863071
+  RNGestureHandler: 96439cf6543defdde87459e48cd1a3f0e45a008e
   RNGoogleMobileAds: a3c8d06747767bc34341abd6d8f064102bf20e8d
   RNRate: ef3bcff84f39bb1d1e41c5593d3eea4aab2bd73a
   RNReanimated: 6cfa556540186ce7ae7a0b048f369236b1d86ebb

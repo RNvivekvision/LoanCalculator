@@ -23,14 +23,14 @@ const RNHeader = ({
   const { showInterstitialAd } = useGoogleAds();
   const { incrementCount } = useUserClick();
 
-  const onBackPress = async () => {
+  const onBackPress = () => {
     if (drawer) {
       navigation.openDrawer();
       return;
     }
 
     incrementCount();
-    await showInterstitialAd();
+    showInterstitialAd();
     navigation.goBack();
   };
 

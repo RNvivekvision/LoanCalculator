@@ -6,11 +6,12 @@ import { BannerAd, LOTerms, RenderTerms } from '../../Components';
 import { FontFamily, FontSize, hp, wp } from '../../Theme';
 import { Strings } from '../../Constants';
 import { DummyData } from '../../Utils';
-import { useInset } from '../../Hooks';
+import { useInset, useUserClick } from '../../Hooks';
 import { NavRoutes } from '../../Navigation';
 
 const TermsAndCondition = ({ navigation }) => {
   const styles = useStyles();
+  const { incrementCount } = useUserClick();
 
   const Header = () => {
     return <RNText style={styles.title}>{Strings.TermsAndConditions}</RNText>;
@@ -20,6 +21,7 @@ const TermsAndCondition = ({ navigation }) => {
     const [State, setState] = useState({ isChecked: true });
 
     const onAnnouncingPress = () => {
+      incrementCount();
       navigation.navigate(NavRoutes.LanguageSelection);
     };
 

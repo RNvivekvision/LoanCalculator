@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.Black,
     width: wp(33),
-    paddingVertical: hp(1),
+    paddingVertical: hp(1.5),
     marginHorizontal: 0,
     marginTop: hp(2),
     marginBottom: 0,

@@ -5,7 +5,7 @@ import { FontFamily, FontSize, hp, wp } from '../../Theme';
 import { Images } from '../../Constants';
 import { DummyData } from '../../Utils';
 import { NavRoutes } from '../../Navigation';
-import { useGoogleAds, useInset } from '../../Hooks';
+import { useGoogleAds, useInset, useUserClick } from '../../Hooks';
 import {
   RenderOnboarding,
   LOPagginationDots,
@@ -15,22 +15,19 @@ import Reanimated, {
   useAnimatedScrollHandler,
   useSharedValue,
 } from 'react-native-reanimated';
-import { useSelector } from 'react-redux';
 
 const Onboarding = ({ navigation }) => {
-  const { Admob, Admanager1, Admanager2 } = useSelector(
-    ({ UserReducer }) => UserReducer,
-  );
   const { showInterstitialAd } = useGoogleAds();
+  const { incrementCount } = useUserClick();
   const scroll = useSharedValue(0);
   const styles = useStyles();
-  // console.log(JSON.stringify({ Admob, Admanager1, Admanager2 }, null, 2));
   const onScroll = useAnimatedScrollHandler(({ contentOffset }) => {
     scroll.value = contentOffset.x;
   }, []);
 
-  const onTrueIconPress = async () => {
-    await showInterstitialAd();
+  const onTrueIconPress = () => {
+    incrementCount();
+    showInterstitialAd(true);
     navigation.navigate(NavRoutes.TermsAndCondition);
   };
 

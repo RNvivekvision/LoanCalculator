@@ -27,7 +27,7 @@ const getAdData = createAsyncThunk('getAdData', async () => {
       NeedToken: false,
       Params: Params,
     });
-    // console.log('getAdData -> ', JSON.stringify(response, null, 2));
+    console.log('getAdData -> ', JSON.stringify(response, null, 2));
     if (response?.isSuccess) {
       return response?.data;
     }

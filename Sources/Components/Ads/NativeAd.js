@@ -1,11 +1,19 @@
+import { useSelector } from 'react-redux';
 import { GoogleNativeAd } from './google';
 import { FacebookNativeAd } from './facebook';
 import { AppLoveInNativeAd } from './appLoveIn';
 
 const NativeAd = () => {
-  // return <AppLoveInNativeAd />;
-  // return <FacebookNativeAd />;
-  return <GoogleNativeAd />;
+  const { adData } = useSelector(({ UserReducer }) => UserReducer);
+  const showAd = adData?.showAdInApp ?? false;
+
+  if (showAd) {
+    // return <AppLoveInNativeAd />;
+    // return <FacebookNativeAd />;
+    return <GoogleNativeAd />;
+  }
+
+  return null;
 };
 
 export default NativeAd;

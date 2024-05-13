@@ -12,14 +12,15 @@ const defaultAdsObj = {
 const initialState = {
   appData: null,
   adData: null,
-  adDataLoading: false,
   Admob: null,
   Admanager1: null,
   Admanager2: null,
   fbAds: null,
   loveinAds: null,
   loveinAdsLoaded: false,
-  innerPageClickCount: 0,
+  innerPageClickCount: 1,
+  adLoading: false,
+  clickAds: false,
 };
 
 const UserReducer = createSlice({
@@ -34,14 +35,20 @@ const UserReducer = createSlice({
     },
     incrementCount: (s, a) => {
       s.innerPageClickCount = s.innerPageClickCount + 1;
+      s.clickAds =
+        s.innerPageClickCount % s.adData?.innerPageAdClickCount === 0;
+      console.log({ clickAds: s.clickAds });
+    },
+    showAdLoader: (s, a) => {
+      s.adLoading = a.payload;
     },
   },
   extraReducers: b => {
     b.addCase(getAdData.pending, s => {
-      s.adDataLoading = true;
+      s.adLoading = true;
     });
     b.addCase(getAdData.fulfilled, (s, a) => {
-      s.adDataLoading = false;
+      s.adLoading = false;
       s.adData = a.payload;
       s.Admob = a.payload?.placement?.Admob;
       s.Admanager1 = a.payload?.placement?.Admanager1;
@@ -50,13 +57,17 @@ const UserReducer = createSlice({
       s.loveinAds = a.payload?.placement?.AppLovin;
     });
     b.addCase(getAdData.rejected, (s, a) => {
-      s.adDataLoading = false;
+      s.adLoading = false;
       s.adData = a.payload;
       // s = a.payload;
     });
   },
 });
 
-export const { setLocalData, setLoveinAdsLoaded, incrementCount } =
-  UserReducer.actions;
+export const {
+  setLocalData,
+  setLoveinAdsLoaded,
+  incrementCount,
+  showAdLoader,
+} = UserReducer.actions;
 export default UserReducer.reducer;

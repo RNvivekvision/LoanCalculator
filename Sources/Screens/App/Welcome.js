@@ -9,7 +9,7 @@ import {
   RNText,
 } from '../../Common';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
-import { useInset, useUserClick } from '../../Hooks';
+import { useGoogleAds, useInset, useUserClick } from '../../Hooks';
 import { Images, Strings } from '../../Constants';
 import { NativeAd } from '../../Components';
 import { NavRoutes } from '../../Navigation';
@@ -17,10 +17,9 @@ import { Functions } from '../../Utils';
 import { useSelector } from 'react-redux';
 
 const Welcome = ({ navigation }) => {
+  const { showInterstitialAd } = useGoogleAds();
   const { incrementCount } = useUserClick();
-  const { adDataLoading, adData } = useSelector(
-    ({ UserReducer }) => UserReducer,
-  );
+  const { adData } = useSelector(({ UserReducer }) => UserReducer);
   // console.log('adData -> ', JSON.stringify(adData, null, 2));
   const [State, setState] = useState(false);
   const styles = useStyles();
@@ -31,11 +30,13 @@ const Welcome = ({ navigation }) => {
 
   const onStartAppPress = () => {
     incrementCount();
+    showInterstitialAd();
     navigation.replace(NavRoutes.Home);
   };
 
   const onInvitePress = async () => {
     incrementCount();
+    await showInterstitialAd();
     try {
       await Functions.ShareApp();
     } catch (e) {
@@ -45,6 +46,7 @@ const Welcome = ({ navigation }) => {
 
   const onPrivacyPolicyPress = async () => {
     incrementCount();
+    await showInterstitialAd();
     try {
       await Functions.OpenUrl(adData?.appPrivacyPolicyLink);
     } catch (e) {
@@ -54,6 +56,7 @@ const Welcome = ({ navigation }) => {
 
   const onRateUsPress = async () => {
     incrementCount();
+    await showInterstitialAd();
     try {
       await Functions.RateUs({
         onSuccess: s => console.log('Welcome rate us Success -> ', s),
@@ -65,7 +68,7 @@ const Welcome = ({ navigation }) => {
   };
 
   return (
-    <RNContainer style={styles.container} isLoading={adDataLoading}>
+    <RNContainer style={styles.container}>
       <View style={styles.content}>
         <RNScrollView safeArea={'top'}>
           <RNText size={FontSize.font18} family={FontFamily.Bold}>
