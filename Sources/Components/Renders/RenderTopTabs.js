@@ -14,9 +14,9 @@ const RenderTopTabs = ({ item, selectedTab, index, onPress }) => {
     ({ UserReducer }) => UserReducer,
   );
 
-  const _onPress = () => {
+  const _onPress = async () => {
     incrementCount();
-    showInterstitialAd();
+    await showInterstitialAd();
     onPress?.(item);
   };
 

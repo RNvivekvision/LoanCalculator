@@ -16,6 +16,7 @@ const useGoogleAds = () => {
   const dispatch = useDispatch();
   const [State, setState] = useState({
     interstitial: Admob?.interstitial,
+    interstitialClosed: false,
     index: 0,
   });
 
@@ -72,22 +73,24 @@ const useGoogleAds = () => {
     }
   };
 
-  const showingIntestitialAds = onboarding => {
+  const showingIntestitialAds = async onboarding => {
     try {
       console.log('Interstitial ad loaded -> ', interstitialAd.loaded);
-
       if (interstitialAd.loaded) {
+        console.log({
+          clickAds,
+        });
         if (clickAds || onboarding) {
           dispatch(showAdLoader(true));
-          wait(1000).then(() => {
-            interstitialAd.show();
-            dispatch(showAdLoader(false));
-          });
+          await wait(1000);
+          await interstitialAd.show();
+          await dispatch(showAdLoader(false));
         }
         return;
       } else {
         interstitialAd.load();
-        wait(500).then(() => showingIntestitialAds(onboarding));
+        await wait(500);
+        await showingIntestitialAds(onboarding);
       }
     } catch (e) {
       console.log('Error showingIntestitialAds -> ', e);

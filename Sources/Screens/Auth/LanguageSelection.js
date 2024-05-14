@@ -37,14 +37,11 @@ const LanguageSelection = ({ navigation }) => {
       if (isRtl) {
         RNRestart.restart();
       } else {
-        showInterstitialAd();
-        navigation.reset({
-          index: 0,
-          routes: [{ name: NavRoutes.Welcome }],
-        });
+        await showInterstitialAd();
+        navigation.reset({ index: 0, routes: [{ name: NavRoutes.Welcome }] });
       }
     } catch (e) {
-      console.error(e);
+      console.error('Error onLanguageSelectPress -> ', e);
     }
   };
 

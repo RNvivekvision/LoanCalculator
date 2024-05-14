@@ -5,7 +5,6 @@ import { Colors, FontFamily, FontSize, hp, wp } from '../Theme';
 import { RNIcon, RNStyles, RNText, RNScrollView } from './index';
 import { Images } from '../Constants';
 import { useGoogleAds, useInset, useUserClick } from '../Hooks';
-import { useSelector } from 'react-redux';
 
 const RNHeader = ({
   title,
@@ -23,14 +22,14 @@ const RNHeader = ({
   const { showInterstitialAd } = useGoogleAds();
   const { incrementCount } = useUserClick();
 
-  const onBackPress = () => {
+  const onBackPress = async () => {
     if (drawer) {
       navigation.openDrawer();
       return;
     }
 
     incrementCount();
-    showInterstitialAd();
+    await showInterstitialAd();
     navigation.goBack();
   };
 

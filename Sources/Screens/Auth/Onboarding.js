@@ -21,13 +21,14 @@ const Onboarding = ({ navigation }) => {
   const { incrementCount } = useUserClick();
   const scroll = useSharedValue(0);
   const styles = useStyles();
+
   const onScroll = useAnimatedScrollHandler(({ contentOffset }) => {
     scroll.value = contentOffset.x;
   }, []);
 
-  const onTrueIconPress = () => {
+  const onTrueIconPress = async () => {
     incrementCount();
-    showInterstitialAd(true);
+    await showInterstitialAd(true);
     navigation.navigate(NavRoutes.TermsAndCondition);
   };
 

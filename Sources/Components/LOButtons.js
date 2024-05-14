@@ -15,9 +15,9 @@ const LOButtons = ({
   const { showInterstitialAd } = useGoogleAds();
 
   const onButton1Press = async () => {
-    incrementCount();
-    await showInterstitialAd();
     try {
+      incrementCount();
+      await showInterstitialAd();
       const messagesArray = Object.entries(value).map(
         ([key, val]) => `${key} : ${val}\n`,
       );

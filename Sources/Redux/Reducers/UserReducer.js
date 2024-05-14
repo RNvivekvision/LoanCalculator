@@ -37,7 +37,6 @@ const UserReducer = createSlice({
       s.innerPageClickCount = s.innerPageClickCount + 1;
       s.clickAds =
         s.innerPageClickCount % s.adData?.innerPageAdClickCount === 0;
-      console.log({ clickAds: s.clickAds });
     },
     showAdLoader: (s, a) => {
       s.adLoading = a.payload;

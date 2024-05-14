@@ -20,7 +20,6 @@ const Welcome = ({ navigation }) => {
   const { showInterstitialAd } = useGoogleAds();
   const { incrementCount } = useUserClick();
   const { adData } = useSelector(({ UserReducer }) => UserReducer);
-  // console.log('adData -> ', JSON.stringify(adData, null, 2));
   const [State, setState] = useState(false);
   const styles = useStyles();
 
@@ -28,16 +27,16 @@ const Welcome = ({ navigation }) => {
     setState(true);
   }, []);
 
-  const onStartAppPress = () => {
+  const onStartAppPress = async () => {
     incrementCount();
-    showInterstitialAd();
+    await showInterstitialAd(true);
     navigation.replace(NavRoutes.Home);
   };
 
   const onInvitePress = async () => {
-    incrementCount();
-    await showInterstitialAd();
     try {
+      incrementCount();
+      await showInterstitialAd();
       await Functions.ShareApp();
     } catch (e) {
       console.log('Error onInvitePress -> ', e);
@@ -45,9 +44,9 @@ const Welcome = ({ navigation }) => {
   };
 
   const onPrivacyPolicyPress = async () => {
-    incrementCount();
-    await showInterstitialAd();
     try {
+      incrementCount();
+      await showInterstitialAd();
       await Functions.OpenUrl(adData?.appPrivacyPolicyLink);
     } catch (e) {
       console.log('Error onPrivacyPolicyPress -> ', e);
@@ -55,9 +54,9 @@ const Welcome = ({ navigation }) => {
   };
 
   const onRateUsPress = async () => {
-    incrementCount();
-    await showInterstitialAd();
     try {
+      incrementCount();
+      await showInterstitialAd();
       await Functions.RateUs({
         onSuccess: s => console.log('Welcome rate us Success -> ', s),
         onError: e => console.log('Welcome rate us Error -> ', e),
