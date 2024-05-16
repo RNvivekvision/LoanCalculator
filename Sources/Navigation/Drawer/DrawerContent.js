@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useSelector } from 'react-redux';
-import { Colors, FontFamily, FontSize, hp, wp } from '../../Theme';
+import { Colors, FontFamily, FontSize, hp, normalize, wp } from '../../Theme';
 import { RNImage, RNStyles, RNText } from '../../Common';
 import { useInset, useDummyData, useUserClick } from '../../Hooks';
 import { Images, Strings } from '../../Constants';
@@ -59,7 +59,7 @@ const DrawerContent = ({ navigation }) => {
   );
 };
 
-const logoSize = wp(33);
+const logoSize = normalize(110);
 const useStyles = () => {
   const inset = useInset();
 
@@ -69,7 +69,7 @@ const useStyles = () => {
       backgroundColor: Colors.White,
     },
     logoContainer: {
-      paddingTop: inset.top,
+      paddingTop: inset.top + hp(1),
       backgroundColor: Colors.Button,
       height: hp(23),
     },
@@ -84,7 +84,7 @@ const useStyles = () => {
       width: logoSize,
       height: logoSize,
       position: 'absolute',
-      bottom: -hp(6),
+      bottom: -wp(12),
       alignSelf: 'center',
       borderRadius: wp(3),
     },

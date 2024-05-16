@@ -165,15 +165,14 @@ const useStyles = () => {
     buttonContainer: {
       ...RNStyles.flexRow,
       backgroundColor: Colors.White + '15',
-      height: hp(8),
       marginHorizontal: wp(1),
       borderRadius: wp(3),
       marginBottom: hp(1),
+      paddingVertical: hp(2),
     },
     inviteContainer: {
       ...RNStyles.center,
       flexDirection: 'column',
-      height: hp(17),
       width: '45%',
       marginRight: wp(2),
     },
@@ -186,7 +185,7 @@ const useStyles = () => {
     inviteIcon: {
       width: iconSize + wp(4),
       height: iconSize + wp(4),
-      marginTop: hp(4),
+      marginTop: hp(2),
     },
     buttonText: {
       flex: 1,

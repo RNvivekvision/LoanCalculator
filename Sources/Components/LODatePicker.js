@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     ...RNStyles.flexRowBetween,
     backgroundColor: Colors.White + '10',
     paddingHorizontal: wp(4),
-    paddingVertical: hp(1.5),
+    paddingVertical: hp(1),
     borderRadius: wp(3),
   },
   text: {

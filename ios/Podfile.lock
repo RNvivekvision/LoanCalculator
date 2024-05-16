@@ -13,6 +13,8 @@ PODS:
     - ReactCommon/turbomodule/core (= 0.73.6)
   - Firebase (10.24.0):
     - Firebase/Core (= 10.24.0)
+  - Firebase/Analytics (10.24.0):
+    - Firebase/Core
   - Firebase/Core (10.24.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (~> 10.24.0)
@@ -1243,6 +1245,10 @@ PODS:
     - React-Core
   - RNDeviceInfo (10.13.2):
     - React-Core
+  - RNFBAnalytics (19.2.2):
+    - Firebase/Analytics (= 10.24.0)
+    - React-Core
+    - RNFBApp
   - RNFBApp (19.2.2):
     - Firebase/CoreOnly (= 10.24.0)
     - React-Core
@@ -1364,6 +1370,7 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-masked-view/masked-view`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
+  - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNGoogleMobileAds (from `../node_modules/react-native-google-mobile-ads`)
@@ -1518,6 +1525,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-masked-view/masked-view"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
+  RNFBAnalytics:
+    :path: "../node_modules/@react-native-firebase/analytics"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
   RNGestureHandler:
@@ -1619,6 +1628,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 826b603ae9c0f88b5ac4e956801f755109fa4d5c
   RNCMaskedView: 090213d32d8b3bb83a4dcb7d12c18f0152591906
   RNDeviceInfo: 42aadf1282ffa0a88dc38a504a7be145eb010dfa
+  RNFBAnalytics: d04c361a4b2b39bcf91f19344a6f0693081f1e32
   RNFBApp: 614f1621b49db54ebd258df8c45427370d8d84a2
   RNGestureHandler: 96439cf6543defdde87459e48cd1a3f0e45a008e
   RNGoogleMobileAds: 49f7f5cc2490116f654004d6325355024c862966
