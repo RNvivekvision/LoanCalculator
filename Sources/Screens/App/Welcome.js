@@ -17,9 +17,9 @@ import { Functions } from '../../Utils';
 import { useSelector } from 'react-redux';
 
 const Welcome = ({ navigation }) => {
+  const { adData } = useSelector(({ UserReducer }) => UserReducer);
   const { showInterstitialAd } = useGoogleAds();
   const { incrementCount } = useUserClick();
-  const { adData } = useSelector(({ UserReducer }) => UserReducer);
   const [State, setState] = useState(false);
   const styles = useStyles();
 
@@ -36,7 +36,6 @@ const Welcome = ({ navigation }) => {
   const onInvitePress = async () => {
     try {
       incrementCount();
-      await showInterstitialAd();
       await Functions.ShareApp();
     } catch (e) {
       console.log('Error onInvitePress -> ', e);
@@ -46,7 +45,6 @@ const Welcome = ({ navigation }) => {
   const onPrivacyPolicyPress = async () => {
     try {
       incrementCount();
-      await showInterstitialAd();
       await Functions.OpenUrl(adData?.appPrivacyPolicyLink);
     } catch (e) {
       console.log('Error onPrivacyPolicyPress -> ', e);
@@ -56,7 +54,6 @@ const Welcome = ({ navigation }) => {
   const onRateUsPress = async () => {
     try {
       incrementCount();
-      await showInterstitialAd();
       await Functions.RateUs({
         onSuccess: s => console.log('Welcome rate us Success -> ', s),
         onError: e => console.log('Welcome rate us Error -> ', e),
