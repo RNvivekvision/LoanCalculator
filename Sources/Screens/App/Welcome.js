@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import analytics from '@react-native-firebase/analytics';
 import {
   RNButton,
   RNContainer,
@@ -28,9 +29,14 @@ const Welcome = ({ navigation }) => {
   }, []);
 
   const onStartAppPress = async () => {
-    incrementCount();
-    await showInterstitialAd(true);
-    navigation.replace(NavRoutes.Home);
+    try {
+      await analytics().logEvent('welcome_pressed');
+      await incrementCount();
+      await showInterstitialAd();
+      navigation.replace(NavRoutes.Home);
+    } catch (e) {
+      console.log('Error onStartAppPress -> ', e);
+    }
   };
 
   const onInvitePress = async () => {

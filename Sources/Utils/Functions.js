@@ -106,9 +106,9 @@ const RateUs = async ({ onSuccess, onError } = {}) => {
 };
 
 const ShareApp = async ({ title, message, url } = {}) => {
-  const appLink = 'https://apps.apple.com/in/app/xcode/id497799835';
-  const Title = 'LoanGol';
-  const Message = `Share Loan gol app to your friends. by clicking the following url ${appLink}`;
+  const appLink = 'https://apps.apple.com/in/app/xcode/id6502944625?mt=12';
+  const Title = 'Easy EMI Loan Calculator';
+  const Message = `Share Easy EMI Loan Calculator app to your friends. by clicking the following url ${appLink}`;
 
   await Share.share({
     title: title ?? Title,

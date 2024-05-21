@@ -75,7 +75,7 @@ const useGoogleAds = () => {
 
   const showingIntestitialAds = async onboarding => {
     try {
-      console.log('Interstitial ad loaded -> ', interstitialAd.loaded);
+      // console.log('Interstitial ad loaded -> ', interstitialAd.loaded);
       if (interstitialAd.loaded) {
         console.log({
           clickAds,

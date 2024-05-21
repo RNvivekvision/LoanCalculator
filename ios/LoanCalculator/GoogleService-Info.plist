@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyCivMuqtTCYil8VojanlEB4J1viD5celms</string>
+	<string>AIzaSyCZHZNX5g9I2gOnu_RJmCceNemE3UNWjvc</string>
 	<key>GCM_SENDER_ID</key>
-	<string>822602335797</string>
+	<string>177034224371</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.loantoolcalc.easyemiloan</string>
 	<key>PROJECT_ID</key>
-	<string>loangol</string>
+	<string>easy-emi-loan-calculator-ffdc3</string>
 	<key>STORAGE_BUCKET</key>
-	<string>loangol.appspot.com</string>
+	<string>easy-emi-loan-calculator-ffdc3.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,8 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:822602335797:ios:67abf49e354a771193137c</string>
-	<key>DATABASE_URL</key>
-	<string>https://loangol-default-rtdb.firebaseio.com</string>
+	<string>1:177034224371:ios:c4991e37cca22b7ab0cd86</string>
 </dict>
 </plist>
