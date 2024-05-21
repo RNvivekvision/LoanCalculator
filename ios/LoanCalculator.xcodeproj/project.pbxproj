@@ -23,7 +23,7 @@
 		E269D0232BA969BF0051A563 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E269D0172BA969BF0051A563 /* Roboto-Black.ttf */; };
 		E269D0242BA969BF0051A563 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E269D0182BA969BF0051A563 /* Roboto-Regular.ttf */; };
 		E269D0252BA969BF0051A563 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E269D0192BA969BF0051A563 /* Roboto-Bold.ttf */; };
-		E2803EBF2BFCAE7B00A753DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2803EBE2BFCAE7B00A753DF /* GoogleService-Info.plist */; };
+		E2803EC32BFCBAB300A753DF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2803EC22BFCBAB300A753DF /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +75,7 @@
 		E269D0172BA969BF0051A563 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Black.ttf"; path = "../../Sources/Assets/Fonts/Roboto-Black.ttf"; sourceTree = "<group>"; };
 		E269D0182BA969BF0051A563 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../Sources/Assets/Fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		E269D0192BA969BF0051A563 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "../../Sources/Assets/Fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
-		E2803EBE2BFCAE7B00A753DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "LoanCalculator/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E2803EC22BFCBAB300A753DF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "LoanCalculator/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -120,7 +120,7 @@
 		13B07FAE1A68108700A75B9A /* LoanCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				E2803EBE2BFCAE7B00A753DF /* GoogleService-Info.plist */,
+				E2803EC22BFCBAB300A753DF /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -312,7 +312,7 @@
 				E269D0212BA969BF0051A563 /* Roboto-Italic.ttf in Resources */,
 				E269D0222BA969BF0051A563 /* Roboto-Medium.ttf in Resources */,
 				E269D0242BA969BF0051A563 /* Roboto-Regular.ttf in Resources */,
-				E2803EBF2BFCAE7B00A753DF /* GoogleService-Info.plist in Resources */,
+				E2803EC32BFCBAB300A753DF /* GoogleService-Info.plist in Resources */,
 				E269D0202BA969BF0051A563 /* Roboto-Light.ttf in Resources */,
 				E269D0232BA969BF0051A563 /* Roboto-Black.ttf in Resources */,
 			);
@@ -608,7 +608,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5TC9DUZ5V6;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -625,7 +625,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.loangol;
+				PRODUCT_BUNDLE_IDENTIFIER = com.loantoolcalc.easyemiloan;
 				PRODUCT_NAME = LoanCalculator;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -646,7 +646,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5TC9DUZ5V6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(inherited)",
@@ -662,7 +662,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.loangol;
+				PRODUCT_BUNDLE_IDENTIFIER = com.loantoolcalc.easyemiloan;
 				PRODUCT_NAME = LoanCalculator;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
