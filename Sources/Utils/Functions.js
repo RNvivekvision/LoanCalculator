@@ -84,15 +84,16 @@ const loanTenure = (startDate, tenure) => {
   return formatDate({ date: newDate });
 };
 
+const appLink = 'https://apps.apple.com/in/app/xcode/id6502944625?mt=12';
 const RateUs = async ({ onSuccess, onError } = {}) => {
   const options = {
-    AppleAppID: '1465682080',
+    AppleAppID: '6502944625',
     GooglePackageName: 'com.mywebsite.myapp',
     AmazonPackageName: 'com.mywebsite.myapp',
     preferredAndroidMarket: AndroidMarket.Google,
     preferInApp: true,
     openAppStoreIfInAppFails: true,
-    fallbackPlatformURL: 'https://github.com/KjellConnelly/react-native-rate',
+    fallbackPlatformURL: appLink,
     inAppDelay: 1000,
   };
   await Rate.rate(options, (success, error) => {
@@ -106,7 +107,6 @@ const RateUs = async ({ onSuccess, onError } = {}) => {
 };
 
 const ShareApp = async ({ title, message, url } = {}) => {
-  const appLink = 'https://apps.apple.com/in/app/xcode/id6502944625?mt=12';
   const Title = 'Easy EMI Loan Calculator';
   const Message = `Share Easy EMI Loan Calculator app to your friends. by clicking the following url ${appLink}`;
 

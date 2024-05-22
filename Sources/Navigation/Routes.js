@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef } from 'react';
+import { AppState } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -37,10 +38,9 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { getAdData } from '../Redux/ExtraReducers';
 // import { AdSettings } from 'react-native-fbads';
-import { AppLovinMAX } from 'react-native-applovin-max';
+// import { AppLovinMAX } from 'react-native-applovin-max';
 import { DummyData } from '../Utils';
 import { setLoveinAdsLoaded } from '../Redux/Actions';
-import { AppState } from 'react-native';
 
 const Stack = createStackNavigator();
 
@@ -81,11 +81,11 @@ const Routes = () => {
     })();
   }, []);
 
-  useEffect(() => {
-    initAppLoveinAds();
-    // initFacebookAds();
-    // return () => AdSettings.clearTestDevices();
-  }, []);
+  // useEffect(() => {
+  //   initAppLoveinAds();
+  //   // initFacebookAds();
+  //   // return () => AdSettings.clearTestDevices();
+  // }, []);
 
   const initFacebookAds = async () => {
     try {

@@ -23,12 +23,13 @@ const RNHeader = ({
   const { incrementCount } = useUserClick();
 
   const onBackPress = async () => {
+    incrementCount();
+
     if (drawer) {
       navigation.openDrawer();
       return;
     }
 
-    incrementCount();
     await showInterstitialAd();
     navigation.goBack();
   };
