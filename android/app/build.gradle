@@ -2,6 +2,7 @@ apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -70,10 +71,10 @@ def enableProguardInReleaseBuilds = false
  */
 def jscFlavor = 'org.webkit:android-jsc:+'
 
-apply plugin: 'applovin-quality-service'
-applovin {
-    apiKey "KhnMUTE6qPxWPD7TPIK-zX8mukFpSUNy71uyG2Ip0ouUJTKTNpSRkaZqvlOEsXp4H-rQpom5cDET1JzX1bFGpK"    
-}
+// apply plugin: 'applovin-quality-service'
+// applovin {
+//     apiKey "KhnMUTE6qPxWPD7TPIK-zX8mukFpSUNy71uyG2Ip0ouUJTKTNpSRkaZqvlOEsXp4H-rQpom5cDET1JzX1bFGpK"    
+// }
 
 android {
     ndkVersion rootProject.ext.ndkVersion
