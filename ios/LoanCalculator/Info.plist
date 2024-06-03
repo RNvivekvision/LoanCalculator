@@ -48,7 +48,7 @@
 		<true/>
 	</dict>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>To enhance your experience, $(PRODUCT_NAME) utilizes user tracking for delivering personalized advertisements tailored to your interests.</string>
+	<string>To enhance your experience, Loan Calculator utilizes user tracking for delivering personalized advertisements tailored to your interests.</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

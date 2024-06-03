@@ -6,13 +6,14 @@ import {
   TestIds,
 } from 'react-native-google-mobile-ads';
 import { useSelector } from 'react-redux';
+import { Functions } from '../../../Utils';
 
 const GoogleBannerAds = ({ style }) => {
   const { Admob, Admanager1, Admanager2 } = useSelector(
     ({ UserReducer }) => UserReducer,
   );
   const [State, setState] = useState({ unitId: Admob?.banner, index: 0 });
-  const unitId = __DEV__ ? TestIds.ADAPTIVE_BANNER : State.unitId;
+  const unitId = Functions.isDev ? TestIds.ADAPTIVE_BANNER : State.unitId;
 
   const onAdFailedToLoad = e => {
     console.log('Error BannerAd -> ', e);

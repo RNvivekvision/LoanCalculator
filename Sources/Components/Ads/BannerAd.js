@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { GoogleBannerAd } from './google';
-import { AppLoveInBannerAd } from './appLoveIn';
-import { FacebookBannerAd } from './facebook';
+// import { AppLoveInBannerAd } from './appLoveIn';
+// import { FacebookBannerAd } from './facebook';
 
 const BannerAds = () => {
   const { adData } = useSelector(({ UserReducer }) => UserReducer);

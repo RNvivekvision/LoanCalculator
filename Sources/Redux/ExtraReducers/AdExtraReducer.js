@@ -1,7 +1,7 @@
 import DeviceInfo from 'react-native-device-info';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { FetchMethod, URL } from '../../Api';
-import { DummyData } from '../../Utils';
+import { DummyData, Functions } from '../../Utils';
 import { getIp } from '@mobeuv/react-native-check-ip';
 
 const getAdData = createAsyncThunk('getAdData', async () => {
@@ -16,7 +16,7 @@ const getAdData = createAsyncThunk('getAdData', async () => {
       packageName: DummyData.appInfo.packageName,
       apiKeyText: DummyData.appInfo.appName,
       device: device === 'unknown' ? '84361f1427227255' : device,
-      keyForm: __DEV__ ? 'Debug' : 'Release',
+      keyForm: Functions.isDev ? 'Debug' : 'Release',
       ipaddress: result.ipv4,
       version: version,
     };

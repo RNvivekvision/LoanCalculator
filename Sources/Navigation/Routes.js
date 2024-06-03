@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AppState } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
@@ -37,14 +37,16 @@ import {
 } from '../Screens';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAdData } from '../Redux/ExtraReducers';
+import { requestTrackingPermission } from 'react-native-tracking-transparency';
+// import { DummyData } from '../Utils';
+// import { setLoveinAdsLoaded } from '../Redux/Actions';
 // import { AdSettings } from 'react-native-fbads';
 // import { AppLovinMAX } from 'react-native-applovin-max';
-import { DummyData } from '../Utils';
-import { setLoveinAdsLoaded } from '../Redux/Actions';
 
 const Stack = createStackNavigator();
 
 const Routes = () => {
+  const [firstTime, setFirstTime] = useState(true);
   const { adData } = useSelector(({ UserReducer }) => UserReducer);
   const { showAppOpenAd } = useGoogleAds();
   const { localdata } = useLocalStorage();
@@ -58,15 +60,12 @@ const Routes = () => {
         appState.current.match(/inactive|background/) &&
         nextAppState === 'active'
       ) {
-        showAppOpenAd();
+        !firstTime && showAppOpenAd();
       }
       appState.current = nextAppState;
     });
-
-    return () => {
-      subscription.remove();
-    };
-  }, [adData?.showAdInApp, adData?.splashAd]);
+    return () => subscription.remove();
+  }, [adData?.showAdInApp, adData?.splashAd, firstTime]);
 
   useEffect(() => {
     localdata?.lang && Strings.setLanguage(localdata?.lang);
@@ -81,63 +80,75 @@ const Routes = () => {
     })();
   }, []);
 
+  useEffect(() => {
+    requestPermission();
+  }, []);
+
+  const requestPermission = async () => {
+    try {
+      const status = await requestTrackingPermission();
+      setFirstTime(false);
+    } catch (e) {
+      console.log('Error requestPermission -> ', e);
+    }
+  };
+
   // useEffect(() => {
   //   initAppLoveinAds();
   //   // initFacebookAds();
   //   // return () => AdSettings.clearTestDevices();
   // }, []);
 
-  const initFacebookAds = async () => {
-    try {
-      // console.log('currentDeviceHash -> ', AdSettings.currentDeviceHash);
-      AdSettings.setLogLevel('debug');
-      AdSettings.addTestDevice(AdSettings.currentDeviceHash);
-      const requestedStatus = await AdSettings.requestTrackingPermission();
-      if (
-        requestedStatus === 'authorized' ||
-        requestedStatus === 'unavailable'
-      ) {
-        AdSettings.setAdvertiserIDCollectionEnabled(true);
-        AdSettings.setAdvertiserTrackingEnabled(true);
-      }
-    } catch (e) {
-      console.log('Error Init facebook -> ', e);
-    }
-  };
+  // const initFacebookAds = async () => {
+  //   try {
+  //     // console.log('currentDeviceHash -> ', AdSettings.currentDeviceHash);
+  //     AdSettings.setLogLevel('debug');
+  //     AdSettings.addTestDevice(AdSettings.currentDeviceHash);
+  //     const requestedStatus = await AdSettings.requestTrackingPermission();
+  //     if (
+  //       requestedStatus === 'authorized' ||
+  //       requestedStatus === 'unavailable'
+  //     ) {
+  //       AdSettings.setAdvertiserIDCollectionEnabled(true);
+  //       AdSettings.setAdvertiserTrackingEnabled(true);
+  //     }
+  //   } catch (e) {
+  //     console.log('Error Init facebook -> ', e);
+  //   }
+  // };
 
-  const initAppLoveinAds = async () => {
-    const AppOpenAd = () => {
-      const showAdIfReady = async () => {
-        const isAppOpenAdReady = await AppOpenAd.isAdReady(
-          DummyData.adKeys.appLovein.android.appOpen,
-        );
-        if (isAppOpenAdReady) {
-          AppOpenAd.showAd(DummyData.adKeys.appLovein.android.appOpen);
-        } else {
-          AppOpenAd.loadAd(DummyData.adKeys.appLovein.android.appOpen);
-        }
-      };
-      AppOpenAd.addAdLoadedEventListener(v => {
-        console.log('AppOpen addAdLoadedEventListener -> ', v);
-        // showAdIfReady();
-      });
-      AppOpenAd.addAdLoadFailedEventListener(e => {
-        console.log('AppOpen addAdLoadFailedEventListener -> ', e);
-      });
-      // showAdIfReady();
-    };
-
-    try {
-      const config = await AppLovinMAX.initialize(
-        DummyData.adKeys.appLovein.SDK,
-      );
-      dispatch(setLoveinAdsLoaded(true));
-      // AppOpenAd();
-    } catch (e) {
-      dispatch(setLoveinAdsLoaded(false));
-      console.error('Error initAppLoveinAds -> ', e);
-    }
-  };
+  // const initAppLoveinAds = async () => {
+  //   const AppOpenAd = () => {
+  //     const showAdIfReady = async () => {
+  //       const isAppOpenAdReady = await AppOpenAd.isAdReady(
+  //         DummyData.adKeys.appLovein.android.appOpen,
+  //       );
+  //       if (isAppOpenAdReady) {
+  //         AppOpenAd.showAd(DummyData.adKeys.appLovein.android.appOpen);
+  //       } else {
+  //         AppOpenAd.loadAd(DummyData.adKeys.appLovein.android.appOpen);
+  //       }
+  //     };
+  //     AppOpenAd.addAdLoadedEventListener(v => {
+  //       console.log('AppOpen addAdLoadedEventListener -> ', v);
+  //       // showAdIfReady();
+  //     });
+  //     AppOpenAd.addAdLoadFailedEventListener(e => {
+  //       console.log('AppOpen addAdLoadFailedEventListener -> ', e);
+  //     });
+  //     // showAdIfReady();
+  //   };
+  //   try {
+  //     const config = await AppLovinMAX.initialize(
+  //       DummyData.adKeys.appLovein.SDK,
+  //     );
+  //     dispatch(setLoveinAdsLoaded(true));
+  //     // AppOpenAd();
+  //   } catch (e) {
+  //     dispatch(setLoveinAdsLoaded(false));
+  //     console.error('Error initAppLoveinAds -> ', e);
+  //   }
+  // };
 
   const Screens = useCallback(() => {
     return (

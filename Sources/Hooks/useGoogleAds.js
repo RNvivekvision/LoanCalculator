@@ -8,6 +8,7 @@ import {
   TestIds,
 } from 'react-native-google-mobile-ads';
 import { showAdLoader } from '../Redux/Actions';
+import { Functions } from '../Utils';
 
 const useGoogleAds = () => {
   const { adData, Admob, clickAds, Admanager1, Admanager2 } = useSelector(
@@ -20,9 +21,11 @@ const useGoogleAds = () => {
     index: 0,
   });
 
-  const appOpenId = __DEV__ ? TestIds.APP_OPEN : Admob?.appOpen;
-  const interstitialId = __DEV__ ? TestIds.INTERSTITIAL : State.interstitial;
-  const rewardId = __DEV__ ? TestIds.REWARDED : Admob?.rewarded;
+  const appOpenId = Functions.isDev ? TestIds.APP_OPEN : Admob?.appOpen;
+  const interstitialId = Functions.isDev
+    ? TestIds.INTERSTITIAL
+    : State.interstitial;
+  const rewardId = Functions.isDev ? TestIds.REWARDED : Admob?.rewarded;
 
   const appOpenAd =
     appOpenId?.length > 0
@@ -42,10 +45,11 @@ const useGoogleAds = () => {
       appOpenAd?.loaded == undefined ||
       interstitialAd?.loaded == undefined ||
       rewardAd?.loaded == undefined
-    )
+    ) {
       return;
+    }
 
-    const error_interstitial = interstitialAd.addAdEventListener(
+    const error_interstitial = interstitialAd?.addAdEventListener(
       AdEventType.ERROR,
       e => {
         console.log('Error Interstitial Ad -> ', e);
@@ -67,45 +71,42 @@ const useGoogleAds = () => {
     );
 
     appOpenAd.load();
-    interstitialAd.load();
-    rewardAd.load();
+    interstitialAd?.load();
+    rewardAd?.load();
 
     return () => {
       error_interstitial();
     };
-  }, [adData]);
+  }, [adData?.showAdInApp]);
 
   const showingAppOpenAds = () => {
+    if (appOpenAd?.loaded == undefined) return;
     console.log('AppOpen ad loaded -> ', appOpenAd?.loaded);
-    if (appOpenId?.loaded == undefined) return;
     if (appOpenAd?.loaded) {
       if (adData?.splashAd) {
-        appOpenAd.show();
+        appOpenAd?.show();
       }
       return;
     } else {
-      appOpenAd.load();
+      appOpenAd?.load();
       wait(400).then(showingAppOpenAds);
     }
   };
 
   const showingIntestitialAds = async onboarding => {
     try {
-      // console.log('Interstitial ad loaded -> ', interstitialAd?.loaded);
       if (interstitialAd?.loaded == undefined) return;
+      console.log('Interstitial ad loaded -> ', interstitialAd?.loaded);
       if (interstitialAd?.loaded) {
-        console.log({
-          clickAds,
-        });
-        if (clickAds || onboarding || true) {
+        if (clickAds || onboarding) {
           dispatch(showAdLoader(true));
           await wait(1000);
-          await interstitialAd.show();
+          await interstitialAd?.show();
           await dispatch(showAdLoader(false));
         }
         return;
       } else {
-        interstitialAd.load();
+        interstitialAd?.load();
         await wait(500);
         await showingIntestitialAds(onboarding);
       }
@@ -115,17 +116,17 @@ const useGoogleAds = () => {
   };
 
   const showingRewadAds = () => {
-    console.log('Reward ad loaded -> ', rewardAd?.loaded);
     if (rewardAd?.loaded == undefined) return;
+    console.log('Reward ad loaded -> ', rewardAd?.loaded);
     if (rewardAd?.loaded) {
-      return rewardAd.show();
+      return rewardAd?.show();
     } else {
-      rewardAd.load();
+      rewardAd?.load();
       wait(500).then(showingRewadAds);
     }
   };
 
-  if (adData?.showAdInApp || true) {
+  if (adData?.showAdInApp) {
     return {
       showAppOpenAd: showingAppOpenAds,
       showInterstitialAd: showingIntestitialAds,
@@ -144,5 +145,6 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
 const defaultMethods = {
   load: () => {},
   show: () => {},
+  addAdEventListener: () => () => null,
 };
 export default useGoogleAds;

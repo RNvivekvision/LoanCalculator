@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { GoogleNativeAd } from './google';
-import { FacebookNativeAd } from './facebook';
-import { AppLoveInNativeAd } from './appLoveIn';
+// import { FacebookNativeAd } from './facebook';
+// import { AppLoveInNativeAd } from './appLoveIn';
 
 const NativeAd = () => {
   const { adData } = useSelector(({ UserReducer }) => UserReducer);

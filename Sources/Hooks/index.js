@@ -4,8 +4,8 @@ import useLocalStorage from './useLocalStorage';
 import useUserClick from './useUserClick';
 
 import useGoogleAds from './useGoogleAds';
-import useFacebookAds from './useFacebookAds';
-import useAppLoveinAds from './useAppLoveinAds';
+// import useFacebookAds from './useFacebookAds';
+// import useAppLoveinAds from './useAppLoveinAds';
 
 export {
   useInset,
@@ -13,6 +13,6 @@ export {
   useLocalStorage,
   useUserClick,
   useGoogleAds,
-  useFacebookAds,
-  useAppLoveinAds,
+  // useFacebookAds,
+  // useAppLoveinAds,
 };

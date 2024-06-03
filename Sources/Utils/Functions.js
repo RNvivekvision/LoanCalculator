@@ -6,6 +6,8 @@ const ALERT = ({ Title, Text, Buttons }) => Alert.alert(Title, Text, Buttons);
 
 const OpenUrl = url => Linking.openURL(url);
 
+const isDev = __DEV__;
+
 const setAppData = async data => {
   const previousValue = await getAppData();
   if (previousValue) {
@@ -131,6 +133,7 @@ const Functions = {
   loanTenure,
   RateUs,
   ShareApp,
+  isDev,
 };
 
 export default Functions;

@@ -12,6 +12,7 @@ import NativeAdView, {
 import { useSelector } from 'react-redux';
 import { Colors, FontFamily, FontSize, hp, wp } from '../../../Theme';
 import { RNStyles } from '../../../Common';
+import { Functions } from '../../../Utils';
 
 const GoogleNativeAd = () => {
   const NativeAdRef = useRef();
@@ -23,7 +24,7 @@ const GoogleNativeAd = () => {
     adUnitID: Admob?.nativeAdvanced,
     index: 0,
   });
-  const adUnitID = __DEV__ ? TestIds.Image : State.adUnitID;
+  const adUnitID = Functions.isDev ? TestIds.Image : State.adUnitID;
 
   // styles...
   const containerBgColor = {
