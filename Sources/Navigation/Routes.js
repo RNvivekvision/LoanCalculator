@@ -38,6 +38,10 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { getAdData } from '../Redux/ExtraReducers';
 import { requestTrackingPermission } from 'react-native-tracking-transparency';
+import { Settings, AppEventsLogger } from 'react-native-fbsdk-next';
+
+Settings.initializeSDK();
+
 // import { DummyData } from '../Utils';
 // import { setLoveinAdsLoaded } from '../Redux/Actions';
 // import { AdSettings } from 'react-native-fbads';
@@ -46,7 +50,6 @@ import { requestTrackingPermission } from 'react-native-tracking-transparency';
 const Stack = createStackNavigator();
 
 const Routes = () => {
-  const [firstTime, setFirstTime] = useState(true);
   const { adData } = useSelector(({ UserReducer }) => UserReducer);
   const { showAppOpenAd } = useGoogleAds();
   const { localdata } = useLocalStorage();
@@ -60,12 +63,12 @@ const Routes = () => {
         appState.current.match(/inactive|background/) &&
         nextAppState === 'active'
       ) {
-        !firstTime && showAppOpenAd();
+        showAppOpenAd();
       }
       appState.current = nextAppState;
     });
     return () => subscription.remove();
-  }, [adData?.showAdInApp, adData?.splashAd, firstTime]);
+  }, [adData?.showAdInApp, adData?.splashAd]);
 
   useEffect(() => {
     localdata?.lang && Strings.setLanguage(localdata?.lang);
@@ -87,7 +90,6 @@ const Routes = () => {
   const requestPermission = async () => {
     try {
       const status = await requestTrackingPermission();
-      setFirstTime(false);
     } catch (e) {
       console.log('Error requestPermission -> ', e);
     }
@@ -95,8 +97,8 @@ const Routes = () => {
 
   // useEffect(() => {
   //   initAppLoveinAds();
-  //   // initFacebookAds();
-  //   // return () => AdSettings.clearTestDevices();
+  //   initFacebookAds();
+  //   return () => AdSettings.clearTestDevices();
   // }, []);
 
   // const initFacebookAds = async () => {

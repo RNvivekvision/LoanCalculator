@@ -86,7 +86,7 @@ const loanTenure = (startDate, tenure) => {
   return formatDate({ date: newDate });
 };
 
-const appLink = 'https://apps.apple.com/in/app/xcode/id6502944625?mt=12';
+const appLink = 'https://apps.apple.com/in/app/id6502944625';
 const RateUs = async ({ onSuccess, onError } = {}) => {
   const options = {
     AppleAppID: '6502944625',
@@ -110,7 +110,7 @@ const RateUs = async ({ onSuccess, onError } = {}) => {
 
 const ShareApp = async ({ title, message, url } = {}) => {
   const Title = 'Easy EMI Loan Calculator';
-  const Message = `Share Easy EMI Loan Calculator app to your friends. by clicking the following url ${appLink}`;
+  const Message = `Share Easy EMI Loan Calculator app to your friends. by clicking the following url`;
 
   await Share.share({
     title: title ?? Title,
