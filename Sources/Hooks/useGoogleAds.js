@@ -1,135 +1,148 @@
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  AdEventType,
   AppOpenAd,
   InterstitialAd,
-  RewardedAd,
   TestIds,
 } from 'react-native-google-mobile-ads';
 import { showAdLoader } from '../Redux/Actions';
 import { Functions } from '../Utils';
 
 const useGoogleAds = () => {
-  const { adData, Admob, clickAds, Admanager1, Admanager2 } = useSelector(
+  const { clickAds, adData, Admob, Admanager1, Admanager2 } = useSelector(
     ({ UserReducer }) => UserReducer,
   );
+  const methods = [Admob, Admanager1, Admanager2];
   const dispatch = useDispatch();
-  const [State, setState] = useState({
-    interstitial: Admob?.interstitial,
-    interstitialClosed: false,
-    index: 0,
-  });
 
-  const appOpenId = Functions.isDev ? TestIds.APP_OPEN : Admob?.appOpen;
-  const interstitialId = Functions.isDev
-    ? TestIds.INTERSTITIAL
-    : State.interstitial;
-  const rewardId = Functions.isDev ? TestIds.REWARDED : Admob?.rewarded;
+  // const showingAppOpenAds = async (method = methods[0], count = 0) => {
+  //   try {
+  //     const AdId = Functions.isDev ? TestIds.INTERSTITIAL : method?.appOpen;
+  //     const Ad = AppOpenAd.createForAdRequest(AdId); // initialization...
 
-  const appOpenAd =
-    appOpenId?.length > 0
-      ? AppOpenAd.createForAdRequest(appOpenId)
-      : defaultMethods;
-  const interstitialAd =
-    interstitialId?.length > 0
-      ? InterstitialAd.createForAdRequest(interstitialId)
-      : defaultMethods;
-  const rewardAd =
-    rewardId?.length > 0
-      ? RewardedAd.createForAdRequest(rewardId)
-      : defaultMethods;
+  //     dispatch(showAdLoader(true)); // Show loader...
 
-  useEffect(() => {
-    if (
-      appOpenAd?.loaded == undefined ||
-      interstitialAd?.loaded == undefined ||
-      rewardAd?.loaded == undefined
-    ) {
-      return;
-    }
+  //     Ad.load();
+  //     await Functions.wait(2000); // wait for 2 seconds to load  ad...
 
-    const error_interstitial = interstitialAd?.addAdEventListener(
-      AdEventType.ERROR,
-      e => {
-        console.log('Error Interstitial Ad -> ', e);
-        const newIndex = State.index + 1;
-        if (newIndex == 1) {
-          setState(p => ({
-            ...p,
-            interstitial: Admanager1?.interstitial,
-            index: newIndex,
-          }));
-        } else if (newIndex == 2) {
-          setState(p => ({
-            ...p,
-            interstitial: Admanager2?.interstitial,
-            index: newIndex,
-          }));
-        }
-      },
-    );
+  //     count++;
+  //     if (!Ad.loaded) {
+  //       if (count >= methods.length) {
+  //         return dispatch(showAdLoader(false));
+  //       } else {
+  //         return showingAppOpenAds(methods[count], count);
+  //       }
+  //     } else {
+  //       if (adData?.splashAd) return await Ad.show();
+  //     }
+  //   } catch (e) {
+  //     dispatch(showAdLoader(false));
+  //     console.log('Error App Open Ad -> ', e);
+  //   } finally {
+  //     dispatch(showAdLoader(false));
+  //   }
+  // };
 
-    appOpenAd.load();
-    interstitialAd?.load();
-    rewardAd?.load();
+  // const showingIntestitialAds = async (
+  //   onboarding,
+  //   method = methods[0],
+  //   count = 0,
+  // ) => {
+  //   try {
+  //     const AdId = Functions.isDev
+  //       ? TestIds.INTERSTITIAL
+  //       : method?.interstitial;
+  //     const Ad = InterstitialAd.createForAdRequest(AdId); // initialization...
 
-    return () => {
-      error_interstitial();
-    };
-  }, [adData?.showAdInApp]);
+  //     dispatch(showAdLoader(true)); // Show loader...
 
-  const showingAppOpenAds = () => {
-    if (appOpenAd?.loaded == undefined) return;
-    console.log('AppOpen ad loaded -> ', appOpenAd?.loaded);
-    if (appOpenAd?.loaded) {
-      if (adData?.splashAd) {
-        appOpenAd?.show();
-      }
-      return;
-    } else {
-      appOpenAd?.load();
-      wait(400).then(showingAppOpenAds);
-    }
-  };
+  //     Ad.load();
+  //     await Functions.wait(2000); // wait for 2 seconds to load interstitial ad...
 
-  const showingIntestitialAds = async onboarding => {
+  //     count++;
+  //     if (!Ad.loaded) {
+  //       if (count >= methods.length) {
+  //         return dispatch(showAdLoader(false));
+  //       } else {
+  //         return showingIntestitialAds(onboarding, methods[count], count);
+  //       }
+  //     } else {
+  //       if (clickAds || onboarding) return await Ad.show();
+  //     }
+  //   } catch (e) {
+  //     dispatch(showAdLoader(false));
+  //     console.log('Error Intestitial Ad -> ', e);
+  //   } finally {
+  //     dispatch(showAdLoader(false));
+  //   }
+  // };
+
+  const showingRewadAds = () => {};
+
+  const showAds = async ({
+    adType = InterstitialAd,
+    testAdId = TestIds.INTERSTITIAL,
+    method = methods[0],
+    key = 'interstitial',
+    count = 0,
+    condition,
+  }) => {
     try {
-      if (interstitialAd?.loaded == undefined) return;
-      console.log('Interstitial ad loaded -> ', interstitialAd?.loaded);
-      if (interstitialAd?.loaded) {
-        if (clickAds || onboarding) {
-          dispatch(showAdLoader(true));
-          await wait(1000);
-          await interstitialAd?.show();
-          await dispatch(showAdLoader(false));
+      if (!condition) return;
+
+      const AdId = Functions.isDev ? testAdId : method[key];
+      const Ad = adType.createForAdRequest(AdId); // initialization...
+
+      console.log('\n\nshowing loader...');
+      dispatch(showAdLoader(true)); // Show loader...
+
+      console.log('start loading ad...');
+      Ad.load();
+      await Functions.wait(2000); // wait for 2 seconds to load ad...
+
+      count++;
+      if (!Ad.loaded) {
+        console.log('Not Loaded...');
+        if (count >= methods.length) {
+          console.log('return all methods...');
+          return dispatch(showAdLoader(false));
+        } else {
+          console.log('go to next method...');
+          return showAds({
+            adType,
+            testAdId,
+            method: methods[count],
+            count,
+            key,
+            condition,
+          });
         }
-        return;
       } else {
-        interstitialAd?.load();
-        await wait(500);
-        await showingIntestitialAds(onboarding);
+        console.log('ad loaded and condition fulfilled...');
+        dispatch(showAdLoader(false));
+        return await Ad.show();
       }
     } catch (e) {
-      console.log('Error showingIntestitialAds -> ', e);
-    }
-  };
-
-  const showingRewadAds = () => {
-    if (rewardAd?.loaded == undefined) return;
-    console.log('Reward ad loaded -> ', rewardAd?.loaded);
-    if (rewardAd?.loaded) {
-      return rewardAd?.show();
-    } else {
-      rewardAd?.load();
-      wait(500).then(showingRewadAds);
+      dispatch(showAdLoader(false));
+      console.log('Error show Ads -> ', e);
     }
   };
 
   if (adData?.showAdInApp) {
     return {
-      showAppOpenAd: showingAppOpenAds,
-      showInterstitialAd: showingIntestitialAds,
+      showAppOpenAd: () =>
+        showAds({
+          adType: AppOpenAd,
+          key: 'appOpen',
+          testAdId: TestIds.APP_OPEN,
+          condition: adData?.splashAd,
+        }),
+      showInterstitialAd: onboard =>
+        showAds({
+          adType: InterstitialAd,
+          key: 'interstitial',
+          testAdId: TestIds.INTERSTITIAL,
+          condition: clickAds || onboard,
+        }),
       showRewardAd: showingRewadAds,
     };
   }
@@ -141,10 +154,44 @@ const useGoogleAds = () => {
   };
 };
 
-const wait = ms => new Promise(r => setTimeout(r, ms));
-const defaultMethods = {
-  load: () => {},
-  show: () => {},
-  addAdEventListener: () => () => null,
-};
 export default useGoogleAds;
+
+// Previous code as on 11th June 2024
+
+// App Open
+// const showingAppOpenAds = (method = methods[0], count = 0) => {
+//   if (appOpenAd?.loaded == undefined) return;
+//   console.log('AppOpen ad loaded -> ', appOpenAd?.loaded);
+//   if (appOpenAd?.loaded) {
+//     if (adData?.splashAd) {
+//       appOpenAd?.show();
+//     }
+//     return;
+//   } else {
+//     appOpenAd?.load();
+//     Functions.wait(2000).then(showingAppOpenAds);
+//   }
+// };
+
+// Interstitial
+// const showingIntestitialAds = async onboarding => {
+//   try {
+//     if (interstitialAd?.loaded == undefined) return;
+//     console.log('Interstitial ad loaded -> ', interstitialAd?.loaded);
+//     if (interstitialAd?.loaded) {
+//       if (clickAds || onboarding) {
+//         dispatch(showAdLoader(true));
+//         await Functions.wait(1000);
+//         await interstitialAd?.show();
+//         await dispatch(showAdLoader(false));
+//       }
+//       return;
+//     } else {
+//       interstitialAd?.load();
+//       await Functions.wait(500);
+//       await showingIntestitialAds(onboarding);
+//     }
+//   } catch (e) {
+//     console.log('Error showingIntestitialAds -> ', e);
+//   }
+// };

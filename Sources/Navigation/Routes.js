@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { AppState } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
@@ -68,7 +68,7 @@ const Routes = () => {
       appState.current = nextAppState;
     });
     return () => subscription.remove();
-  }, [adData?.showAdInApp, adData?.splashAd]);
+  }, [adData]);
 
   useEffect(() => {
     localdata?.lang && Strings.setLanguage(localdata?.lang);

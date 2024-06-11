@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Rate, { AndroidMarket } from 'react-native-rate';
 
 const ALERT = ({ Title, Text, Buttons }) => Alert.alert(Title, Text, Buttons);
-
+const wait = ms => new Promise(r => setTimeout(r, ms));
 const OpenUrl = url => Linking.openURL(url);
 
 const isDev = __DEV__;
@@ -133,6 +133,7 @@ const Functions = {
   loanTenure,
   RateUs,
   ShareApp,
+  wait,
   isDev,
 };
 
